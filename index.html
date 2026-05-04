@@ -1174,6 +1174,9 @@ let quizStartTime = null;
 let lastQuestionOrderByCourse = {};
 let lastOptionsOrders = {};
 
+let activeNavigationState = { screen: "menu" };
+let navigationInitialized = false;
+
 function hideAllScreens() {
   document.getElementById("menu-screen").classList.add("hidden");
   document.getElementById("course-screen").classList.add("hidden");
@@ -1228,6 +1231,129 @@ function confirmLeaveQuiz() {
   );
 }
 
+
+function buildNavigationUrl(state) {
+  const baseUrl = window.location.pathname + window.location.search;
+
+  if (!state || state.screen === "menu") {
+    return baseUrl + "#menu";
+  }
+
+  if (state.courseKey) {
+    return baseUrl + "#" + state.screen + "-" + encodeURIComponent(state.courseKey);
+  }
+
+  return baseUrl + "#" + state.screen;
+}
+
+function normalizeNavigationState(state) {
+  if (!state || !state.screen) {
+    return { screen: "menu" };
+  }
+
+  return {
+    screen: state.screen,
+    courseKey: state.courseKey || null
+  };
+}
+
+function sameNavigationState(a, b) {
+  const stateA = normalizeNavigationState(a);
+  const stateB = normalizeNavigationState(b);
+
+  return stateA.screen === stateB.screen && stateA.courseKey === stateB.courseKey;
+}
+
+function pushNavigationState(state) {
+  const normalizedState = normalizeNavigationState(state);
+  activeNavigationState = normalizedState;
+
+  if (!navigationInitialized) return;
+  if (sameNavigationState(window.history.state, normalizedState)) return;
+
+  window.history.pushState(normalizedState, "", buildNavigationUrl(normalizedState));
+}
+
+function replaceNavigationState(state) {
+  const normalizedState = normalizeNavigationState(state);
+  activeNavigationState = normalizedState;
+
+  if (!navigationInitialized) return;
+
+  window.history.replaceState(normalizedState, "", buildNavigationUrl(normalizedState));
+}
+
+function applyNavigationState(state) {
+  const targetState = normalizeNavigationState(state);
+
+  if (targetState.screen === "course" && targetState.courseKey) {
+    showCourse(targetState.courseKey, {
+      confirm: false,
+      pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "quiz" && targetState.courseKey) {
+    start(targetState.courseKey, {
+      pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "result" && targetState.courseKey) {
+    const canRestoreResult =
+      currentCourseKey === targetState.courseKey &&
+      shuffled.length > 0 &&
+      current >= shuffled.length;
+
+    if (canRestoreResult) {
+      showResults({
+        pushState: false,
+        save: false
+      });
+      activeNavigationState = targetState;
+      return;
+    }
+
+    showCourse(targetState.courseKey, {
+      confirm: false,
+      pushState: false
+    });
+    activeNavigationState = { screen: "course", courseKey: targetState.courseKey };
+    replaceNavigationState(activeNavigationState);
+    return;
+  }
+
+  currentCourseKey = null;
+  hideAllScreens();
+  document.getElementById("menu-screen").classList.remove("hidden");
+  renderHistory();
+  activeNavigationState = { screen: "menu" };
+}
+
+function initializeNavigation() {
+  navigationInitialized = true;
+  replaceNavigationState({ screen: "menu" });
+
+  window.addEventListener("popstate", event => {
+    const targetState = normalizeNavigationState(event.state);
+
+    if (isQuizInProgress()) {
+      const leaveQuiz = confirmLeaveQuiz();
+
+      if (!leaveQuiz) {
+        pushNavigationState(activeNavigationState);
+        return;
+      }
+    }
+
+    applyNavigationState(targetState);
+  });
+}
+
 function addWrongItem(container, wrong) {
   const item = document.createElement("div");
   item.className = "wrong-item";
@@ -1274,9 +1400,13 @@ function renderWrongItems(container, wrongItems) {
   }
 }
 
-function showCourse(courseKey) {
+function showCourse(courseKey, options = {}) {
   if (!courseKey || !courseContents[courseKey]) return;
-  if (!confirmLeaveQuiz()) return;
+
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
 
   currentCourseKey = courseKey;
   const course = courseContents[courseKey];
@@ -1320,6 +1450,13 @@ function showCourse(courseKey) {
   document.getElementById("start-course-quiz-btn").onclick = function() {
     start(courseKey);
   };
+
+  if (shouldPushState) {
+    pushNavigationState({
+      screen: "course",
+      courseKey: courseKey
+    });
+  }
 }
 
 function shuffleArray(arr) {
@@ -1384,10 +1521,11 @@ function prepareQuestion(originalQuestion, courseKey) {
   };
 }
 
-function start(courseKey) {
+function start(courseKey, options = {}) {
   currentCourseKey = courseKey;
   resultAlreadySaved = false;
 
+  const shouldPushState = options.pushState !== false;
   const bank = questionBanks[courseKey];
 
   const questionsWithIds = bank.questions.map((question, index) => ({
@@ -1418,6 +1556,13 @@ function start(courseKey) {
   hideAllScreens();
   document.getElementById("quiz-screen").classList.remove("hidden");
   document.getElementById("course-tag").textContent = bank.tag;
+
+  if (shouldPushState) {
+    pushNavigationState({
+      screen: "quiz",
+      courseKey: courseKey
+    });
+  }
 
   render();
 }
@@ -1503,7 +1648,10 @@ function next() {
   render();
 }
 
-function showResults() {
+function showResults(options = {}) {
+  const shouldPushState = options.pushState !== false;
+  const shouldSaveResult = options.save !== false;
+
   hideAllScreens();
   document.getElementById("result-screen").classList.remove("hidden");
 
@@ -1531,12 +1679,19 @@ function showResults() {
 
   document.getElementById("final-grade").textContent = grade;
 
-  if (!resultAlreadySaved) {
+  if (shouldSaveResult && !resultAlreadySaved) {
     saveHistoryAttempt(currentCourseKey, score, total, percentage, grade, wrongs, durationSeconds);
     resultAlreadySaved = true;
   }
 
   renderWrongItems(document.getElementById("wrongs-section"), wrongs);
+
+  if (shouldPushState) {
+    replaceNavigationState({
+      screen: "result",
+      courseKey: currentCourseKey
+    });
+  }
 }
 
 function getHistory() {
@@ -1711,8 +1866,11 @@ function restart() {
   }
 }
 
-function backToMenu() {
-  if (!confirmLeaveQuiz()) return;
+function backToMenu(options = {}) {
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
 
   currentCourseKey = null;
 
@@ -1720,9 +1878,14 @@ function backToMenu() {
   document.getElementById("menu-screen").classList.remove("hidden");
 
   renderHistory();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "menu" });
+  }
 }
 
 renderHistory();
+initializeNavigation();
 </script>
 </body>
 </html>
