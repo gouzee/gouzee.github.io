@@ -482,6 +482,94 @@
     font-weight: 700;
   }
 
+
+  .game-access {
+    margin-top: 26px;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .game-access h2 {
+    color: #f0f0ff;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .game-access p {
+    color: #aab;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .game-panel {
+    position: relative;
+    background: linear-gradient(180deg, #171735, #101024);
+    border: 1px solid #2a2a4a;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  #runner-game {
+    display: block;
+    width: 100%;
+    height: 260px;
+  }
+
+  .game-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    text-align: center;
+    background: rgba(13, 13, 26, 0.28);
+    color: #f0f0ff;
+    font-weight: 700;
+    line-height: 1.5;
+    pointer-events: none;
+  }
+
+  .game-overlay.hidden {
+    display: none;
+  }
+
+  .game-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .game-stat {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 12px;
+    color: #aab;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .game-stat strong {
+    display: block;
+    color: #f0f0ff;
+    font-size: 20px;
+    margin-top: 4px;
+  }
+
+  .game-help {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
   .hidden {
     display: none;
   }
@@ -511,6 +599,15 @@
     .course-content {
       max-height: 60vh;
     }
+
+    .game-stats {
+      grid-template-columns: 1fr;
+    }
+
+    #runner-game {
+      height: 220px;
+    }
+
   }
 
   @media print {
@@ -583,6 +680,13 @@
       <button class="btn secondary-btn" onclick="showCourse('cultureCreation')">Culture de la Création</button>
     </div>
 
+    <div class="game-access">
+      <h2>Petite pause</h2>
+      <p>Un mini-jeu indépendant des cours, façon dinosaure de Chrome quand Internet ne marche plus.</p>
+      <button class="btn secondary-btn" onclick="showGame()">Lancer le mini-jeu</button>
+    </div>
+
+
     <div class="history-box">
       <div class="history-header">
         <h2>Historique des essais</h2>
@@ -634,10 +738,42 @@
 
     <button class="btn hidden" id="next-btn" onclick="next()">Question suivante →</button>
     <button class="btn secondary-btn" onclick="showCourse(currentCourseKey)">Voir le cours</button>
-    <button class="btn secondary-btn" onclick="backToMenu()">Changer de cours</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
 
     <div class="score-label" id="score-label">Score : 0 / 0</div>
   </div>
+
+  <div id="game-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Mini-jeu</span>
+      <span class="counter" id="game-live-score">Score : 0</span>
+    </div>
+
+    <h1 class="course-title">Course sans internet</h1>
+    <p class="course-subtitle">
+      Saute par-dessus les buissons et les oiseaux, puis essaie de battre ton meilleur score.
+    </p>
+
+    <div class="game-panel">
+      <canvas id="runner-game" width="704" height="260" aria-label="Mini-jeu de course avec obstacles"></canvas>
+      <div class="game-overlay" id="game-overlay">
+        Clique sur Démarrer, puis appuie sur Espace ou ↑ pour sauter.
+      </div>
+    </div>
+
+    <div class="game-stats">
+      <div class="game-stat">Score actuel<strong id="game-current-score">0</strong></div>
+      <div class="game-stat">Meilleur score<strong id="game-best-score">0</strong></div>
+    </div>
+
+    <p class="game-help">
+      Sur ordinateur : Espace ou flèche haut. Sur mobile : touche le jeu pour sauter. Le score augmente à chaque obstacle dépassé.
+    </p>
+
+    <button class="btn" onclick="startMiniGame()">Démarrer / recommencer</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
 
   <div id="result-screen" class="hidden">
     <div class="big-score" id="final-score"></div>
@@ -653,7 +789,7 @@
 
     <button class="btn" onclick="restart()">Recommencer cette partie</button>
     <button class="btn secondary-btn" onclick="showCourse(currentCourseKey)">Revoir le cours</button>
-    <button class="btn secondary-btn" onclick="backToMenu()">Changer de cours</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
 </div>
@@ -1177,10 +1313,42 @@ let lastOptionsOrders = {};
 let activeNavigationState = { screen: "menu" };
 let navigationInitialized = false;
 
+
+let miniGame = {
+  running: false,
+  animationId: null,
+  lastFrameTime: 0,
+  tick: 0,
+  score: 0,
+  bestScore: Number(localStorage.getItem("miniRunnerBestScore") || 0),
+  speed: 6,
+  gravity: 0.68,
+  jumpPower: -12.6,
+  groundY: 208,
+  player: {
+    x: 58,
+    y: 156,
+    width: 68,
+    height: 52,
+    velocityY: 0,
+    onGround: true
+  },
+  obstacles: [],
+  obstacleTimer: 0,
+  nextObstacleDelay: 1000,
+  clouds: [
+    { x: 120, y: 50, size: 18 },
+    { x: 360, y: 34, size: 24 },
+    { x: 590, y: 62, size: 16 }
+  ]
+};
+
 function hideAllScreens() {
+  stopMiniGame();
   document.getElementById("menu-screen").classList.add("hidden");
   document.getElementById("course-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.add("hidden");
+  document.getElementById("game-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.add("hidden");
 }
 
@@ -1286,6 +1454,14 @@ function replaceNavigationState(state) {
 function applyNavigationState(state) {
   const targetState = normalizeNavigationState(state);
 
+  if (targetState.screen === "game") {
+    showGame({
+      pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
   if (targetState.screen === "course" && targetState.courseKey) {
     showCourse(targetState.courseKey, {
       confirm: false,
@@ -1353,6 +1529,449 @@ function initializeNavigation() {
     applyNavigationState(targetState);
   });
 }
+
+
+function showGame(options = {}) {
+  const shouldPushState = options.pushState !== false;
+
+  hideAllScreens();
+  document.getElementById("game-screen").classList.remove("hidden");
+
+  updateMiniGameScores();
+  drawMiniGameStartScreen();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "game" });
+  }
+}
+
+function getMiniGameCanvas() {
+  return document.getElementById("runner-game");
+}
+
+function getMiniGameContext() {
+  const canvas = getMiniGameCanvas();
+  return canvas ? canvas.getContext("2d") : null;
+}
+
+function updateMiniGameScores() {
+  const liveScore = document.getElementById("game-live-score");
+  const currentScore = document.getElementById("game-current-score");
+  const bestScore = document.getElementById("game-best-score");
+
+  if (liveScore) liveScore.textContent = "Score : " + miniGame.score;
+  if (currentScore) currentScore.textContent = miniGame.score;
+  if (bestScore) bestScore.textContent = miniGame.bestScore;
+}
+
+function resetMiniGameState() {
+  miniGame.score = 0;
+  miniGame.speed = 6;
+  miniGame.tick = 0;
+  miniGame.obstacles = [];
+  miniGame.obstacleTimer = 0;
+  miniGame.nextObstacleDelay = 900;
+  miniGame.lastFrameTime = 0;
+  miniGame.player.y = miniGame.groundY - miniGame.player.height;
+  miniGame.player.velocityY = 0;
+  miniGame.player.onGround = true;
+  updateMiniGameScores();
+}
+
+function startMiniGame() {
+  stopMiniGame();
+  resetMiniGameState();
+
+  const overlay = document.getElementById("game-overlay");
+  if (overlay) {
+    overlay.classList.add("hidden");
+  }
+
+  miniGame.running = true;
+  miniGame.animationId = requestAnimationFrame(runMiniGameFrame);
+}
+
+function stopMiniGame() {
+  if (typeof miniGame === "undefined" || !miniGame.animationId) {
+    if (typeof miniGame !== "undefined") miniGame.running = false;
+    return;
+  }
+
+  cancelAnimationFrame(miniGame.animationId);
+  miniGame.animationId = null;
+  miniGame.running = false;
+}
+
+function jumpMiniGame() {
+  const gameScreen = document.getElementById("game-screen");
+
+  if (!gameScreen || gameScreen.classList.contains("hidden")) return;
+
+  if (!miniGame.running) {
+    startMiniGame();
+    return;
+  }
+
+  if (miniGame.player.onGround) {
+    miniGame.player.velocityY = miniGame.jumpPower;
+    miniGame.player.onGround = false;
+  }
+}
+
+function addMiniGameObstacle() {
+  const createBird = Math.random() < 0.3 && miniGame.score >= 2;
+
+  if (createBird) {
+    const birdHeight = 20 + Math.floor(Math.random() * 6);
+    const birdWidth = 34 + Math.floor(Math.random() * 8);
+    const lowFlight = Math.random() < 0.65;
+    const y = lowFlight
+      ? miniGame.groundY - birdHeight - 10
+      : miniGame.groundY - birdHeight - 34;
+
+    miniGame.obstacles.push({
+      type: "bird",
+      x: 740,
+      y: y,
+      width: birdWidth,
+      height: birdHeight,
+      scored: false,
+      flapOffset: Math.random() * Math.PI * 2
+    });
+  } else {
+    const height = 24 + Math.floor(Math.random() * 12);
+    const width = 28 + Math.floor(Math.random() * 16);
+
+    miniGame.obstacles.push({
+      type: "bush",
+      x: 740,
+      y: miniGame.groundY - height,
+      width: width,
+      height: height,
+      scored: false,
+      variant: Math.floor(Math.random() * 3)
+    });
+  }
+
+  miniGame.nextObstacleDelay = 720 + Math.random() * 760;
+}
+
+function rectanglesCollide(a, b) {
+  return (
+    a.x < b.x + b.width &&
+    a.x + a.width > b.x &&
+    a.y < b.y + b.height &&
+    a.y + a.height > b.y
+  );
+}
+
+function endMiniGame() {
+  stopMiniGame();
+
+  if (miniGame.score > miniGame.bestScore) {
+    miniGame.bestScore = miniGame.score;
+    localStorage.setItem("miniRunnerBestScore", String(miniGame.bestScore));
+  }
+
+  updateMiniGameScores();
+  drawMiniGame();
+
+  const overlay = document.getElementById("game-overlay");
+  if (overlay) {
+    overlay.textContent = "Perdu ! Score : " + miniGame.score + ". Clique ou appuie sur Espace pour recommencer.";
+    overlay.classList.remove("hidden");
+  }
+}
+
+function runMiniGameFrame(timestamp) {
+  if (!miniGame.running) return;
+
+  if (!miniGame.lastFrameTime) {
+    miniGame.lastFrameTime = timestamp;
+  }
+
+  const delta = Math.min(32, timestamp - miniGame.lastFrameTime);
+  miniGame.lastFrameTime = timestamp;
+  miniGame.tick += delta;
+
+  const movementRatio = delta / 16.67;
+  const player = miniGame.player;
+
+  player.velocityY += miniGame.gravity * movementRatio;
+  player.y += player.velocityY * movementRatio;
+
+  if (player.y >= miniGame.groundY - player.height) {
+    player.y = miniGame.groundY - player.height;
+    player.velocityY = 0;
+    player.onGround = true;
+  }
+
+  miniGame.obstacleTimer += delta;
+  if (miniGame.obstacleTimer >= miniGame.nextObstacleDelay) {
+    addMiniGameObstacle();
+    miniGame.obstacleTimer = 0;
+  }
+
+  miniGame.obstacles.forEach(obstacle => {
+    obstacle.x -= miniGame.speed * movementRatio;
+
+    if (!obstacle.scored && obstacle.x + obstacle.width < player.x) {
+      obstacle.scored = true;
+      miniGame.score += obstacle.type === "bird" ? 2 : 1;
+    }
+  });
+
+  miniGame.obstacles = miniGame.obstacles.filter(obstacle => obstacle.x + obstacle.width > -40);
+
+  miniGame.clouds.forEach(cloud => {
+    cloud.x -= 0.35 * movementRatio;
+    if (cloud.x < -60) {
+      cloud.x = 740;
+      cloud.y = 30 + Math.random() * 45;
+    }
+  });
+
+  miniGame.speed = 6 + Math.min(6, miniGame.score * 0.22);
+  updateMiniGameScores();
+
+  const hitbox = {
+    x: player.x + 14,
+    y: player.y + 6,
+    width: player.width - 22,
+    height: player.height - 6
+  };
+
+  const hasCollision = miniGame.obstacles.some(obstacle => rectanglesCollide(hitbox, obstacle));
+
+  drawMiniGame();
+
+  if (hasCollision) {
+    endMiniGame();
+    return;
+  }
+
+  miniGame.animationId = requestAnimationFrame(runMiniGameFrame);
+}
+
+function drawMiniGameStartScreen() {
+  resetMiniGameState();
+  drawMiniGame();
+
+  const overlay = document.getElementById("game-overlay");
+  if (overlay) {
+    overlay.textContent = "Clique sur Démarrer, puis appuie sur Espace ou ↑ pour sauter.";
+    overlay.classList.remove("hidden");
+  }
+}
+
+function drawMiniGameDino(ctx, player) {
+  const legPhase = miniGame.running && player.onGround ? Math.sin(miniGame.tick / 85) : 0;
+
+  ctx.save();
+  ctx.translate(player.x, player.y);
+
+  ctx.fillStyle = "#8b5cf6";
+
+  ctx.beginPath();
+  ctx.moveTo(8, 34);
+  ctx.quadraticCurveTo(16, 20, 30, 14);
+  ctx.quadraticCurveTo(43, 10, 52, 16);
+  ctx.lineTo(60, 3);
+  ctx.quadraticCurveTo(66, -4, 66, 6);
+  ctx.lineTo(65, 20);
+  ctx.quadraticCurveTo(65, 27, 58, 28);
+  ctx.lineTo(52, 28);
+  ctx.quadraticCurveTo(47, 28, 45, 33);
+  ctx.lineTo(42, 38);
+  ctx.quadraticCurveTo(39, 43, 32, 43);
+  ctx.lineTo(22, 43);
+  ctx.quadraticCurveTo(14, 43, 10, 40);
+  ctx.lineTo(5, 37);
+  ctx.quadraticCurveTo(-6, 42, -1, 31);
+  ctx.lineTo(7, 28);
+  ctx.quadraticCurveTo(11, 27, 12, 30);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(6, 33);
+  ctx.lineTo(-12, 27);
+  ctx.lineTo(-5, 22);
+  ctx.lineTo(10, 27);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = "#c4b5fd";
+  ctx.beginPath();
+  ctx.ellipse(57, 10, 7, 5, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = "#ffffff";
+  ctx.beginPath();
+  ctx.arc(55, 8, 2.4, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#1f1636";
+  ctx.beginPath();
+  ctx.arc(55.5, 8, 1.1, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.strokeStyle = "#2a1b4a";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(58, 15);
+  ctx.lineTo(64, 17);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(34, 24);
+  ctx.lineTo(40, 28);
+  ctx.moveTo(31, 27);
+  ctx.lineTo(38, 31);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(26, 43);
+  ctx.lineTo(24 + legPhase * 4, 54);
+  ctx.lineTo(31 + legPhase * 2, 54);
+  ctx.moveTo(40, 43);
+  ctx.lineTo(42 - legPhase * 4, 54);
+  ctx.lineTo(49 - legPhase * 2, 54);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function drawMiniGameBush(ctx, obstacle) {
+  ctx.save();
+  ctx.fillStyle = obstacle.variant === 1 ? "#16a34a" : obstacle.variant === 2 ? "#22c55e" : "#15803d";
+
+  const baseY = obstacle.y + obstacle.height;
+  const left = obstacle.x;
+  const w = obstacle.width;
+  const h = obstacle.height;
+
+  ctx.beginPath();
+  ctx.arc(left + w * 0.22, baseY - h * 0.35, h * 0.34, Math.PI, Math.PI * 2);
+  ctx.arc(left + w * 0.48, baseY - h * 0.55, h * 0.42, Math.PI, Math.PI * 2);
+  ctx.arc(left + w * 0.73, baseY - h * 0.38, h * 0.3, Math.PI, Math.PI * 2);
+  ctx.lineTo(left + w, baseY);
+  ctx.lineTo(left, baseY);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = "rgba(255,255,255,0.14)";
+  ctx.beginPath();
+  ctx.arc(left + w * 0.32, baseY - h * 0.56, h * 0.12, 0, Math.PI * 2);
+  ctx.arc(left + w * 0.58, baseY - h * 0.74, h * 0.1, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawMiniGameBird(ctx, obstacle) {
+  const flap = Math.sin(miniGame.tick / 90 + obstacle.flapOffset) * 5;
+  const centerX = obstacle.x + obstacle.width / 2;
+  const centerY = obstacle.y + obstacle.height / 2;
+
+  ctx.save();
+  ctx.strokeStyle = "#f8fafc";
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = "round";
+
+  ctx.beginPath();
+  ctx.moveTo(centerX - 15, centerY + 1);
+  ctx.quadraticCurveTo(centerX - 7, centerY - 10 - flap, centerX + 1, centerY + 1);
+  ctx.quadraticCurveTo(centerX + 7, centerY - 8, centerX + 16, centerY + 2 + flap * 0.15);
+  ctx.stroke();
+
+  ctx.fillStyle = "#e2e8f0";
+  ctx.beginPath();
+  ctx.ellipse(centerX + 2, centerY + 1, 9, 6, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(centerX + 11, centerY - 2, 4, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = "#0f172a";
+  ctx.beginPath();
+  ctx.arc(centerX + 12, centerY - 3, 1, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = "#f59e0b";
+  ctx.beginPath();
+  ctx.moveTo(centerX + 15, centerY - 1);
+  ctx.lineTo(centerX + 20, centerY + 1);
+  ctx.lineTo(centerX + 15, centerY + 3);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function drawMiniGame() {
+  const canvas = getMiniGameCanvas();
+  const ctx = getMiniGameContext();
+
+  if (!canvas || !ctx) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "#171735");
+  gradient.addColorStop(1, "#101024");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "rgba(168, 85, 247, 0.22)";
+  miniGame.clouds.forEach(cloud => {
+    ctx.beginPath();
+    ctx.arc(cloud.x, cloud.y, cloud.size, 0, Math.PI * 2);
+    ctx.arc(cloud.x + cloud.size, cloud.y + 5, cloud.size * 0.75, 0, Math.PI * 2);
+    ctx.arc(cloud.x - cloud.size, cloud.y + 7, cloud.size * 0.65, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  ctx.strokeStyle = "#6366f1";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, miniGame.groundY + 1);
+  ctx.lineTo(canvas.width, miniGame.groundY + 1);
+  ctx.stroke();
+
+  ctx.fillStyle = "rgba(240, 240, 255, 0.18)";
+  for (let x = 0; x < canvas.width; x += 38) {
+    ctx.fillRect(x, miniGame.groundY + 13, 18, 2);
+  }
+
+  miniGame.obstacles.forEach(obstacle => {
+    if (obstacle.type === "bird") {
+      drawMiniGameBird(ctx, obstacle);
+    } else {
+      drawMiniGameBush(ctx, obstacle);
+    }
+  });
+
+  drawMiniGameDino(ctx, miniGame.player);
+}
+
+const runnerCanvasElement = document.getElementById("runner-game");
+if (runnerCanvasElement) {
+  runnerCanvasElement.addEventListener("pointerdown", event => {
+    event.preventDefault();
+    jumpMiniGame();
+  });
+}
+
+document.addEventListener("keydown", event => {
+  if (event.code === "Space" || event.code === "ArrowUp") {
+    const gameScreen = document.getElementById("game-screen");
+
+    if (gameScreen && !gameScreen.classList.contains("hidden")) {
+      event.preventDefault();
+      jumpMiniGame();
+    }
+  }
+});
 
 function addWrongItem(container, wrong) {
   const item = document.createElement("div");
