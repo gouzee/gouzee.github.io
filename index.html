@@ -595,6 +595,37 @@
     margin-bottom: 16px;
   }
 
+  .scroll-top-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid #6366f1;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  }
+
+  .scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .scroll-top-btn:hover {
+    transform: translateY(-2px);
+  }
+
   .hidden {
     display: none;
   }
@@ -633,6 +664,14 @@
       height: 220px;
     }
 
+    .scroll-top-btn {
+      right: 12px;
+      bottom: 12px;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+
   }
 
   @media print {
@@ -652,6 +691,7 @@
     }
 
     .btn,
+    .scroll-top-btn,
     .header,
     .course-subtitle {
       display: none;
@@ -824,7 +864,60 @@
 
 </div>
 
+<button
+  class="scroll-top-btn"
+  id="scroll-top-btn"
+  type="button"
+  onclick="scrollToTop()"
+  aria-label="Retour en haut de la page"
+  title="Retour en haut">
+  ↑
+</button>
+
 <script>
+
+function updateScrollTopButton() {
+  const button = document.getElementById("scroll-top-btn");
+  const courseContent = document.getElementById("course-content");
+
+  if (!button) return;
+
+  const pageScrolled = window.scrollY > 260;
+  const courseScrolled =
+    courseContent &&
+    !courseContent.closest("#course-screen").classList.contains("hidden") &&
+    courseContent.scrollTop > 180;
+
+  button.classList.toggle("visible", pageScrolled || courseScrolled);
+}
+
+function scrollToTop() {
+  const courseContent = document.getElementById("course-content");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  if (courseContent) {
+    courseContent.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+}
+
+window.addEventListener("scroll", updateScrollTopButton);
+document.addEventListener("DOMContentLoaded", () => {
+  const courseContent = document.getElementById("course-content");
+
+  if (courseContent) {
+    courseContent.addEventListener("scroll", updateScrollTopButton);
+  }
+
+  updateScrollTopButton();
+});
+
 const courseContents = {
   developpement: {
     title: "Développement Web",
@@ -1380,6 +1473,8 @@ function hideAllScreens() {
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.add("hidden");
+
+  setTimeout(updateScrollTopButton, 0);
 }
 
 function formatDuration(totalSeconds) {
@@ -2455,7 +2550,7 @@ function renderHistoryCourse(courseKey, elementId, history) {
 
     const toggle = document.createElement("div");
     toggle.className = "history-toggle";
-    toggle.textContent = "Voir plus";
+    toggle.textContent = "Voir +";
 
     summary.appendChild(summaryText);
     summary.appendChild(toggle);
@@ -2474,7 +2569,7 @@ function renderHistoryCourse(courseKey, elementId, history) {
 
     function toggleDetails() {
       const isHidden = details.classList.toggle("hidden");
-      toggle.textContent = isHidden ? "Voir plus" : "Masquer −";
+      toggle.textContent = isHidden ? "Voir +" : "Masquer −";
     }
 
     item.addEventListener("click", toggleDetails);
