@@ -796,7 +796,7 @@
     <div class="game-access">
       <h2>Petite pause</h2>
       <p>Un mini-jeu indépendant des cours, façon dinosaure de Chrome quand Internet ne marche plus.</p>
-      <button class="btn secondary-btn" onclick="showGame()">Lancer le mini-jeu</button>
+      <button class="btn" onclick="showGame()">Lancer le mini-jeu</button>
     </div>
 
   </div>
@@ -847,7 +847,7 @@
 
     <h1 class="course-title">Course du dinosaure</h1>
     <p class="course-subtitle">
-      Saute par-dessus les obstacles et essaie de battre ton meilleur score.
+      Saute par-dessus les obstacles, puis essaie de battre ton meilleur score.
     </p>
 
     <div class="game-panel">
@@ -2172,6 +2172,26 @@ function renderWrongItems(container, wrongItems) {
   }
 }
 
+
+function confirmStartQuizFromCourse(courseKey) {
+  const course = questionBanks[courseKey];
+
+  if (!course) return;
+
+  const confirmStart = confirm(
+    "Tu vas lancer le QCM : " +
+    course.title +
+    ".\n\n" +
+    "Les questions et les réponses seront mélangées.\n" +
+    "Une fois lancé, évite de quitter le QCM en cours pour ne pas perdre ta progression.\n\n" +
+    "Tu es sûr de vouloir commencer ?"
+  );
+
+  if (!confirmStart) return;
+
+  start(courseKey);
+}
+
 function showCourse(courseKey, options = {}) {
   if (!courseKey || !courseContents[courseKey]) return;
 
@@ -2220,7 +2240,7 @@ function showCourse(courseKey, options = {}) {
   });
 
   document.getElementById("start-course-quiz-btn").onclick = function() {
-    start(courseKey);
+    confirmStartQuizFromCourse(courseKey);
   };
 
   if (shouldPushState) {
