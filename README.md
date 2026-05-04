@@ -21,7 +21,7 @@ L’utilisateur peut lire le cours, lancer un QCM, répondre aux questions et vo
 - Historique des essais
 - Possibilité d’imprimer ou sauvegarder le cours en PDF
 
-## Technologies utilisées
+## Langages utilisés
 
 - HTML
 - CSS
