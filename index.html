@@ -2455,7 +2455,7 @@ function renderHistoryCourse(courseKey, elementId, history) {
 
     const toggle = document.createElement("div");
     toggle.className = "history-toggle";
-    toggle.textContent = "Voir +";
+    toggle.textContent = "Voir plus";
 
     summary.appendChild(summaryText);
     summary.appendChild(toggle);
@@ -2474,7 +2474,7 @@ function renderHistoryCourse(courseKey, elementId, history) {
 
     function toggleDetails() {
       const isHidden = details.classList.toggle("hidden");
-      toggle.textContent = isHidden ? "Voir +" : "Masquer −";
+      toggle.textContent = isHidden ? "Voir plus" : "Masquer −";
     }
 
     item.addEventListener("click", toggleDetails);
