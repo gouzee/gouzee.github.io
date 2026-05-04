@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QCM : Développement Web & Culture de la Création</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    background: #0d0d1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    padding: 16px;
+  }
+
+  .card {
+    background: #12122a;
+    border-radius: 16px;
+    padding: 32px 28px;
+    max-width: 760px;
+    width: 100%;
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  .tag {
+    background: #6366f1;
+    color: #fff;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .counter {
+    color: #888;
+    font-size: 13px;
+    text-align: right;
+  }
+
+  .progress-bar {
+    background: #1e1e3a;
+    border-radius: 99px;
+    height: 5px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    border-radius: 99px;
+    height: 100%;
+    transition: width 0.4s;
+  }
+
+  .menu-title {
+    color: #f0f0ff;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .menu-text {
+    color: #aab;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .course-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .course-access {
+    margin-top: 26px;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .course-access h2 {
+    color: #f0f0ff;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .course-access p {
+    color: #aab;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .question {
+    color: #f0f0ff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .option {
+    text-align: left;
+    padding: 13px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #2a2a4a;
+    background: #1a1a2e;
+    color: #ccc;
+    transition: all 0.2s;
+    line-height: 1.4;
+  }
+
+  .option:hover:not(:disabled) {
+    border-color: #6366f1;
+    color: #fff;
+  }
+
+  .option:disabled {
+    cursor: default;
+  }
+
+  .option.correct {
+    background: #0f3d2e;
+    border-color: #22c55e;
+    color: #22c55e;
+  }
+
+  .option.wrong {
+    background: #3d0f0f;
+    border-color: #ef4444;
+    color: #ef4444;
+  }
+
+  .opt-letter {
+    background: #2a2a4a;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+    color: #fff;
+  }
+
+  .explication {
+    background: #1a1a3a;
+    border: 1px solid #2a2a5a;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #aab;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .secondary-btn {
+    background: #1e1e3a;
+    border: 1px solid #6366f1;
+  }
+
+  .score-label {
+    text-align: center;
+    color: #555;
+    font-size: 13px;
+  }
+
+  .big-score {
+    font-size: 64px;
+    font-weight: 900;
+    color: #a855f7;
+    text-align: center;
+  }
+
+  .grade {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f0f0ff;
+    margin-bottom: 8px;
+  }
+
+  .result-course {
+    text-align: center;
+    color: #aab;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .score-bar {
+    background: #1e1e3a;
+    border-radius: 99px;
+    height: 8px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    border-radius: 99px;
+    height: 100%;
+    transition: width 0.5s;
+  }
+
+  .wrongs-title {
+    color: #ef4444;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .wrong-item {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+
+  .wrong-q {
+    color: #ccc;
+    font-size: 13px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .wrong-a {
+    color: #22c55e;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .wrong-exp {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .history-box {
+    margin-top: 28px;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .history-header h2 {
+    color: #f0f0ff;
+    font-size: 18px;
+  }
+
+  .small-btn {
+    background: #2a2a4a;
+    color: #ccc;
+    border: 1px solid #3a3a6a;
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .small-btn:hover {
+    color: #fff;
+    border-color: #6366f1;
+  }
+
+  .history-section {
+    margin-top: 14px;
+  }
+
+  .history-section h3 {
+    color: #a855f7;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .history-item {
+    background: #12122a;
+    border: 1px solid #2a2a4a;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .history-empty {
+    color: #666;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  .history-score {
+    color: #22c55e;
+    font-weight: 700;
+  }
+
+  .history-date {
+    color: #888;
+    font-size: 12px;
+  }
+
+  .course-title {
+    color: #f0f0ff;
+    font-size: 26px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .course-subtitle {
+    color: #aab;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .course-content {
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 20px;
+  }
+
+  .course-section {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+
+  .course-section h2 {
+    color: #a855f7;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .course-section h3 {
+    color: #f0f0ff;
+    font-size: 15px;
+    margin: 14px 0 8px;
+  }
+
+  .course-section p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .course-section ul {
+    margin-left: 18px;
+    margin-top: 8px;
+  }
+
+  .course-section li {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 5px;
+  }
+
+  .highlight {
+    color: #22c55e;
+    font-weight: 700;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 520px) {
+    .card {
+      padding: 24px 20px;
+    }
+
+    .menu-title {
+      font-size: 24px;
+    }
+
+    .question {
+      font-size: 16px;
+    }
+
+    .big-score {
+      font-size: 52px;
+    }
+
+    .history-header {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .course-content {
+      max-height: 60vh;
+    }
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      color: #000;
+      display: block;
+      padding: 0;
+    }
+
+    .card {
+      box-shadow: none;
+      max-width: none;
+      border-radius: 0;
+      background: #fff;
+      color: #000;
+    }
+
+    .btn,
+    .header,
+    .course-subtitle {
+      display: none;
+    }
+
+    .course-content {
+      max-height: none;
+      overflow: visible;
+    }
+
+    .course-section {
+      background: #fff;
+      border: 1px solid #ddd;
+      page-break-inside: avoid;
+    }
+
+    .course-section h2,
+    .course-section h3,
+    .course-section p,
+    .course-section li,
+    .course-title {
+      color: #000;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="card" id="app">
+
+  <div id="menu-screen">
+    <div class="header">
+      <span class="tag">QCM & COURS</span>
+      <span class="counter">Révisions</span>
+    </div>
+
+    <h1 class="menu-title">Choisis un QCM</h1>
+
+    <p class="menu-text">
+      Les questions et les propositions de réponses sont mélangées à chaque tentative.
+    </p>
+
+    <div class="course-buttons">
+      <button class="btn" onclick="start('developpement')">Développement Web</button>
+      <button class="btn" onclick="start('cultureCreation')">Culture de la Création</button>
+    </div>
+
+    <div class="course-access">
+      <h2>Cours complet</h2>
+      <p>Accède directement au cours entier pour réviser avant de lancer le QCM.</p>
+      <button class="btn secondary-btn" onclick="showCourse('developpement')">Développement Web</button>
+      <button class="btn secondary-btn" onclick="showCourse('cultureCreation')">Culture de la Création</button>
+    </div>
+
+    <div class="history-box">
+      <div class="history-header">
+        <h2>Historique des essais</h2>
+        <button class="small-btn" onclick="clearHistory()">Effacer</button>
+      </div>
+
+      <div class="history-section">
+        <h3>Développement Web</h3>
+        <div id="history-developpement" class="history-list"></div>
+      </div>
+
+      <div class="history-section">
+        <h3>Culture de la Création</h3>
+        <div id="history-culture-creation" class="history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="course-screen" class="hidden">
+    <div class="header">
+      <span class="tag" id="course-view-tag">Cours</span>
+      <span class="counter">Révision</span>
+    </div>
+
+    <h1 class="course-title" id="course-view-title"></h1>
+    <p class="course-subtitle">
+      Relis le cours, puis lance le QCM correspondant quand tu es prêt.
+    </p>
+
+    <div class="course-content" id="course-content"></div>
+
+    <button class="btn" id="start-course-quiz-btn">Lancer le QCM de ce cours</button>
+    <button class="btn secondary-btn" onclick="window.print()">Imprimer / sauvegarder en PDF</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="quiz-screen" class="hidden">
+    <div class="header">
+      <span class="tag" id="course-tag">QCM</span>
+      <span class="counter" id="counter">1 / 10</span>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress" style="width:0%"></div>
+    </div>
+
+    <div class="question" id="question-text"></div>
+    <div class="options" id="options"></div>
+    <div class="explication hidden" id="explication"></div>
+
+    <button class="btn hidden" id="next-btn" onclick="next()">Question suivante →</button>
+    <button class="btn secondary-btn" onclick="showCourse(currentCourseKey)">Voir le cours</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Changer de cours</button>
+
+    <div class="score-label" id="score-label">Score : 0 / 0</div>
+  </div>
+
+  <div id="result-screen" class="hidden">
+    <div class="big-score" id="final-score"></div>
+    <div class="grade" id="final-grade"></div>
+    <div class="result-course" id="result-course"></div>
+
+    <div class="score-bar">
+      <div class="score-bar-fill" id="score-bar-fill"></div>
+    </div>
+
+    <div id="wrongs-section"></div>
+
+    <button class="btn" onclick="restart()">Recommencer cette partie</button>
+    <button class="btn secondary-btn" onclick="showCourse(currentCourseKey)">Revoir le cours</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Changer de cours</button>
+  </div>
+
+</div>
+
+<script>
+const courseContents = {
+  developpement: {
+    title: "Développement Web",
+    sections: [
+      {
+        title: "HTML et CSS",
+        blocks: [
+          {
+            subtitle: "Rôle de chaque langage",
+            items: [
+              "HTML sert à structurer le contenu.",
+              "CSS sert à gérer la forme et la présentation visuelle.",
+              "CSS signifie Cascading Style Sheets, c’est-à-dire feuilles de style en cascade.",
+              "CSS est utilisé pour décrire la présentation d’un document HTML : couleurs, polices, mise en page, espaces, etc."
+            ]
+          },
+          {
+            subtitle: "Cascade et règles CSS",
+            items: [
+              "Les règles de style se transmettent de haut en bas, du parent vers l’enfant.",
+              "Ces règles peuvent être écrasées par des règles plus spécifiques.",
+              "Une règle CSS contient un sélecteur, une propriété et une valeur.",
+              "Exemple : p { color: red; }",
+              "Dans cet exemple, p est le sélecteur, color est la propriété, red est la valeur, et color: red; est la déclaration."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Psychologie des couleurs et contraste",
+        blocks: [
+          {
+            subtitle: "Accessibilité visuelle",
+            items: [
+              "La norme WCAG aide à penser l’accessibilité.",
+              "Who Can Use peut être utilisé pour faire un test rapide des couleurs.",
+              "Règle d’or du cours : le ratio de contraste entre le texte et le fond doit être d’au moins 4.45:1.",
+              "Environ 8% de la population masculine est daltonienne.",
+              "Un design qui repose uniquement sur la couleur est un design qui exclut."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Responsive design",
+        blocks: [
+          {
+            subtitle: "Principe",
+            items: [
+              "Le responsive design consiste à créer un seul site qui s’adapte à toutes les tailles d’écran : mobile, tablette et desktop.",
+              "Cette adaptation se fait notamment grâce aux media queries.",
+              "Plus de 60% du trafic web mondial est mobile.",
+              "Le contenu doit être fluide : c’est l’idée du liquid layout."
+            ]
+          },
+          {
+            subtitle: "Bonnes pratiques CSS",
+            items: [
+              "Avoir un beau site passe par le CSS, pas seulement par le HTML.",
+              "Il faut séparer le fond de la forme.",
+              "On ne modifie jamais l’apparence directement dans le HTML.",
+              "Il faut maîtriser le Box Model, notamment les marges et le padding.",
+              "Le padding correspond à l’espace intérieur autour du contenu.",
+              "La margin correspond à l’espace extérieur autour de l’élément."
+            ]
+          }
+        ]
+      },
+      {
+        title: "UX — User Experience",
+        blocks: [
+          {
+            subtitle: "Définition",
+            items: [
+              "UX signifie User Experience.",
+              "Le concept a été inventé par Don Norman dans les années 90 chez Apple.",
+              "L’UX correspond à l’ensemble des émotions et des perceptions d’une personne lors de l’utilisation d’un produit, d’un système ou d’un service.",
+              "L’UX ne se limite pas à l’écran.",
+              "C’est un processus holistique : il va du temps de chargement jusqu’au service après-vente.",
+              "Aujourd’hui, on parle aussi de CX, c’est-à-dire Customer Experience."
+            ]
+          }
+        ]
+      },
+      {
+        title: "UX vs UI",
+        blocks: [
+          {
+            subtitle: "Ne pas confondre l’outil et l’usage",
+            items: [
+              "UI signifie User Interface.",
+              "L’UI est le pont entre l’homme et la machine : boutons, couleurs, typographies, éléments visibles.",
+              "L’UI correspond à la partie visible.",
+              "L’UX correspond à la sensation globale : facilité de navigation, réponse au besoin, fluidité, compréhension.",
+              "L’UX est la partie ressentie."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Affordance et signifiants",
+        blocks: [
+          {
+            subtitle: "Affordance",
+            items: [
+              "L’affordance est la capacité d’un objet à suggérer sa propre utilisation sans instruction.",
+              "Exemple : une poignée de porte suggère qu’on doit la tirer.",
+              "Exemple : un bouton en relief sur un site suggère qu’on peut cliquer dessus."
+            ]
+          },
+          {
+            subtitle: "Signifiants",
+            items: [
+              "Les signifiants sont les indices visuels qui aident à comprendre l’affordance.",
+              "Exemples : icônes, soulignements, relief, forme de bouton."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Accessibilité web",
+        blocks: [
+          {
+            subtitle: "Définition",
+            items: [
+              "L’accessibilité consiste à rendre le web utilisable par tous.",
+              "Elle concerne notamment les handicaps visuels, moteurs et cognitifs."
+            ]
+          },
+          {
+            subtitle: "Les 4 principes WCAG",
+            items: [
+              "Perceptible : les informations doivent pouvoir être vues ou entendues.",
+              "Utilisable : l’utilisateur doit pouvoir naviguer, par exemple au clavier.",
+              "Compréhensible : le langage et le fonctionnement doivent être clairs.",
+              "Robuste : le site doit être compatible avec les futurs outils et technologies d’assistance."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Résumé du cours",
+        blocks: [
+          {
+            subtitle: "Idées essentielles",
+            items: [
+              "UX = Humain.",
+              "On conçoit pour un utilisateur, pas pour soi-même.",
+              "L’affordance est votre guide : l’interface doit parler d’elle-même.",
+              "Moins, c’est mieux : il faut simplifier le parcours de décision.",
+              "UI + UX = Succès.",
+              "Le beau doit être utile et l’utile doit être beau."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  cultureCreation: {
+    title: "Culture de la Création",
+    sections: [
+      {
+        title: "Culture visuelle",
+        blocks: [
+          {
+            subtitle: "Définition",
+            items: [
+              "La culture visuelle n’est pas seulement l’histoire de l’art.",
+              "C’est l’étude de la généalogie des images qui nous entourent.",
+              "L’acte de voir est un acte politique et culturel, pas seulement biologique.",
+              "Nous voyons ce que nous savons.",
+              "John Berger est associé à Ways of Seeing, publié en 1972."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Sémiotique",
+        blocks: [
+          {
+            subtitle: "Définition",
+            items: [
+              "La sémiotique est la science des signes.",
+              "Elle permet de déconstruire comment une image produit du sens.",
+              "Roland Barthes est présenté comme un père fondateur de la sémiotique.",
+              "Roland Barthes a vécu de 1915 à 1980.",
+              "Ouvrages clés : Mythologies, publié en 1957, et Rhétorique de l’image, publié en 1964."
+            ]
+          },
+          {
+            subtitle: "Les trois messages de l’image publicitaire selon Barthes",
+            items: [
+              "Message linguistique : le texte, comme le slogan ou le nom de marque. Il sert à ancrer le sens et à éviter les malentendus.",
+              "Message iconique dénoté : ce que je vois littéralement. Exemple : une tomate, un filet, des pâtes. C’est l’information brute.",
+              "Message iconique connoté : ce que l’image suggère culturellement. Exemple : l’italianité, la fraîcheur, le retour du marché. C’est le domaine du mythe."
+            ]
+          },
+          {
+            subtitle: "Notions importantes",
+            items: [
+              "Une image est polysémique : elle possède plusieurs sens possibles.",
+              "L’ancrage consiste à utiliser le texte pour diriger l’interprétation de l’image.",
+              "Le relais existe quand le texte et l’image sont complémentaires : le sens naît de leur réunion.",
+              "Le relais est utilisé dans la bande dessinée, le storyboard publicitaire et les carrousels sur les réseaux sociaux."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Studium et Punctum",
+        blocks: [
+          {
+            subtitle: "Deux manières de recevoir une image",
+            items: [
+              "Le Studium est l’intérêt général pour une image.",
+              "Le Punctum est le détail poignant qui me touche personnellement.",
+              "Le Punctum sort du cadre culturel pour toucher l’intime.",
+              "Une grande campagne ne doit pas seulement informer : elle doit aussi piquer, toucher, marquer."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Signifiant, signifié, dénotation et connotation",
+        blocks: [
+          {
+            subtitle: "Signes et sens",
+            items: [
+              "Le signifiant correspond à ce qu’on voit ou perçoit.",
+              "Le signifié correspond au sens.",
+              "Une image n’est jamais innocente : elle est construite.",
+              "Il faut distinguer la dénotation et la connotation.",
+              "La dénotation correspond à la description objective.",
+              "La connotation correspond au sens culturel ou émotionnel.",
+              "Le but du communicant est de maîtriser la connotation pour associer les valeurs voulues à la marque.",
+              "C’est la culture qui donne le sens à l’image."
+            ]
+          }
+        ]
+      },
+      {
+        title: "La forme suit la fonction",
+        blocks: [
+          {
+            subtitle: "Design et communication",
+            items: [
+              "La forme suit la fonction signifie que le design doit servir l’usage et le message.",
+              "Il y a un rejet de l’ornement inutile.",
+              "On utilise la géométrie, les couleurs primaires et les typographies sans-serif.",
+              "Leçon pour la communication : supprimer le bruit visuel.",
+              "Si un élément ne sert pas le message, il doit disparaître.",
+              "Référence : Dieter Rams et les 10 principes du bon design."
+            ]
+          },
+          {
+            subtitle: "Les 10 principes du bon design",
+            items: [
+              "Innovant.",
+              "Utile.",
+              "Esthétique.",
+              "Compréhensible.",
+              "Discret.",
+              "Honnête.",
+              "Durable.",
+              "Exhaustif.",
+              "Écologique.",
+              "Minimaliste."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Bauhaus",
+        blocks: [
+          {
+            subtitle: "Mouvement",
+            items: [
+              "Le Bauhaus existe de 1919 à 1933.",
+              "Il est associé au design moderne.",
+              "Son dogme est le fonctionnalisme.",
+              "L’esthétique naît de l’utilité.",
+              "Impact visuel : géométrie, grilles de mise en page, typographie sans-serif.",
+              "Applications : design d’interface UX/UI et identités corporatives minimalistes.",
+              "Source citée : Vassily Kandinsky, Du spirituel dans l’art, 1911."
+            ]
+          },
+          {
+            subtitle: "Correspondance psychologique selon Kandinsky",
+            items: [
+              "Triangle / jaune : forme active, agressive, spirituelle, dynamique.",
+              "Carré / rouge : matière, pesanteur, stabilité, force terrestre.",
+              "Cercle / bleu : calme, infini, mouvement céleste, souplesse.",
+              "Application logo : les banques préfèrent souvent le carré ou le bleu pour évoquer stabilité et confiance.",
+              "Les marques de sport utilisent souvent des formes dynamiques comme les virgules ou les bandes."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Style suisse",
+        blocks: [
+          {
+            subtitle: "Héritier du Bauhaus",
+            items: [
+              "Le style suisse est l’héritier du Bauhaus.",
+              "Il se développe dans les années 1950, notamment avec l’école de Bâle et Zurich.",
+              "Concept central : la grille, aussi appelée The Grid.",
+              "Principe : organisation mathématique de l’espace.",
+              "Tout est aligné.",
+              "C’est une base importante du web design et de la mise en page magazine moderne.",
+              "L’ordre rassure le consommateur.",
+              "Apports : rigueur, lisibilité, universalité.",
+              "Outil principal : la grille modulaire."
+            ]
+          },
+          {
+            subtitle: "Psychologie des formes",
+            items: [
+              "Les formes géométriques parlent directement à l’inconscient.",
+              "Triangle : danger ou action.",
+              "Cercle : unité."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Surréalisme, dada et inconscient",
+        blocks: [
+          {
+            subtitle: "Inconscient et rêve",
+            items: [
+              "Le cours évoque l’inconscient et le rêve avec le surréalisme et dada.",
+              "Autour de 1920, il y a un retour à la rationalité dans un contexte post-guerre.",
+              "Le dépaysement consiste à placer un objet banal dans un contexte insolite pour lui redonner une présence.",
+              "Le surréalisme utilise l’inconscient, le rêve et l’absurde pour choquer et marquer l’esprit.",
+              "Il peut être utilisé dans la publicité de luxe ou le parfum."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Pop culture et pop art",
+        blocks: [
+          {
+            subtitle: "Définition",
+            items: [
+              "La pop culture est l’ensemble des phénomènes culturels trouvant un large écho et une grande popularité dans une société à un moment donné.",
+              "Elle participe à l’abolition de la frontière entre haute culture, comme le musée, et basse culture, comme le supermarché.",
+              "Elle est liée à la culture populaire."
+            ]
+          },
+          {
+            subtitle: "Codes de la pop culture",
+            items: [
+              "Storytelling.",
+              "Codes du comic.",
+              "Émotion stéréotypée.",
+              "Rendre l’art accessible à tous."
+            ]
+          },
+          {
+            subtitle: "Reproduction et valeur",
+            items: [
+              "En étant reproduite à l’infini, l’œuvre perd son aura mais gagne en valeur d’exposition.",
+              "Le logo est donc l’inverse de l’œuvre d’art classique.",
+              "Plus un logo est reproduit, plus il a de valeur."
+            ]
+          },
+          {
+            subtitle: "Pop art",
+            items: [
+              "Le pop art utilise les codes de la consommation et du quotidien.",
+              "Il sert à désacraliser l’art.",
+              "Il est lié à la grande distribution et à l’univers food."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Conclusion du cours",
+        blocks: [
+          {
+            subtitle: "Point commun final",
+            items: [
+              "Le surréalisme utilise l’inconscient, le rêve et l’absurde.",
+              "Le pop art utilise les codes de la consommation et du quotidien.",
+              "Point commun : l’image n’est plus une fenêtre neutre sur le monde.",
+              "L’image est un langage codé."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+
+const questionBanks = {
+  developpement: {
+    title: "Développement Web",
+    tag: "Développement Web",
+    questions: [
+      { q: "Que signifie CSS ?", options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style System", "Cascading Structure Sheets"], answer: 1, exp: "CSS = Cascading Style Sheets, c'est-à-dire feuilles de style en cascade. C'est le langage qui gère la présentation d'un document HTML." },
+      { q: "Dans le cours, HTML sert principalement à...", options: ["Gérer la forme", "Créer des animations", "Structurer le contenu", "Remplacer le CSS"], answer: 2, exp: "HTML sert à structurer le contenu. CSS sert à gérer la forme, donc l'apparence visuelle." },
+      { q: "Dans le cours, CSS sert principalement à...", options: ["Gérer la structure", "Gérer la présentation visuelle", "Créer une base de données", "Écrire le contenu textuel uniquement"], answer: 1, exp: "CSS sert à décrire la présentation d'un document HTML : couleurs, polices, mise en page, espaces, etc." },
+      { q: "Dans CSS, comment les règles de style se transmettent-elles ?", options: ["De bas en haut", "De droite à gauche", "Du parent à l'enfant", "De l'enfant au parent"], answer: 2, exp: "Les règles CSS se transmettent de haut en bas, du parent vers l'enfant. Elles peuvent être écrasées par des règles plus spécifiques." },
+      { q: "Dans une règle CSS, qu'est-ce qu'une déclaration ?", options: ["Le nom de la balise ciblée", "L'ensemble propriété + valeur", "La couleur appliquée", "Le fichier CSS lui-même"], answer: 1, exp: "Une déclaration correspond à l'ensemble propriété + valeur. Exemple : color: red;" },
+      { q: "Dans l'exemple CSS p { color: red; }, que représente p ?", options: ["Une propriété", "Une valeur", "Un sélecteur", "Une déclaration"], answer: 2, exp: "Dans p { color: red; }, p est le sélecteur : il indique quel élément HTML est ciblé." },
+      { q: "Dans l'exemple CSS p { color: red; }, que représente color ?", options: ["Une propriété", "Une valeur", "Un sélecteur", "Une balise obligatoire"], answer: 0, exp: "color est une propriété CSS. Elle indique quel aspect visuel on veut modifier." },
+      { q: "Dans l'exemple CSS p { color: red; }, que représente red ?", options: ["Une propriété", "Une valeur", "Un sélecteur", "Une déclaration complète"], answer: 1, exp: "red est la valeur donnée à la propriété color." },
+      { q: "Selon la règle donnée dans le cours, quel est le ratio de contraste minimum entre texte et fond ?", options: ["3:1", "4.45:1", "5:1", "7:1"], answer: 1, exp: "Le cours donne comme règle d'or un ratio de contraste texte/fond d'au moins 4.45:1." },
+      { q: "Quel outil est cité pour tester rapidement l'accessibilité des couleurs ?", options: ["Who Can Use", "Google Fonts", "Canva", "Photoshop"], answer: 0, exp: "Le cours cite Who Can Use comme outil pour tester rapidement l'accessibilité des couleurs." },
+      { q: "Quel pourcentage de la population masculine est environ daltonienne ?", options: ["2%", "5%", "8%", "12%"], answer: 2, exp: "Le cours indique qu'environ 8% de la population masculine est daltonienne." },
+      { q: "Pourquoi un design ne doit-il pas reposer uniquement sur la couleur ?", options: ["Parce que la couleur ralentit le site", "Parce que cela peut exclure les personnes daltoniennes", "Parce que le CSS interdit les couleurs", "Parce que les couleurs ne fonctionnent que sur mobile"], answer: 1, exp: "Un design qui repose uniquement sur la couleur peut exclure une partie des utilisateurs, notamment les personnes daltoniennes." },
+      { q: "Qu'est-ce que le responsive design ?", options: ["Un site différent pour mobile et desktop", "Un site qui s'adapte à toutes les tailles d'écran via les media queries", "Un site qui répond plus vite aux clics", "Un CSS sans image"], answer: 1, exp: "Le responsive design consiste à créer un seul site capable de s'adapter aux tailles d'écran : mobile, tablette, desktop." },
+      { q: "Quel pourcentage du trafic web mondial est mobile selon le cours ?", options: ["Plus de 30%", "Plus de 45%", "Plus de 60%", "Plus de 80%"], answer: 2, exp: "Le cours indique que plus de 60% du trafic web mondial vient du mobile." },
+      { q: "Quelle bonne pratique CSS concerne la séparation du fond et de la forme ?", options: ["Modifier l'apparence directement dans le HTML", "Séparer HTML pour la structure et CSS pour l'apparence", "Mettre tout le style dans les titres", "Utiliser uniquement des images"], answer: 1, exp: "Bonne pratique : HTML structure le contenu, CSS gère l'apparence. On évite de modifier l'apparence directement dans le HTML." },
+      { q: "Dans le Box Model, quelle est la différence entre padding et margin ?", options: ["Le padding est l'espace extérieur, la margin est l'espace intérieur", "Le padding est l'espace intérieur, la margin est l'espace extérieur", "Ce sont deux noms pour la même chose", "Le padding concerne seulement les images"], answer: 1, exp: "Le padding est l'espace intérieur autour du contenu. La margin est l'espace extérieur autour de l'élément." },
+      { q: "Pourquoi le Box Model est-il important en CSS ?", options: ["Il sert uniquement à choisir les couleurs", "Il permet de maîtriser les espaces, marges, bordures et dimensions des éléments", "Il remplace le HTML", "Il sert seulement au référencement"], answer: 1, exp: "Le Box Model permet de comprendre et de maîtriser l'espace autour et à l'intérieur des éléments : contenu, padding, bordure et margin." },
+      { q: "Que signifie un contenu fluide ou liquid layout ?", options: ["Un contenu qui utilise uniquement des animations", "Un contenu qui s'adapte souplement à la taille de l'écran", "Un site composé seulement d'images", "Un site qui ne fonctionne que sur mobile"], answer: 1, exp: "Un liquid layout signifie que le contenu est fluide : il s'adapte à la largeur disponible au lieu de rester figé." },
+      { q: "Quelle est la définition de l'UX ?", options: ["L'ensemble des boutons et couleurs d'une interface", "L'ensemble des émotions et des perceptions d'une personne lors de l'utilisation d'un produit, d'un système ou d'un service", "La vitesse de chargement d'un site web uniquement", "Le processus de création d'une interface graphique uniquement"], answer: 1, exp: "L'UX correspond à l'ensemble des émotions et perceptions d'une personne lors de l'utilisation d'un produit, d'un système ou d'un service." },
+      { q: "Qui a inventé le concept d'UX dans les années 90 chez Apple ?", options: ["Steve Jobs", "Don Norman", "Tim Berners-Lee", "Mark Zuckerberg"], answer: 1, exp: "Le terme User Experience est associé à Don Norman dans les années 90 chez Apple." },
+      { q: "Pourquoi dit-on que l'UX est un processus holistique ?", options: ["Parce qu'elle concerne seulement les couleurs", "Parce qu'elle ne concerne que les boutons", "Parce qu'elle prend en compte toute l'expérience, du temps de chargement au service après-vente", "Parce qu'elle remplace l'UI"], answer: 2, exp: "L'UX ne se limite pas à l'écran : elle prend en compte l'expérience globale, du temps de chargement au service après-vente." },
+      { q: "Que signifie CX dans le contexte du cours ?", options: ["Code Experience", "Customer Experience", "Color Extension", "Computer Experience"], answer: 1, exp: "CX signifie Customer Experience, une vision encore plus large de l'expérience utilisateur et client." },
+      { q: "Quelle est la différence entre UX et UI ?", options: ["C'est exactement la même chose", "L'UI est ce qu'on ressent, l'UX est ce qu'on voit", "L'UI est la partie visible, l'UX est la sensation globale ressentie", "L'UX concerne uniquement le mobile"], answer: 2, exp: "UI = partie visible : boutons, couleurs, typographies. UX = sensation globale : navigation, facilité, réponse au besoin." },
+      { q: "Que signifie UI ?", options: ["User Interface", "User Internet", "Useful Interaction", "Universal Image"], answer: 0, exp: "UI signifie User Interface. C'est l'interface visible entre l'humain et la machine." },
+      { q: "Qu'est-ce que l'affordance ?", options: ["Le coût de développement d'un site", "La capacité d'un objet à suggérer sa propre utilisation sans instruction", "La vitesse de chargement d'une page", "Un type de mise en page responsive"], answer: 1, exp: "L'affordance est la capacité d'un objet à suggérer son propre usage. Exemple : une poignée de porte suggère qu'on doit tirer." },
+      { q: "Que sont les signifiants en UX ?", options: ["Les mots-clés SEO d'un site", "Les indices visuels qui aident à comprendre l'affordance", "Les balises HTML importantes", "Les couleurs accessibles uniquement"], answer: 1, exp: "Les signifiants sont des indices visuels comme des icônes ou des soulignements, qui aident l'utilisateur à comprendre comment interagir." },
+      { q: "Combien de principes composent les WCAG ?", options: ["2", "3", "4", "5"], answer: 2, exp: "Les WCAG reposent sur 4 principes : perceptible, utilisable, compréhensible et robuste." },
+      { q: "Lequel de ces éléments n'est pas un principe WCAG ?", options: ["Perceptible", "Utilisable", "Esthétique", "Robuste"], answer: 2, exp: "Les 4 principes WCAG sont : perceptible, utilisable, compréhensible et robuste. Esthétique n'en fait pas partie." },
+      { q: "Dans les principes WCAG, que signifie perceptible ?", options: ["Les informations doivent pouvoir être vues ou entendues", "Le site doit être joli", "Le site doit charger en moins d'une seconde", "Les boutons doivent être ronds"], answer: 0, exp: "Perceptible signifie que les informations doivent être accessibles aux sens de l'utilisateur, par exemple visibles ou audibles." },
+      { q: "Dans les principes WCAG, que signifie utilisable ?", options: ["Le site doit être utilisable seulement avec une souris", "L'utilisateur doit pouvoir naviguer et interagir, par exemple au clavier", "Le site doit avoir beaucoup d'animations", "Le site doit être réservé aux experts"], answer: 1, exp: "Utilisable signifie que l'utilisateur doit pouvoir naviguer et utiliser l'interface, y compris avec des outils comme le clavier." },
+      { q: "Dans les principes WCAG, que signifie compréhensible ?", options: ["Le langage et le fonctionnement doivent être clairs", "Le site doit avoir beaucoup de texte", "Le code doit être caché", "Les images doivent remplacer tous les mots"], answer: 0, exp: "Compréhensible signifie que le contenu et le fonctionnement de l'interface doivent être clairs." },
+      { q: "Dans les principes WCAG, que signifie robuste ?", options: ["Le site doit être compatible avec différents outils et futurs usages", "Le site doit être très sombre", "Le site doit fonctionner sans CSS", "Le site doit avoir une seule page"], answer: 0, exp: "Robuste signifie que le contenu doit rester compatible avec différents navigateurs, technologies d'assistance et futurs outils." },
+      { q: "Que veut dire concevoir pour un utilisateur, pas pour soi-même ?", options: ["Faire un site selon ses goûts uniquement", "Penser aux besoins, limites et habitudes des utilisateurs", "Éviter les tests utilisateurs", "Copier tous les autres sites"], answer: 1, exp: "En UX, on ne conçoit pas seulement selon ses préférences personnelles : on pense aux besoins réels des utilisateurs." },
+      { q: "Que signifie moins, c'est mieux en UX ?", options: ["Supprimer toutes les informations", "Simplifier le parcours de décision et éviter la surcharge inutile", "Utiliser moins de CSS", "Faire un site vide"], answer: 1, exp: "Moins, c'est mieux signifie qu'il faut simplifier l'interface et le parcours de décision pour aider l'utilisateur." },
+      { q: "Que signifie l'idée UI + UX = Succès ?", options: ["Un site beau suffit toujours", "Un site utile n'a pas besoin d'être clair", "Le beau doit être utile et l'utile doit être beau", "L'UX remplace entièrement l'UI"], answer: 2, exp: "L'idée du cours est que le beau doit être utile et que l'utile doit être beau." }
+    ]
+  },
+
+  cultureCreation: {
+    title: "Culture de la Création",
+    tag: "Culture de la Création",
+    questions: [
+      { q: "Qu'est-ce que la culture visuelle ?", options: ["Uniquement l'histoire de l'art", "L'étude de la généalogie des images qui nous entourent", "La création de logos uniquement", "L'analyse des couleurs primaires uniquement"], answer: 1, exp: "La culture visuelle n'est pas seulement l'histoire de l'art : elle étudie la généalogie des images qui nous entourent." },
+      { q: "Selon le cours, l'acte de voir est...", options: ["Seulement biologique", "Politique et culturel", "Toujours objectif", "Uniquement artistique"], answer: 1, exp: "L'acte de voir est politique et culturel. Nous voyons aussi à travers notre culture et nos connaissances." },
+      { q: "Qui est associé à l'ouvrage Ways of Seeing ?", options: ["Roland Barthes", "John Berger", "Dieter Rams", "Vassily Kandinsky"], answer: 1, exp: "John Berger est associé à Ways of Seeing, publié en 1972." },
+      { q: "Qu'est-ce que la sémiotique ?", options: ["La science des signes", "La science des couleurs", "La science du web design", "La science des typographies"], answer: 0, exp: "La sémiotique est la science des signes. Elle permet de comprendre comment une image produit du sens." },
+      { q: "Qui est présenté comme un père fondateur de la sémiotique dans le cours ?", options: ["Don Norman", "Roland Barthes", "Steve Jobs", "Andy Warhol"], answer: 1, exp: "Roland Barthes est présenté comme une figure centrale de la sémiotique." },
+      { q: "Quels sont deux ouvrages clés de Roland Barthes cités dans le cours ?", options: ["Ways of Seeing et Design Thinking", "Mythologies et Rhétorique de l'image", "Le Modulor et L'Art moderne", "Du spirituel dans l'art et Pop Art"], answer: 1, exp: "Les deux ouvrages cités sont Mythologies et Rhétorique de l'image." },
+      { q: "Selon Barthes, une image publicitaire contient combien de messages ?", options: ["1", "2", "3", "4"], answer: 2, exp: "Pour Barthes, une image publicitaire contient trois messages : linguistique, iconique dénoté et iconique connoté." },
+      { q: "Qu'est-ce que le message linguistique dans une image publicitaire ?", options: ["Les couleurs de l'image", "Le texte comme le slogan ou le nom de marque", "Le cadrage de la photo", "Le style graphique uniquement"], answer: 1, exp: "Le message linguistique correspond au texte : slogan, nom de marque, légende, etc." },
+      { q: "À quoi sert l'ancrage selon Barthes ?", options: ["À supprimer le texte", "À diriger l'interprétation de l'image", "À rendre une image floue", "À décorer une affiche"], answer: 1, exp: "L'ancrage permet au texte de guider l'interprétation de l'image pour éviter les malentendus." },
+      { q: "Qu'est-ce que le message iconique dénoté ?", options: ["Ce que l'image suggère culturellement", "Ce que je vois littéralement", "Le slogan de la publicité", "Le souvenir personnel du spectateur"], answer: 1, exp: "Le message iconique dénoté correspond à la description objective : ce que l'on voit littéralement." },
+      { q: "Qu'est-ce que le message iconique connoté ?", options: ["Le sens culturel ou émotionnel suggéré par l'image", "Le texte écrit sous l'image", "La taille de l'image", "La qualité technique de l'image"], answer: 0, exp: "La connotation correspond à ce que l'image suggère culturellement ou émotionnellement." },
+      { q: "Que signifie dire qu'une image est polysémique ?", options: ["Elle n'a aucun sens", "Elle possède plusieurs sens possibles", "Elle est toujours mensongère", "Elle contient seulement du texte"], answer: 1, exp: "Une image polysémique peut avoir plusieurs sens ou plusieurs interprétations." },
+      { q: "Quelle est la différence entre dénotation et connotation ?", options: ["La dénotation est subjective, la connotation est objective", "La dénotation décrit objectivement, la connotation ajoute un sens culturel ou émotionnel", "Ce sont deux mots identiques", "La connotation concerne seulement le texte"], answer: 1, exp: "La dénotation décrit ce qui est visible. La connotation correspond au sens culturel, symbolique ou émotionnel." },
+      { q: "Quel est le rôle du communicant face à la connotation ?", options: ["L'ignorer", "La maîtriser pour associer les bonnes valeurs à la marque", "La supprimer totalement", "La remplacer par du hasard"], answer: 1, exp: "Le communicant doit maîtriser la connotation pour associer les valeurs voulues à une marque ou à un message." },
+      { q: "Qu'est-ce que le Studium ?", options: ["L'intérêt général pour une image", "Le détail qui blesse personnellement", "Une grille de mise en page", "Un principe de responsive design"], answer: 0, exp: "Le Studium correspond à l'intérêt général, culturel ou informatif que l'on porte à une image." },
+      { q: "Qu'est-ce que le Punctum ?", options: ["La partie la plus technique d'une image", "Le détail poignant qui touche personnellement", "Le texte d'une affiche", "La grille d'une mise en page"], answer: 1, exp: "Le Punctum est le détail qui touche intimement, qui pique ou qui blesse personnellement le spectateur." },
+      { q: "Selon le cours, une grande campagne ne doit pas seulement informer, elle doit aussi...", options: ["Piquer ou toucher", "Être invisible", "Supprimer l'image", "Éviter toute émotion"], answer: 0, exp: "Une grande campagne doit informer, mais aussi créer un Punctum : quelque chose qui touche ou marque." },
+      { q: "Qu'est-ce que le relais entre texte et image ?", options: ["Le texte répète exactement l'image", "Le texte et l'image sont complémentaires et produisent ensemble le sens", "L'image remplace toujours le texte", "Le texte empêche toute interprétation"], answer: 1, exp: "Dans le relais, le texte et l'image se complètent. Le sens naît de leur réunion." },
+      { q: "Dans quels supports le relais est-il particulièrement utilisé ?", options: ["Bande dessinée, storyboard publicitaire, carrousel réseaux sociaux", "Uniquement dans les musées", "Uniquement dans les logos", "Uniquement dans les menus de restaurant"], answer: 0, exp: "Le cours cite la bande dessinée, le storyboard publicitaire et le carrousel de réseaux sociaux comme exemples." },
+      { q: "Que désigne le signifiant ?", options: ["Le sens abstrait", "Ce que l'on voit ou perçoit", "La stratégie marketing", "Le public cible"], answer: 1, exp: "Le signifiant correspond à la forme visible ou perceptible : ce que l'on voit." },
+      { q: "Que désigne le signifié ?", options: ["Le sens associé au signe", "La couleur uniquement", "La taille de l'image", "Le nom du fichier"], answer: 0, exp: "Le signifié correspond au sens produit ou associé au signifiant." },
+      { q: "Que signifie l'idée qu'une image n'est jamais innocente ?", options: ["Une image est toujours illégale", "Une image est construite et produit du sens", "Une image n'a jamais de message", "Une image est toujours naturelle"], answer: 1, exp: "Une image est construite : elle sélectionne, cadre, hiérarchise et transmet des valeurs." },
+      { q: "Que signifie la phrase la forme suit la fonction ?", options: ["Le design doit d'abord servir l'usage", "La décoration passe avant l'utilité", "La forme doit être compliquée", "L'image doit cacher le message"], answer: 0, exp: "La forme suit la fonction signifie que le design doit être guidé par l'utilité et le message." },
+      { q: "Quelle idée est associée au rejet de l'ornement inutile ?", options: ["Ajouter le plus d'effets possible", "Supprimer le bruit visuel", "Rendre le message plus confus", "Utiliser seulement des images anciennes"], answer: 1, exp: "Le cours insiste sur la suppression du bruit visuel : si un élément ne sert pas le message, il doit disparaître." },
+      { q: "Qui est associé aux 10 principes du bon design ?", options: ["Dieter Rams", "Roland Barthes", "John Berger", "Kandinsky"], answer: 0, exp: "Dieter Rams est cité comme référence pour les 10 principes du bon design." },
+      { q: "Lequel de ces éléments fait partie des 10 principes du bon design cités ?", options: ["Honnête", "Bruyant", "Illisible", "Inutile"], answer: 0, exp: "Parmi les principes cités : innovant, utile, esthétique, compréhensible, discret, honnête, durable, exhaustif, écologique et minimaliste." },
+      { q: "Quand le Bauhaus a-t-il existé ?", options: ["1850-1870", "1919-1933", "1950-1970", "1980-2000"], answer: 1, exp: "Le Bauhaus est un mouvement majeur du design moderne, actif de 1919 à 1933." },
+      { q: "Quel est le dogme du Bauhaus ?", options: ["Le fonctionnalisme", "Le hasard total", "L'ornement maximal", "Le réalisme photographique"], answer: 0, exp: "Le Bauhaus repose sur le fonctionnalisme : l'esthétique naît de l'utilité." },
+      { q: "Quel impact visuel est associé au Bauhaus ?", options: ["Géométrie, grilles, typographie sans-serif", "Ornements floraux et dorures", "Écriture manuscrite uniquement", "Images floues et aléatoires"], answer: 0, exp: "Le Bauhaus influence le design moderne avec la géométrie, les grilles de mise en page et les typographies sans-serif." },
+      { q: "Quelle application contemporaine est liée à l'héritage du Bauhaus ?", options: ["Design d'interface UX/UI et identités corporatives minimalistes", "Uniquement peinture religieuse", "Uniquement sculpture antique", "Décoration excessive"], answer: 0, exp: "Le cours relie le Bauhaus au design d'interface UX/UI et aux identités corporatives minimalistes." },
+      { q: "Quelle source liée au Bauhaus est citée avec Vassily Kandinsky ?", options: ["Du spirituel dans l'art", "Ways of Seeing", "Mythologies", "La société du spectacle"], answer: 0, exp: "Le cours cite Du spirituel dans l'art de Vassily Kandinsky." },
+      { q: "Quelle correspondance Kandinsky associe-t-il au triangle jaune ?", options: ["Calme et infini", "Stabilité et force terrestre", "Forme active, agressive, spirituelle et dynamique", "Neutralité absolue"], answer: 2, exp: "Dans le cours, le triangle jaune est associé à l'activité, l'agressivité, le spirituel et le dynamisme." },
+      { q: "Quelle correspondance Kandinsky associe-t-il au carré rouge ?", options: ["Matière, pesanteur, stabilité, force terrestre", "Calme et infini", "Danger et vitesse uniquement", "Légèreté et transparence"], answer: 0, exp: "Le carré rouge est associé à la matière, à la pesanteur, à la stabilité et à la force terrestre." },
+      { q: "Quelle correspondance Kandinsky associe-t-il au cercle bleu ?", options: ["Calme, infini, mouvement céleste et souplesse", "Agressivité et danger", "Stabilité terrestre", "Ornement inutile"], answer: 0, exp: "Le cercle bleu évoque le calme, l'infini, le mouvement céleste et la souplesse." },
+      { q: "Pourquoi les banques utilisent-elles souvent des formes stables ou du bleu ?", options: ["Pour évoquer stabilité et confiance", "Pour choquer le spectateur", "Pour rappeler le surréalisme", "Pour imiter les comics"], answer: 0, exp: "Le cours explique que les banques privilégient souvent des codes visuels associés à la stabilité et à la confiance." },
+      { q: "Le style suisse est présenté comme...", options: ["L'héritier du Bauhaus", "L'opposé total du design moderne", "Un mouvement uniquement littéraire", "Une forme de pop art alimentaire"], answer: 0, exp: "Le style suisse est présenté comme l'héritier du Bauhaus." },
+      { q: "À quelle période le style suisse est-il associé dans le cours ?", options: ["Années 1950", "Moyen Âge", "Renaissance", "Années 2000 uniquement"], answer: 0, exp: "Le cours associe le style suisse aux années 1950, notamment avec Bâle et Zurich." },
+      { q: "Quel est le concept central du style suisse ?", options: ["La grille", "Le rêve", "Le collage absurde", "Le supermarché"], answer: 0, exp: "Le concept central du style suisse est la grille, c'est-à-dire l'organisation mathématique de l'espace." },
+      { q: "Quel est l'outil principal du style suisse ?", options: ["La grille modulaire", "La peinture à l'huile", "Le slogan seul", "La photographie floue"], answer: 0, exp: "L'outil principal du style suisse est la grille modulaire." },
+      { q: "Quels apports sont associés au style suisse ?", options: ["Rigueur, lisibilité, universalité", "Confusion, hasard, surcharge", "Ornement, luxe, excès", "Rêve, inconscient, absurdité"], answer: 0, exp: "Le style suisse apporte rigueur, lisibilité et universalité." },
+      { q: "Pourquoi l'ordre de la grille est-il important en communication visuelle ?", options: ["Il rassure le consommateur", "Il rend tout illisible", "Il supprime le message", "Il empêche toute lecture"], answer: 0, exp: "Le cours explique que l'ordre rassure le consommateur et structure la mise en page." },
+      { q: "Dans le cours, quelle forme est associée au danger ou à l'action ?", options: ["Triangle", "Cercle", "Carré", "Ovale"], answer: 0, exp: "La psychologie des formes associe souvent le triangle au danger ou à l'action." },
+      { q: "Dans le cours, quelle forme est associée à l'unité ?", options: ["Cercle", "Triangle", "Carré", "Losange"], answer: 0, exp: "Le cercle est associé à l'unité." },
+      { q: "Que signifie le dépaysement en surréalisme ?", options: ["Placer un objet banal dans un contexte insolite", "Rendre une image parfaitement logique", "Supprimer toute émotion", "Utiliser seulement une grille"], answer: 0, exp: "Le dépaysement consiste à placer un objet banal dans un contexte inattendu pour lui redonner une présence forte." },
+      { q: "Le surréalisme utilise surtout...", options: ["L'inconscient, le rêve et l'absurde", "La grille mathématique", "Les codes du supermarché uniquement", "La typographie sans-serif uniquement"], answer: 0, exp: "Le surréalisme utilise l'inconscient, le rêve et l'absurde pour choquer et marquer l'esprit." },
+      { q: "Dans quels secteurs le surréalisme peut-il être utilisé selon le cours ?", options: ["Publicité de luxe et parfum", "Uniquement banques", "Uniquement notices techniques", "Uniquement formulaires administratifs"], answer: 0, exp: "Le cours associe le surréalisme à des usages comme la publicité de luxe ou le parfum." },
+      { q: "Qu'est-ce que la pop culture ?", options: ["Une culture réservée aux musées", "Des phénomènes culturels largement populaires dans une société à un moment donné", "Une théorie CSS", "Un principe WCAG"], answer: 1, exp: "La pop culture regroupe des phénomènes culturels qui rencontrent une large popularité dans une société à une époque donnée." },
+      { q: "Quels codes sont associés à la pop culture dans le cours ?", options: ["Storytelling, codes du comic, émotion stéréotypée", "Silence, absence d'image, neutralité totale", "Grille uniquement", "Symboles religieux uniquement"], answer: 0, exp: "Le cours associe la pop culture au storytelling, aux codes du comic et à l'émotion stéréotypée." },
+      { q: "Quel est l'un des objectifs du pop art selon le cours ?", options: ["Rendre l'art accessible à tous", "Cacher l'art au public", "Supprimer la consommation", "Refuser toute reproduction"], answer: 0, exp: "Le pop art utilise les codes de la consommation et du quotidien pour désacraliser l'art et le rendre accessible." },
+      { q: "Que devient une œuvre reproduite à l'infini selon le cours ?", options: ["Elle perd son aura mais gagne en valeur d'exposition", "Elle devient invisible", "Elle perd toute valeur", "Elle devient uniquement biologique"], answer: 0, exp: "En étant reproduite à l'infini, l'œuvre perd son aura mais gagne en valeur d'exposition." },
+      { q: "Pourquoi le logo est-il l'inverse de l'œuvre d'art classique ?", options: ["Plus il est reproduit, plus il a de valeur", "Il doit rester unique et caché", "Il ne doit jamais être vu", "Il n'a aucun lien avec la culture"], answer: 0, exp: "Contrairement à l'œuvre classique, le logo prend de la valeur par sa reproduction massive." },
+      { q: "Quelle est la différence entre surréalisme et pop art ?", options: ["Le surréalisme utilise rêve et inconscient, le pop art utilise les codes de la consommation", "Ils sont exactement identiques", "Le pop art refuse toute image", "Le surréalisme repose uniquement sur la grille"], answer: 0, exp: "Le surréalisme utilise le rêve, l'inconscient et l'absurde. Le pop art utilise les codes de la consommation et du quotidien." },
+      { q: "Quel est le point commun final entre surréalisme et pop art selon le cours ?", options: ["L'image devient un langage codé", "L'image devient seulement une fenêtre neutre sur le monde", "L'image ne signifie plus rien", "L'image disparaît totalement"], answer: 0, exp: "Le cours conclut que l'image n'est plus une simple fenêtre sur le monde : c'est un langage codé." },
+      { q: "Quelle frontière la pop culture contribue-t-elle à abolir ?", options: ["La frontière entre haute culture et basse culture", "La frontière entre HTML et CSS", "La frontière entre texte et mathématiques", "La frontière entre clavier et souris"], answer: 0, exp: "Le cours évoque l'abolition de la frontière entre haute culture, comme le musée, et basse culture, comme le supermarché." },
+      { q: "Dans le cours, la naissance de la pop culture est liée à...", options: ["La culture populaire", "La disparition des images", "La fin du design", "La suppression des marques"], answer: 0, exp: "Le cours associe la pop culture à la culture populaire et aux phénomènes largement diffusés." }
+    ]
+  }
+};
+
+let currentCourseKey = null;
+let shuffled = [];
+let current = 0;
+let score = 0;
+let wrongs = [];
+let answered = false;
+let resultAlreadySaved = false;
+
+let lastQuestionOrderByCourse = {};
+let lastOptionsOrders = {};
+
+function hideAllScreens() {
+  document.getElementById("menu-screen").classList.add("hidden");
+  document.getElementById("course-screen").classList.add("hidden");
+  document.getElementById("quiz-screen").classList.add("hidden");
+  document.getElementById("result-screen").classList.add("hidden");
+}
+
+function showCourse(courseKey) {
+  if (!courseKey || !courseContents[courseKey]) return;
+
+  currentCourseKey = courseKey;
+  const course = courseContents[courseKey];
+
+  hideAllScreens();
+  document.getElementById("course-screen").classList.remove("hidden");
+
+  document.getElementById("course-view-tag").textContent = course.title;
+  document.getElementById("course-view-title").textContent = course.title;
+
+  const content = document.getElementById("course-content");
+  content.innerHTML = "";
+
+  course.sections.forEach(section => {
+    const sectionDiv = document.createElement("div");
+    sectionDiv.className = "course-section";
+
+    const sectionTitle = document.createElement("h2");
+    sectionTitle.textContent = section.title;
+    sectionDiv.appendChild(sectionTitle);
+
+    section.blocks.forEach(block => {
+      const blockTitle = document.createElement("h3");
+      blockTitle.textContent = block.subtitle;
+      sectionDiv.appendChild(blockTitle);
+
+      const ul = document.createElement("ul");
+
+      block.items.forEach(itemText => {
+        const li = document.createElement("li");
+        li.textContent = itemText;
+        ul.appendChild(li);
+      });
+
+      sectionDiv.appendChild(ul);
+    });
+
+    content.appendChild(sectionDiv);
+  });
+
+  document.getElementById("start-course-quiz-btn").onclick = function() {
+    start(courseKey);
+  };
+}
+
+function shuffleArray(arr) {
+  const copy = [...arr];
+
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
+function shuffleDifferent(arr, getKey, lastOrder) {
+  if (arr.length <= 1) return [...arr];
+
+  let shuffledArr = shuffleArray(arr);
+  let newOrder = shuffledArr.map(getKey).join("|");
+  let attempts = 0;
+
+  while (newOrder === lastOrder && attempts < 30) {
+    shuffledArr = shuffleArray(arr);
+    newOrder = shuffledArr.map(getKey).join("|");
+    attempts++;
+  }
+
+  if (newOrder === lastOrder && shuffledArr.length > 1) {
+    [shuffledArr[0], shuffledArr[1]] = [shuffledArr[1], shuffledArr[0]];
+  }
+
+  return shuffledArr;
+}
+
+function prepareQuestion(originalQuestion, courseKey) {
+  const optionsWithIndex = originalQuestion.options.map((text, index) => ({
+    text: text,
+    originalIndex: index
+  }));
+
+  const optionMemoryKey = courseKey + "-" + originalQuestion.id;
+  const lastOptionsOrder = lastOptionsOrders[optionMemoryKey] || "";
+
+  const shuffledOptions = shuffleDifferent(
+    optionsWithIndex,
+    option => option.originalIndex,
+    lastOptionsOrder
+  );
+
+  lastOptionsOrders[optionMemoryKey] = shuffledOptions
+    .map(option => option.originalIndex)
+    .join("|");
+
+  const newAnswerIndex = shuffledOptions.findIndex(
+    option => option.originalIndex === originalQuestion.answer
+  );
+
+  return {
+    q: originalQuestion.q,
+    options: shuffledOptions.map(option => option.text),
+    answer: newAnswerIndex,
+    exp: originalQuestion.exp
+  };
+}
+
+function start(courseKey) {
+  currentCourseKey = courseKey;
+  resultAlreadySaved = false;
+
+  const bank = questionBanks[courseKey];
+
+  const questionsWithIds = bank.questions.map((question, index) => ({
+    ...question,
+    id: index
+  }));
+
+  const lastQuestionOrder = lastQuestionOrderByCourse[courseKey] || "";
+
+  const shuffledQuestions = shuffleDifferent(
+    questionsWithIds,
+    question => question.id,
+    lastQuestionOrder
+  );
+
+  lastQuestionOrderByCourse[courseKey] = shuffledQuestions
+    .map(question => question.id)
+    .join("|");
+
+  shuffled = shuffledQuestions.map(question => prepareQuestion(question, courseKey));
+
+  current = 0;
+  score = 0;
+  wrongs = [];
+  answered = false;
+
+  hideAllScreens();
+  document.getElementById("quiz-screen").classList.remove("hidden");
+  document.getElementById("course-tag").textContent = bank.tag;
+
+  render();
+}
+
+function render() {
+  const q = shuffled[current];
+  const total = shuffled.length;
+
+  document.getElementById("counter").textContent = (current + 1) + " / " + total;
+  document.getElementById("progress").style.width = ((current / total) * 100) + "%";
+  document.getElementById("question-text").textContent = q.q;
+  document.getElementById("score-label").textContent = "Score : " + score + " / " + current;
+
+  document.getElementById("explication").classList.add("hidden");
+  document.getElementById("next-btn").classList.add("hidden");
+
+  answered = false;
+
+  const optDiv = document.getElementById("options");
+  optDiv.innerHTML = "";
+
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.onclick = () => select(i);
+
+    const letter = document.createElement("span");
+    letter.className = "opt-letter";
+    letter.textContent = String.fromCharCode(65 + i);
+
+    const text = document.createElement("span");
+    text.textContent = opt;
+
+    btn.appendChild(letter);
+    btn.appendChild(text);
+    optDiv.appendChild(btn);
+  });
+}
+
+function select(i) {
+  if (answered) return;
+
+  answered = true;
+
+  const q = shuffled[current];
+  const btns = document.querySelectorAll(".option");
+
+  btns.forEach(btn => btn.disabled = true);
+  btns[q.answer].classList.add("correct");
+
+  if (i !== q.answer) {
+    btns[i].classList.add("wrong");
+    wrongs.push({
+      q: q.q,
+      correctAnswer: q.options[q.answer],
+      exp: q.exp
+    });
+  } else {
+    score++;
+  }
+
+  const exp = document.getElementById("explication");
+  exp.textContent = (i === q.answer ? "✅ " : "❌ ") + q.exp;
+  exp.classList.remove("hidden");
+
+  const nextBtn = document.getElementById("next-btn");
+  nextBtn.textContent = current + 1 >= shuffled.length ? "Voir les résultats →" : "Question suivante →";
+  nextBtn.classList.remove("hidden");
+
+  document.getElementById("score-label").textContent = "Score : " + score + " / " + (current + 1);
+  document.getElementById("progress").style.width = (((current + 1) / shuffled.length) * 100) + "%";
+}
+
+function next() {
+  current++;
+
+  if (current >= shuffled.length) {
+    showResults();
+    return;
+  }
+
+  render();
+}
+
+function showResults() {
+  hideAllScreens();
+  document.getElementById("result-screen").classList.remove("hidden");
+
+  const total = shuffled.length;
+  const percentage = Math.round((score / total) * 100);
+  const bank = questionBanks[currentCourseKey];
+
+  document.getElementById("final-score").textContent = score + "/" + total;
+  document.getElementById("result-course").textContent = bank.title + " • " + percentage + "%";
+  document.getElementById("score-bar-fill").style.width = percentage + "%";
+
+  let grade = "";
+
+  if (percentage >= 90) {
+    grade = "🏆 Excellent";
+  } else if (percentage >= 70) {
+    grade = "✅ Bien";
+  } else if (percentage >= 50) {
+    grade = "📚 À revoir";
+  } else {
+    grade = "❌ À reprendre";
+  }
+
+  document.getElementById("final-grade").textContent = grade;
+
+  if (!resultAlreadySaved) {
+    saveHistoryAttempt(currentCourseKey, score, total, percentage, grade);
+    resultAlreadySaved = true;
+  }
+
+  const ws = document.getElementById("wrongs-section");
+  ws.innerHTML = "";
+
+  if (wrongs.length > 0) {
+    const title = document.createElement("div");
+    title.className = "wrongs-title";
+    title.textContent = "Points à revoir :";
+    ws.appendChild(title);
+
+    wrongs.forEach(w => {
+      const item = document.createElement("div");
+      item.className = "wrong-item";
+
+      const wrongQ = document.createElement("div");
+      wrongQ.className = "wrong-q";
+      wrongQ.textContent = "❓ " + w.q;
+
+      const wrongA = document.createElement("div");
+      wrongA.className = "wrong-a";
+      wrongA.textContent = "✅ " + w.correctAnswer;
+
+      const wrongExp = document.createElement("div");
+      wrongExp.className = "wrong-exp";
+      wrongExp.textContent = w.exp;
+
+      item.appendChild(wrongQ);
+      item.appendChild(wrongA);
+      item.appendChild(wrongExp);
+
+      ws.appendChild(item);
+    });
+  } else {
+    const perfect = document.createElement("div");
+    perfect.className = "explication";
+    perfect.textContent = "Parfait, aucune erreur sur cette partie.";
+    ws.appendChild(perfect);
+  }
+}
+
+function getHistory() {
+  const saved = localStorage.getItem("qcmHistorique");
+
+  if (!saved) {
+    return {
+      developpement: [],
+      cultureCreation: []
+    };
+  }
+
+  try {
+    const history = JSON.parse(saved);
+
+    return {
+      developpement: history.developpement || [],
+      cultureCreation: history.cultureCreation || []
+    };
+  } catch (error) {
+    return {
+      developpement: [],
+      cultureCreation: []
+    };
+  }
+}
+
+function saveHistoryAttempt(courseKey, scoreValue, total, percentage, grade) {
+  const history = getHistory();
+
+  const now = new Date();
+
+  const attempt = {
+    date: now.toLocaleDateString("fr-FR"),
+    time: now.toLocaleTimeString("fr-FR", {
+      hour: "2-digit",
+      minute: "2-digit"
+    }),
+    score: scoreValue,
+    total: total,
+    percentage: percentage,
+    grade: grade.replace(/[🏆✅📚❌]/g, "").trim()
+  };
+
+  history[courseKey].unshift(attempt);
+  history[courseKey] = history[courseKey].slice(0, 10);
+
+  localStorage.setItem("qcmHistorique", JSON.stringify(history));
+
+  renderHistory();
+}
+
+function renderHistory() {
+  const history = getHistory();
+
+  renderHistoryCourse("developpement", "history-developpement", history);
+  renderHistoryCourse("cultureCreation", "history-culture-creation", history);
+}
+
+function renderHistoryCourse(courseKey, elementId, history) {
+  const container = document.getElementById(elementId);
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (!history[courseKey] || history[courseKey].length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "history-empty";
+    empty.textContent = "Aucun essai pour le moment.";
+    container.appendChild(empty);
+    return;
+  }
+
+  history[courseKey].forEach((attempt, index) => {
+    const item = document.createElement("div");
+    item.className = "history-item";
+
+    const mainLine = document.createElement("div");
+
+    const scoreSpan = document.createElement("span");
+    scoreSpan.className = "history-score";
+    scoreSpan.textContent = attempt.score + "/" + attempt.total;
+
+    mainLine.appendChild(scoreSpan);
+    mainLine.appendChild(document.createTextNode(" — " + attempt.percentage + "% — " + attempt.grade));
+
+    const dateLine = document.createElement("div");
+    dateLine.className = "history-date";
+    dateLine.textContent = "Essai " + (history[courseKey].length - index) + " · " + attempt.date + " à " + attempt.time;
+
+    item.appendChild(mainLine);
+    item.appendChild(dateLine);
+
+    container.appendChild(item);
+  });
+}
+
+function clearHistory() {
+  const confirmClear = confirm("Tu veux vraiment effacer tout l'historique des deux cours ?");
+
+  if (!confirmClear) return;
+
+  localStorage.removeItem("qcmHistorique");
+  renderHistory();
+}
+
+function restart() {
+  if (currentCourseKey) {
+    start(currentCourseKey);
+  }
+}
+
+function backToMenu() {
+  currentCourseKey = null;
+
+  hideAllScreens();
+  document.getElementById("menu-screen").classList.remove("hidden");
+
+  renderHistory();
+}
+
+renderHistory();
+</script>
+</body>
+</html>
