@@ -283,6 +283,27 @@
     line-height: 1.5;
   }
 
+  .wrong-user {
+    color: #ef4444;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .wrong-count {
+    color: #ef4444;
+    font-weight: 700;
+  }
+
+  .result-time {
+    color: #aab;
+    font-size: 13px;
+    text-align: center;
+    margin-top: -8px;
+    margin-bottom: 18px;
+  }
+
   .wrong-exp {
     color: #888;
     font-size: 12px;
@@ -350,6 +371,33 @@
     color: #ccc;
     font-size: 13px;
     line-height: 1.5;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .history-item:hover {
+    border-color: #6366f1;
+    background: #161632;
+  }
+
+  .history-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .history-toggle {
+    color: #a855f7;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .history-details {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #2a2a4a;
   }
 
   .history-empty {
@@ -595,6 +643,7 @@
     <div class="big-score" id="final-score"></div>
     <div class="grade" id="final-grade"></div>
     <div class="result-course" id="result-course"></div>
+    <div class="result-time" id="result-time"></div>
 
     <div class="score-bar">
       <div class="score-bar-fill" id="score-bar-fill"></div>
@@ -1120,6 +1169,7 @@ let score = 0;
 let wrongs = [];
 let answered = false;
 let resultAlreadySaved = false;
+let quizStartTime = null;
 
 let lastQuestionOrderByCourse = {};
 let lastOptionsOrders = {};
@@ -1131,8 +1181,102 @@ function hideAllScreens() {
   document.getElementById("result-screen").classList.add("hidden");
 }
 
+function formatDuration(totalSeconds) {
+  if (typeof totalSeconds !== "number" || Number.isNaN(totalSeconds)) {
+    return "Non enregistré";
+  }
+
+  const seconds = Math.max(0, Math.round(totalSeconds));
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  if (minutes === 0) {
+    return remainingSeconds + " s";
+  }
+
+  return minutes + " min " + String(remainingSeconds).padStart(2, "0") + " s";
+}
+
+function getQuizDurationSeconds() {
+  if (!quizStartTime) {
+    return 0;
+  }
+
+  return Math.round((Date.now() - quizStartTime) / 1000);
+}
+
+function isQuizInProgress() {
+  const quizScreen = document.getElementById("quiz-screen");
+
+  return (
+    quizScreen &&
+    !quizScreen.classList.contains("hidden") &&
+    shuffled.length > 0 &&
+    current < shuffled.length
+  );
+}
+
+function confirmLeaveQuiz() {
+  if (!isQuizInProgress()) {
+    return true;
+  }
+
+  return confirm(
+    "Attention, tu vas quitter le QCM en cours.\n\n" +
+    "Ta progression actuelle ne sera pas enregistrée.\n\n" +
+    "Tu veux vraiment continuer ?"
+  );
+}
+
+function addWrongItem(container, wrong) {
+  const item = document.createElement("div");
+  item.className = "wrong-item";
+
+  const wrongQ = document.createElement("div");
+  wrongQ.className = "wrong-q";
+  wrongQ.textContent = "❓ " + wrong.q;
+
+  const wrongUser = document.createElement("div");
+  wrongUser.className = "wrong-user";
+  wrongUser.textContent = "❌ Ta réponse : " + (wrong.userAnswer || "Non enregistrée");
+
+  const wrongA = document.createElement("div");
+  wrongA.className = "wrong-a";
+  wrongA.textContent = "✅ Bonne réponse : " + wrong.correctAnswer;
+
+  const wrongExp = document.createElement("div");
+  wrongExp.className = "wrong-exp";
+  wrongExp.textContent = wrong.exp;
+
+  item.appendChild(wrongQ);
+  item.appendChild(wrongUser);
+  item.appendChild(wrongA);
+  item.appendChild(wrongExp);
+
+  container.appendChild(item);
+}
+
+function renderWrongItems(container, wrongItems) {
+  container.innerHTML = "";
+
+  if (wrongItems && wrongItems.length > 0) {
+    const title = document.createElement("div");
+    title.className = "wrongs-title";
+    title.textContent = "Points à revoir :";
+    container.appendChild(title);
+
+    wrongItems.forEach(wrong => addWrongItem(container, wrong));
+  } else {
+    const perfect = document.createElement("div");
+    perfect.className = "explication";
+    perfect.textContent = "Parfait, aucune erreur sur cette partie.";
+    container.appendChild(perfect);
+  }
+}
+
 function showCourse(courseKey) {
   if (!courseKey || !courseContents[courseKey]) return;
+  if (!confirmLeaveQuiz()) return;
 
   currentCourseKey = courseKey;
   const course = courseContents[courseKey];
@@ -1269,6 +1413,7 @@ function start(courseKey) {
   score = 0;
   wrongs = [];
   answered = false;
+  quizStartTime = Date.now();
 
   hideAllScreens();
   document.getElementById("quiz-screen").classList.remove("hidden");
@@ -1327,6 +1472,7 @@ function select(i) {
     btns[i].classList.add("wrong");
     wrongs.push({
       q: q.q,
+      userAnswer: q.options[i],
       correctAnswer: q.options[q.answer],
       exp: q.exp
     });
@@ -1364,9 +1510,11 @@ function showResults() {
   const total = shuffled.length;
   const percentage = Math.round((score / total) * 100);
   const bank = questionBanks[currentCourseKey];
+  const durationSeconds = getQuizDurationSeconds();
 
   document.getElementById("final-score").textContent = score + "/" + total;
   document.getElementById("result-course").textContent = bank.title + " • " + percentage + "%";
+  document.getElementById("result-time").textContent = "Temps passé : " + formatDuration(durationSeconds);
   document.getElementById("score-bar-fill").style.width = percentage + "%";
 
   let grade = "";
@@ -1384,47 +1532,11 @@ function showResults() {
   document.getElementById("final-grade").textContent = grade;
 
   if (!resultAlreadySaved) {
-    saveHistoryAttempt(currentCourseKey, score, total, percentage, grade);
+    saveHistoryAttempt(currentCourseKey, score, total, percentage, grade, wrongs, durationSeconds);
     resultAlreadySaved = true;
   }
 
-  const ws = document.getElementById("wrongs-section");
-  ws.innerHTML = "";
-
-  if (wrongs.length > 0) {
-    const title = document.createElement("div");
-    title.className = "wrongs-title";
-    title.textContent = "Points à revoir :";
-    ws.appendChild(title);
-
-    wrongs.forEach(w => {
-      const item = document.createElement("div");
-      item.className = "wrong-item";
-
-      const wrongQ = document.createElement("div");
-      wrongQ.className = "wrong-q";
-      wrongQ.textContent = "❓ " + w.q;
-
-      const wrongA = document.createElement("div");
-      wrongA.className = "wrong-a";
-      wrongA.textContent = "✅ " + w.correctAnswer;
-
-      const wrongExp = document.createElement("div");
-      wrongExp.className = "wrong-exp";
-      wrongExp.textContent = w.exp;
-
-      item.appendChild(wrongQ);
-      item.appendChild(wrongA);
-      item.appendChild(wrongExp);
-
-      ws.appendChild(item);
-    });
-  } else {
-    const perfect = document.createElement("div");
-    perfect.className = "explication";
-    perfect.textContent = "Parfait, aucune erreur sur cette partie.";
-    ws.appendChild(perfect);
-  }
+  renderWrongItems(document.getElementById("wrongs-section"), wrongs);
 }
 
 function getHistory() {
@@ -1452,7 +1564,7 @@ function getHistory() {
   }
 }
 
-function saveHistoryAttempt(courseKey, scoreValue, total, percentage, grade) {
+function saveHistoryAttempt(courseKey, scoreValue, total, percentage, grade, wrongItems, durationSeconds) {
   const history = getHistory();
 
   const now = new Date();
@@ -1466,7 +1578,14 @@ function saveHistoryAttempt(courseKey, scoreValue, total, percentage, grade) {
     score: scoreValue,
     total: total,
     percentage: percentage,
-    grade: grade.replace(/[🏆✅📚❌]/g, "").trim()
+    grade: grade.replace(/[🏆✅📚❌]/g, "").trim(),
+    durationSeconds: durationSeconds,
+    wrongs: wrongItems.map(wrong => ({
+      q: wrong.q,
+      userAnswer: wrong.userAnswer,
+      correctAnswer: wrong.correctAnswer,
+      exp: wrong.exp
+    }))
   };
 
   history[courseKey].unshift(attempt);
@@ -1502,6 +1621,13 @@ function renderHistoryCourse(courseKey, elementId, history) {
   history[courseKey].forEach((attempt, index) => {
     const item = document.createElement("div");
     item.className = "history-item";
+    item.setAttribute("role", "button");
+    item.setAttribute("tabindex", "0");
+
+    const summary = document.createElement("div");
+    summary.className = "history-summary";
+
+    const summaryText = document.createElement("div");
 
     const mainLine = document.createElement("div");
 
@@ -1509,15 +1635,62 @@ function renderHistoryCourse(courseKey, elementId, history) {
     scoreSpan.className = "history-score";
     scoreSpan.textContent = attempt.score + "/" + attempt.total;
 
+    const wrongCount = Array.isArray(attempt.wrongs) ? attempt.wrongs.length : Math.max(0, (attempt.total || 0) - (attempt.score || 0));
+
     mainLine.appendChild(scoreSpan);
-    mainLine.appendChild(document.createTextNode(" — " + attempt.percentage + "% — " + attempt.grade));
+    mainLine.appendChild(document.createTextNode(" — " + attempt.percentage + "% — " + attempt.grade + " — "));
+
+    const wrongCountSpan = document.createElement("span");
+    wrongCountSpan.className = "wrong-count";
+    wrongCountSpan.textContent = wrongCount + " faute" + (wrongCount > 1 ? "s" : "");
+    mainLine.appendChild(wrongCountSpan);
 
     const dateLine = document.createElement("div");
     dateLine.className = "history-date";
-    dateLine.textContent = "Essai " + (history[courseKey].length - index) + " · " + attempt.date + " à " + attempt.time;
+    dateLine.textContent = "Essai " + (history[courseKey].length - index) + " · " + attempt.date + " à " + attempt.time + " · Temps : " + formatDuration(attempt.durationSeconds);
 
-    item.appendChild(mainLine);
-    item.appendChild(dateLine);
+    const hintLine = document.createElement("div");
+    hintLine.className = "history-date";
+    hintLine.textContent = "Clique pour voir le détail.";
+
+    summaryText.appendChild(mainLine);
+    summaryText.appendChild(dateLine);
+    summaryText.appendChild(hintLine);
+
+    const toggle = document.createElement("div");
+    toggle.className = "history-toggle";
+    toggle.textContent = "Voir +";
+
+    summary.appendChild(summaryText);
+    summary.appendChild(toggle);
+
+    const details = document.createElement("div");
+    details.className = "history-details hidden";
+
+    if (Array.isArray(attempt.wrongs)) {
+      renderWrongItems(details, attempt.wrongs);
+    } else {
+      const oldAttemptNotice = document.createElement("div");
+      oldAttemptNotice.className = "explication";
+      oldAttemptNotice.textContent = "Le détail des réponses n'a pas été enregistré pour cet ancien essai.";
+      details.appendChild(oldAttemptNotice);
+    }
+
+    function toggleDetails() {
+      const isHidden = details.classList.toggle("hidden");
+      toggle.textContent = isHidden ? "Voir +" : "Masquer −";
+    }
+
+    item.addEventListener("click", toggleDetails);
+    item.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleDetails();
+      }
+    });
+
+    item.appendChild(summary);
+    item.appendChild(details);
 
     container.appendChild(item);
   });
@@ -1539,6 +1712,8 @@ function restart() {
 }
 
 function backToMenu() {
+  if (!confirmLeaveQuiz()) return;
+
   currentCourseKey = null;
 
   hideAllScreens();
