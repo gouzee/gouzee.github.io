@@ -359,6 +359,29 @@
     margin-bottom: 8px;
   }
 
+  .history-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .history-section-title h3 {
+    margin-bottom: 0;
+  }
+
+  .danger-small-btn {
+    border-color: #7f1d1d;
+    color: #fecaca;
+    background: #3d0f0f;
+  }
+
+  .danger-small-btn:hover {
+    border-color: #ef4444;
+    color: #fff;
+  }
+
   .history-list {
     display: flex;
     flex-direction: column;
@@ -684,23 +707,29 @@
     <div class="history-box">
       <div class="history-header">
         <h2>Historique des essais</h2>
-        <button class="small-btn" onclick="clearHistory()">Effacer</button>
+        <button class="small-btn" onclick="clearHistory()">Tout effacer</button>
       </div>
 
       <div class="history-section">
-        <h3>Développement Web</h3>
+        <div class="history-section-title">
+          <h3>Développement Web</h3>
+          <button class="small-btn danger-small-btn" onclick="clearCourseHistory('developpement')">Effacer ce cours</button>
+        </div>
         <div id="history-developpement" class="history-list"></div>
       </div>
 
       <div class="history-section">
-        <h3>Culture de la Création</h3>
+        <div class="history-section-title">
+          <h3>Culture de la Création</h3>
+          <button class="small-btn danger-small-btn" onclick="clearCourseHistory('cultureCreation')">Effacer ce cours</button>
+        </div>
         <div id="history-culture-creation" class="history-list"></div>
       </div>
     </div>
 
     <div class="game-access">
       <h2>Petite pause</h2>
-      <p>Un mini-jeu indépendant des cours.</p>
+      <p>Un mini-jeu indépendant des cours, façon dinosaure de Chrome quand Internet ne marche plus.</p>
       <button class="btn secondary-btn" onclick="showGame()">Lancer le mini-jeu</button>
     </div>
 
@@ -752,7 +781,7 @@
 
     <h1 class="course-title">Course du dinosaure</h1>
     <p class="course-subtitle">
-      Saute par-dessus les buissons et les oiseaux, puis essaie de battre ton meilleur score.
+      Saute par-dessus les obstacles, puis essaie de battre ton meilleur score.
     </p>
 
     <div class="game-panel">
@@ -2469,6 +2498,30 @@ function clearHistory() {
   if (!confirmClear) return;
 
   localStorage.removeItem("qcmHistorique");
+  renderHistory();
+}
+
+function clearCourseHistory(courseKey) {
+  const courseNames = {
+    developpement: "Développement Web",
+    cultureCreation: "Culture de la Création"
+  };
+
+  if (!courseNames[courseKey]) return;
+
+  const confirmClear = confirm(
+    "Tu veux vraiment effacer uniquement l'historique du cours : " +
+    courseNames[courseKey] +
+    " ?\n\n" +
+    "L'historique de l'autre cours sera conservé."
+  );
+
+  if (!confirmClear) return;
+
+  const history = getHistory();
+  history[courseKey] = [];
+
+  localStorage.setItem("qcmHistorique", JSON.stringify(history));
   renderHistory();
 }
 
