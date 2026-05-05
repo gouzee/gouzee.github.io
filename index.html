@@ -22,15 +22,154 @@
     justify-content: center;
     font-family: "Segoe UI", Arial, sans-serif;
     padding: 16px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .star-field {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.75);
+    opacity: 0.16;
+    animation: twinkle var(--twinkle-duration) ease-in-out infinite;
+    animation-delay: var(--twinkle-delay);
+  }
+
+  .shooting-star {
+    position: absolute;
+    left: var(--shooting-star-left);
+    top: var(--shooting-star-top);
+    width: var(--shooting-star-length);
+    height: 1px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.96));
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.62);
+    opacity: 0;
+    transform-origin: right center;
+    animation: shooting-star var(--shooting-star-duration) ease-out forwards;
+  }
+
+  .shooting-star::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.95);
+    transform: translateY(-50%);
+  }
+
+  .stars-disabled .star-field {
+    display: none;
+  }
+
+  .stars-disabled .card {
+    background: #12122a;
+  }
+
+  .star-toggle {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    background: rgba(42, 42, 74, 0.84);
+    color: #ccc;
+    border: 1px solid #3a3a6a;
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  .star-toggle:hover,
+  .star-toggle:focus-visible {
+    background: rgba(50, 50, 82, 0.94);
+    border-color: #6366f1;
+    color: #fff;
+    outline: none;
+  }
+
+  .star-toggle[aria-pressed="true"] {
+    background: rgba(26, 26, 46, 0.92);
+    border-color: #2a2a4a;
+    color: #aab;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.14;
+      transform: scale(0.7);
+    }
+
+    48% {
+      opacity: 0.95;
+      transform: scale(1.35);
+    }
+
+    72% {
+      opacity: 0.32;
+      transform: scale(0.9);
+    }
+  }
+
+  @keyframes shooting-star {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) rotate(var(--shooting-star-angle));
+    }
+
+    12% {
+      opacity: 0.95;
+    }
+
+    64% {
+      opacity: 0.72;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate3d(var(--shooting-star-travel), var(--shooting-star-drop), 0) rotate(var(--shooting-star-angle));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .star {
+      animation: none;
+      opacity: 0.38;
+    }
+
+    .shooting-star {
+      display: none;
+    }
   }
 
   .card {
-    background: #12122a;
+    background: rgba(18, 18, 42, 0.93);
     border-radius: 16px;
     padding: 32px 28px;
     max-width: 760px;
     width: 100%;
     box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+    position: relative;
+    z-index: 1;
   }
 
   .header {
@@ -652,6 +791,10 @@
   }
 
   @media (max-width: 520px) {
+    body {
+      padding-top: 56px;
+    }
+
     .card {
       padding: 24px 20px;
     }
@@ -693,6 +836,12 @@
       font-size: 20px;
     }
 
+    .star-toggle {
+      top: 10px;
+      left: 10px;
+      padding: 6px 9px;
+    }
+
   }
 
   @media print {
@@ -713,6 +862,8 @@
 
     .btn,
     .scroll-top-btn,
+    .star-field,
+    .star-toggle,
     .header,
     .course-subtitle {
       display: none;
@@ -741,6 +892,16 @@
 </head>
 
 <body>
+<div class="star-field" id="star-field" aria-hidden="true"></div>
+<button
+  class="star-toggle"
+  id="star-toggle"
+  type="button"
+  aria-pressed="false"
+  onclick="toggleStars()">
+  Étoiles : ON
+</button>
+
 <div class="card" id="app">
 
   <div id="menu-screen">
@@ -907,6 +1068,134 @@
 
 <script>
 
+const STAR_VISIBILITY_STORAGE_KEY = "qcm-stars-disabled";
+let shootingStarTimer = null;
+
+function isStoredStarsDisabled() {
+  try {
+    return localStorage.getItem(STAR_VISIBILITY_STORAGE_KEY) === "true";
+  } catch (error) {
+    return false;
+  }
+}
+
+function setStarsDisabled(disabled) {
+  const toggle = document.getElementById("star-toggle");
+
+  document.body.classList.toggle("stars-disabled", disabled);
+  clearShootingStars();
+
+  if (toggle) {
+    toggle.textContent = disabled ? "Étoiles : OFF" : "Étoiles : ON";
+    toggle.setAttribute("aria-pressed", String(disabled));
+    toggle.setAttribute(
+      "aria-label",
+      disabled ? "Afficher les étoiles d'arrière-plan" : "Masquer les étoiles d'arrière-plan"
+    );
+    toggle.title = disabled ? "Afficher les étoiles" : "Masquer les étoiles";
+  }
+
+  try {
+    localStorage.setItem(STAR_VISIBILITY_STORAGE_KEY, disabled ? "true" : "false");
+  } catch (error) {
+  }
+
+  if (!disabled) {
+    scheduleShootingStar();
+  }
+}
+
+function toggleStars() {
+  setStarsDisabled(!document.body.classList.contains("stars-disabled"));
+}
+
+function clearShootingStars() {
+  document.querySelectorAll(".shooting-star").forEach((star) => star.remove());
+
+  if (shootingStarTimer) {
+    clearTimeout(shootingStarTimer);
+    shootingStarTimer = null;
+  }
+}
+
+function createStarField() {
+  const starField = document.getElementById("star-field");
+
+  if (!starField) return;
+
+  starField.innerHTML = "";
+
+  const starCount = Math.min(90, Math.max(48, Math.floor(window.innerWidth / 16)));
+
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement("span");
+    const size = Math.random() < 0.75
+      ? Math.random() * 1.4 + 1
+      : Math.random() * 1.8 + 2;
+
+    star.className = "star";
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.setProperty("--twinkle-duration", `${Math.random() * 2.8 + 1.8}s`);
+    star.style.setProperty("--twinkle-delay", `${Math.random() * -5}s`);
+
+    starField.appendChild(star);
+  }
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function createShootingStar() {
+  const starField = document.getElementById("star-field");
+
+  if (!starField || document.body.classList.contains("stars-disabled") || prefersReducedMotion()) return;
+
+  const shootingStar = document.createElement("span");
+  const length = Math.random() * 90 + 72;
+  const duration = Math.random() * 0.85 + 0.95;
+  const left = Math.random() * 84 - 28;
+  const top = Math.random() * 72 - 6;
+  const travel = Math.random() * 420 + 360;
+  const drop = Math.random() * 210 + 95;
+  const angle = Math.random() * 18 + 16;
+
+  shootingStar.className = "shooting-star";
+  shootingStar.style.setProperty("--shooting-star-left", `${left}vw`);
+  shootingStar.style.setProperty("--shooting-star-top", `${top}vh`);
+  shootingStar.style.setProperty("--shooting-star-length", `${length}px`);
+  shootingStar.style.setProperty("--shooting-star-duration", `${duration}s`);
+  shootingStar.style.setProperty("--shooting-star-travel", `${travel}px`);
+  shootingStar.style.setProperty("--shooting-star-drop", `${drop}px`);
+  shootingStar.style.setProperty("--shooting-star-angle", `${angle}deg`);
+
+  starField.appendChild(shootingStar);
+
+  shootingStar.addEventListener("animationend", () => {
+    shootingStar.remove();
+  });
+}
+
+function scheduleShootingStar() {
+  if (shootingStarTimer || document.body.classList.contains("stars-disabled") || prefersReducedMotion()) return;
+
+  const nextDelay = Math.random() * 7200 + 1800;
+
+  shootingStarTimer = setTimeout(() => {
+    shootingStarTimer = null;
+    createShootingStar();
+
+    if (Math.random() < 0.22) {
+      setTimeout(createShootingStar, Math.random() * 900 + 240);
+    }
+
+    scheduleShootingStar();
+  }, nextDelay);
+}
+
 function updateScrollTopButton() {
   const button = document.getElementById("scroll-top-btn");
   const courseContent = document.getElementById("course-content");
@@ -941,6 +1230,9 @@ function scrollToTop() {
 window.addEventListener("scroll", updateScrollTopButton);
 document.addEventListener("DOMContentLoaded", () => {
   const courseContent = document.getElementById("course-content");
+
+  setStarsDisabled(isStoredStarsDisabled());
+  createStarField();
 
   if (courseContent) {
     courseContent.addEventListener("scroll", updateScrollTopButton);
