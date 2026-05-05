@@ -775,6 +775,7 @@
   }
 
   .site-footer-note {
+    display: block;
     margin-top: 22px;
     padding-top: 10px;
     text-align: center;
@@ -783,7 +784,16 @@
     font-weight: 500;
     letter-spacing: 0.2px;
     opacity: 0.78;
+    text-decoration: none;
     user-select: none;
+    transition: color 0.2s, opacity 0.2s;
+  }
+
+  .site-footer-note:hover,
+  .site-footer-note:focus-visible {
+    color: #8b8ba6;
+    opacity: 1;
+    outline: none;
   }
 
   .hidden {
@@ -955,7 +965,11 @@
       <button class="btn" onclick="showGame()">Lancer le mini-jeu</button>
     </div>
 
-    <div class="site-footer-note">Free Palestine.</div>
+    <a
+      class="site-footer-note"
+      href="https://docs.google.com/spreadsheets/d/1-DDMFyn-ttboPXrz1bB3MFk7BlzCwfugh4259Wh7U1s/edit?gid=543936639#gid=543936639">
+      Free Palestine.
+    </a>
 
   </div>
 
