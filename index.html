@@ -1260,6 +1260,39 @@ const courseContents = {
     title: "Développement Web",
     sections: [
       {
+        title: "Internet, Web et architecture réseau",
+        blocks: [
+          {
+            subtitle: "Internet et World Wide Web",
+            items: [
+              "Internet est l’infrastructure physique mondiale composée notamment de câbles, de serveurs et d’équipements réseau.",
+              "Environ 99% du trafic internet mondial passe par des câbles sous-marins.",
+              "Le World Wide Web est un service qui permet de naviguer entre des documents reliés par des liens.",
+              "Tim Berners-Lee est considéré comme le créateur du World Wide Web.",
+              "Le W3C a pour rôle d’éditer et de coordonner les standards du Web."
+            ]
+          },
+          {
+            subtitle: "Navigateur, client et serveur",
+            items: [
+              "Le navigateur web, ou browser, est le logiciel qui utilise notamment HTTP pour demander et afficher des documents web.",
+              "Dans le dialogue fondamental du réseau, le navigateur joue le rôle de client.",
+              "Le client envoie une requête au serveur.",
+              "Le serveur répond en renvoyant la ressource demandée ou un message d’erreur.",
+              "Si la ressource demandée n’existe pas, le serveur renvoie le code d’erreur 404."
+            ]
+          },
+          {
+            subtitle: "DNS",
+            items: [
+              "DNS signifie Domain Name System.",
+              "Le DNS traduit les noms de domaine, comme google.com, en adresses IP lisibles par les machines.",
+              "On peut le comprendre comme l’annuaire d’Internet."
+            ]
+          }
+        ]
+      },
+      {
         title: "HTML et CSS",
         blocks: [
           {
@@ -1284,6 +1317,39 @@ const courseContents = {
         ]
       },
       {
+        title: "Structure HTML, SEO et partage",
+        blocks: [
+          {
+            subtitle: "HTML sémantique",
+            items: [
+              "Le HTML sémantique consiste à utiliser des balises qui donnent du sens au contenu.",
+              "Exemples de balises sémantiques : <header>, <nav>, <article>, <main>, <section> ou <footer>.",
+              "Les balises sémantiques aident les navigateurs, les moteurs de recherche et les lecteurs d’écran à comprendre la structure de la page.",
+              "La balise <nav> est utilisée pour représenter un menu de navigation sémantique.",
+              "Le DOM est l’arbre hiérarchique du code HTML tel que le navigateur le lit et le manipule."
+            ]
+          },
+          {
+            subtitle: "Head, titres et accessibilité",
+            items: [
+              "La balise <head> contient les informations non visibles directement dans la page, comme le titre de l’onglet ou les balises meta.",
+              "Pour le SEO, il est recommandé d’avoir une seule balise <h1> principale par page.",
+              "Le <h1> représente le sujet unique et principal de la page.",
+              "Sur une balise <img>, l’attribut alt est obligatoire pour l’accessibilité.",
+              "L’attribut alt décrit l’image pour les lecteurs d’écran et peut s’afficher si l’image ne charge pas."
+            ]
+          },
+          {
+            subtitle: "Open Graph",
+            items: [
+              "Les balises Open Graph permettent de personnaliser l’affichage d’un lien sur les réseaux sociaux.",
+              "Elles peuvent définir le titre, la description et l’image d’aperçu d’un lien partagé.",
+              "Elles sont placées dans le <head> du document HTML."
+            ]
+          }
+        ]
+      },
+      {
         title: "Psychologie des couleurs et contraste",
         blocks: [
           {
@@ -1299,6 +1365,39 @@ const courseContents = {
         ]
       },
       {
+        title: "Outils CSS et méthodes de mise en page",
+        blocks: [
+          {
+            subtitle: "Box Model complet",
+            items: [
+              "Le Box Model représente chaque élément HTML comme une boîte.",
+              "Cette boîte est composée de 4 couches : le contenu, le padding, la bordure et la margin.",
+              "Le contenu correspond à ce qui est affiché dans l’élément.",
+              "Le padding est l’espace intérieur autour du contenu.",
+              "La bordure entoure le contenu et le padding.",
+              "La margin est l’espace extérieur autour de l’élément."
+            ]
+          },
+          {
+            subtitle: "Flexbox",
+            items: [
+              "Flexbox est une méthode CSS qui permet d’aligner facilement des éléments.",
+              "Flexbox permet d’organiser des éléments en ligne ou en colonne.",
+              "Flexbox aide à gérer l’alignement, l’espacement et la distribution des éléments dans un conteneur."
+            ]
+          },
+          {
+            subtitle: "Unités relatives et inspection",
+            items: [
+              "Pour l’accessibilité, il est recommandé d’utiliser des unités relatives comme em ou rem.",
+              "Les unités relatives s’adaptent mieux aux réglages de taille de texte de l’utilisateur.",
+              "L’inspecteur du navigateur, souvent accessible avec F12, permet d’analyser le HTML, le CSS et les styles d’un site.",
+              "L’inspecteur est utile pour comprendre la structure et les choix visuels d’un site concurrent."
+            ]
+          }
+        ]
+      },
+      {
         title: "Responsive design",
         blocks: [
           {
@@ -1306,6 +1405,7 @@ const courseContents = {
             items: [
               "Le responsive design consiste à créer un seul site qui s’adapte à toutes les tailles d’écran : mobile, tablette et desktop.",
               "Cette adaptation se fait notamment grâce aux media queries.",
+              "Le principe Mobile First signifie que l’on conçoit d’abord le site pour mobile, puis qu’on l’adapte aux écrans plus grands.",
               "Plus de 60% du trafic web mondial est mobile.",
               "Le contenu doit être fluide : c’est l’idée du liquid layout."
             ]
@@ -1335,6 +1435,28 @@ const courseContents = {
               "L’UX ne se limite pas à l’écran.",
               "C’est un processus holistique : il va du temps de chargement jusqu’au service après-vente.",
               "Aujourd’hui, on parle aussi de CX, c’est-à-dire Customer Experience."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Décision utilisateur et éthique UX",
+        blocks: [
+          {
+            subtitle: "Loi de Hick",
+            items: [
+              "La loi de Hick dit que moins il y a de choix, plus vite on décide.",
+              "Plus une interface propose d’options, plus le temps de décision augmente.",
+              "En UX, cette loi aide à simplifier les parcours et à éviter la surcharge de choix."
+            ]
+          },
+          {
+            subtitle: "Dark Pattern",
+            items: [
+              "Un Dark Pattern est une technique de design trompeuse.",
+              "Il manipule l’utilisateur pour lui faire faire une action non souhaitée.",
+              "Exemples : s’abonner sans le vouloir, accepter une option précochée ou rendre le refus volontairement difficile.",
+              "Un bon design doit rester clair, honnête et respectueux du choix de l’utilisateur."
             ]
           }
         ]
