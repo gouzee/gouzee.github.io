@@ -641,6 +641,23 @@
     margin-bottom: 5px;
   }
 
+  .preview-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style-position: inside;
+  }
+
+  .preview-list li {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 8px;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 10px 12px;
+  }
+
   .highlight {
     color: #22c55e;
     font-weight: 700;
@@ -927,7 +944,9 @@
 
     <div class="course-buttons">
       <button class="btn" onclick="start('developpement')">Développement Web</button>
+      <button class="btn secondary-btn" onclick="showQuestionPreview('developpement')">Aperçu des questions : Développement Web</button>
       <button class="btn" onclick="start('cultureCreation')">Culture de la Création</button>
+      <button class="btn secondary-btn" onclick="showQuestionPreview('cultureCreation')">Aperçu des questions : Culture de la Création</button>
     </div>
 
     <div class="course-access">
@@ -987,6 +1006,23 @@
 
     <button class="btn" id="start-course-quiz-btn">Lancer le QCM de ce cours</button>
     <button class="btn secondary-btn" onclick="window.print()">Imprimer / sauvegarder en PDF</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="preview-screen" class="hidden">
+    <div class="header">
+      <span class="tag" id="preview-tag">Aperçu</span>
+      <span class="counter" id="preview-count"></span>
+    </div>
+
+    <h1 class="course-title" id="preview-title"></h1>
+    <p class="course-subtitle">
+      Voici uniquement les questions possibles pour ce QCM. Les réponses ne sont pas affichées.
+    </p>
+
+    <div class="course-content" id="preview-content"></div>
+
+    <button class="btn" id="start-preview-quiz-btn">Lancer ce QCM</button>
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
@@ -1212,45 +1248,44 @@ function scheduleShootingStar() {
 
 function updateScrollTopButton() {
   const button = document.getElementById("scroll-top-btn");
-  const courseContent = document.getElementById("course-content");
+  const scrollableContents = document.querySelectorAll(".course-content");
 
   if (!button) return;
 
   const pageScrolled = window.scrollY > 260;
-  const courseScrolled =
-    courseContent &&
-    !courseContent.closest("#course-screen").classList.contains("hidden") &&
-    courseContent.scrollTop > 180;
+  const contentScrolled = Array.from(scrollableContents).some(content => {
+    const parentScreen = content.closest("#course-screen, #preview-screen");
 
-  button.classList.toggle("visible", pageScrolled || courseScrolled);
+    return parentScreen && !parentScreen.classList.contains("hidden") && content.scrollTop > 180;
+  });
+
+  button.classList.toggle("visible", pageScrolled || contentScrolled);
 }
 
 function scrollToTop() {
-  const courseContent = document.getElementById("course-content");
+  const scrollableContents = document.querySelectorAll(".course-content");
 
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
 
-  if (courseContent) {
-    courseContent.scrollTo({
+  scrollableContents.forEach(content => {
+    content.scrollTo({
       top: 0,
       behavior: "smooth"
     });
-  }
+  });
 }
 
 window.addEventListener("scroll", updateScrollTopButton);
 document.addEventListener("DOMContentLoaded", () => {
-  const courseContent = document.getElementById("course-content");
-
   setStarsDisabled(isStoredStarsDisabled());
   createStarField();
 
-  if (courseContent) {
-    courseContent.addEventListener("scroll", updateScrollTopButton);
-  }
+  document.querySelectorAll(".course-content").forEach(content => {
+    content.addEventListener("scroll", updateScrollTopButton);
+  });
 
   updateScrollTopButton();
 });
@@ -1953,6 +1988,7 @@ function hideAllScreens() {
   stopMiniGame();
   document.getElementById("menu-screen").classList.add("hidden");
   document.getElementById("course-screen").classList.add("hidden");
+  document.getElementById("preview-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.add("hidden");
@@ -2072,6 +2108,15 @@ function applyNavigationState(state) {
 
   if (targetState.screen === "course" && targetState.courseKey) {
     showCourse(targetState.courseKey, {
+      confirm: false,
+      pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "preview" && targetState.courseKey) {
+    showQuestionPreview(targetState.courseKey, {
       confirm: false,
       pushState: false
     });
@@ -2693,6 +2738,51 @@ function showCourse(courseKey, options = {}) {
   if (shouldPushState) {
     pushNavigationState({
       screen: "course",
+      courseKey: courseKey
+    });
+  }
+}
+
+function showQuestionPreview(courseKey, options = {}) {
+  if (!courseKey || !questionBanks[courseKey]) return;
+
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
+
+  currentCourseKey = courseKey;
+  const bank = questionBanks[courseKey];
+
+  hideAllScreens();
+  document.getElementById("preview-screen").classList.remove("hidden");
+
+  document.getElementById("preview-tag").textContent = "Aperçu";
+  document.getElementById("preview-title").textContent = bank.title;
+  document.getElementById("preview-count").textContent = bank.questions.length + " questions";
+
+  const content = document.getElementById("preview-content");
+  content.innerHTML = "";
+  content.scrollTop = 0;
+
+  const list = document.createElement("ol");
+  list.className = "preview-list";
+
+  bank.questions.forEach(question => {
+    const item = document.createElement("li");
+    item.textContent = question.q;
+    list.appendChild(item);
+  });
+
+  content.appendChild(list);
+
+  document.getElementById("start-preview-quiz-btn").onclick = function() {
+    confirmStartQuizFromCourse(courseKey);
+  };
+
+  if (shouldPushState) {
+    pushNavigationState({
+      screen: "preview",
       courseKey: courseKey
     });
   }
