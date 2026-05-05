@@ -233,6 +233,13 @@
     gap: 12px;
   }
 
+  .qcm-separator {
+    height: 1px;
+    background: #2a2a4a;
+    margin: 4px 0 8px;
+    opacity: 0.9;
+  }
+
   .course-access {
     margin-top: 26px;
     background: #1a1a2e;
@@ -944,9 +951,10 @@
 
     <div class="course-buttons">
       <button class="btn" onclick="start('developpement')">Développement Web</button>
-      <button class="btn secondary-btn" onclick="showQuestionPreview('developpement')">Aperçu des questions : Développement Web</button>
+      <button class="btn secondary-btn" onclick="showQuestionPreview('developpement')">Aperçu des questions</button>
+      <div class="qcm-separator" aria-hidden="true"></div>
       <button class="btn" onclick="start('cultureCreation')">Culture de la Création</button>
-      <button class="btn secondary-btn" onclick="showQuestionPreview('cultureCreation')">Aperçu des questions : Culture de la Création</button>
+      <button class="btn secondary-btn" onclick="showQuestionPreview('cultureCreation')">Aperçu des questions</button>
     </div>
 
     <div class="course-access">
