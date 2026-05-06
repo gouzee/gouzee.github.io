@@ -4293,6 +4293,7 @@ let answered = false;
 let resultAlreadySaved = false;
 let quizStartTime = null;
 const SIX_SEVEN_SCORE = 67;
+let quizFeedbackAudioContext = null;
 
 let lastQuestionOrderByCourse = {};
 let lastOptionsOrders = {};
@@ -4435,6 +4436,88 @@ function getQuizDurationSeconds() {
   }
 
   return Math.round((Date.now() - quizStartTime) / 1000);
+}
+
+function getQuizFeedbackAudioContext() {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioContextClass) return null;
+
+  if (!quizFeedbackAudioContext) {
+    quizFeedbackAudioContext = new AudioContextClass();
+  }
+
+  return quizFeedbackAudioContext;
+}
+
+function playFeedbackTone(audioContext, settings) {
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+  const startTime = settings.startTime;
+  const endTime = startTime + settings.duration;
+
+  oscillator.type = settings.type;
+  oscillator.frequency.setValueAtTime(settings.frequencyStart, startTime);
+  oscillator.frequency.exponentialRampToValueAtTime(settings.frequencyEnd, endTime);
+
+  gain.gain.setValueAtTime(0.0001, startTime);
+  gain.gain.exponentialRampToValueAtTime(settings.volume, startTime + 0.018);
+  gain.gain.exponentialRampToValueAtTime(0.0001, endTime);
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start(startTime);
+  oscillator.stop(endTime + 0.02);
+}
+
+function playQuizFeedbackSound(isCorrect) {
+  const audioContext = getQuizFeedbackAudioContext();
+
+  if (!audioContext) return;
+
+  if (audioContext.state === "suspended") {
+    audioContext.resume().catch(() => {});
+  }
+
+  const startTime = audioContext.currentTime + 0.015;
+
+  if (isCorrect) {
+    playFeedbackTone(audioContext, {
+      type: "sine",
+      startTime,
+      duration: 0.12,
+      frequencyStart: 620,
+      frequencyEnd: 760,
+      volume: 0.105
+    });
+    playFeedbackTone(audioContext, {
+      type: "triangle",
+      startTime: startTime + 0.105,
+      duration: 0.18,
+      frequencyStart: 830,
+      frequencyEnd: 1040,
+      volume: 0.095
+    });
+    return;
+  }
+
+  playFeedbackTone(audioContext, {
+    type: "sawtooth",
+    startTime,
+    duration: 0.24,
+    frequencyStart: 210,
+    frequencyEnd: 115,
+    volume: 0.08
+  });
+  playFeedbackTone(audioContext, {
+    type: "sine",
+    startTime: startTime + 0.18,
+    duration: 0.16,
+    frequencyStart: 140,
+    frequencyEnd: 105,
+    volume: 0.06
+  });
 }
 
 function isQuizInProgress() {
@@ -6142,11 +6225,13 @@ function select(i) {
 
   const q = shuffled[current];
   const btns = document.querySelectorAll(".option");
+  const isCorrect = i === q.answer;
 
   btns.forEach(btn => btn.disabled = true);
   btns[q.answer].classList.add("correct");
+  playQuizFeedbackSound(isCorrect);
 
-  if (i !== q.answer) {
+  if (!isCorrect) {
     btns[i].classList.add("wrong");
     wrongs.push({
       q: q.q,
@@ -6159,7 +6244,7 @@ function select(i) {
   }
 
   const exp = document.getElementById("explication");
-  exp.textContent = (i === q.answer ? "✅ " : "❌ ") + q.exp;
+  exp.textContent = (isCorrect ? "✅ " : "❌ ") + q.exp;
   exp.classList.remove("hidden");
 
   const nextBtn = document.getElementById("next-btn");
