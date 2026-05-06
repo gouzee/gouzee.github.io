@@ -866,6 +866,141 @@
     outline: none;
   }
 
+  body.lucio-mode {
+    background:
+      radial-gradient(circle at 82% 20%, rgba(87, 255, 154, 0.24), transparent 32%),
+      radial-gradient(circle at 20% 84%, rgba(16, 185, 129, 0.22), transparent 30%),
+      #07140f;
+  }
+
+  body.lucio-mode .star {
+    background: rgba(190, 255, 210, 0.96);
+    box-shadow: 0 0 10px rgba(74, 255, 142, 0.9);
+  }
+
+  body.lucio-mode .shooting-star {
+    background: linear-gradient(90deg, rgba(74, 255, 142, 0), rgba(187, 255, 205, 0.98));
+    box-shadow: 0 0 16px rgba(74, 255, 142, 0.88);
+  }
+
+  body.lucio-mode .shooting-star::after {
+    background: #d9ffe2;
+    box-shadow: 0 0 18px rgba(74, 255, 142, 0.98);
+  }
+
+  body.lucio-mode .card {
+    background: rgba(5, 22, 15, 0.94);
+    border: 1px solid rgba(74, 255, 142, 0.24);
+    box-shadow: 0 0 48px rgba(34, 197, 94, 0.24), inset 0 0 40px rgba(34, 197, 94, 0.05);
+  }
+
+  body.lucio-mode .tag,
+  body.lucio-mode .progress-fill,
+  body.lucio-mode .score-bar-fill,
+  body.lucio-mode .btn,
+  body.lucio-mode .scroll-top-btn {
+    background: linear-gradient(90deg, #16a34a, #84cc16, #22c55e);
+    color: #04130a;
+    box-shadow: 0 0 22px rgba(74, 222, 128, 0.24);
+  }
+
+  body.lucio-mode .secondary-btn,
+  body.lucio-mode .star-toggle,
+  body.lucio-mode .small-btn {
+    background: rgba(8, 47, 31, 0.88);
+    border-color: #22c55e;
+    color: #d9ffe2;
+  }
+
+  body.lucio-mode .secondary-btn:hover,
+  body.lucio-mode .small-btn:hover,
+  body.lucio-mode .star-toggle:hover,
+  body.lucio-mode .star-toggle:focus-visible {
+    border-color: #a3e635;
+    color: #f4ffe8;
+  }
+
+  body.lucio-mode .course-access,
+  body.lucio-mode .history-box,
+  body.lucio-mode .game-access,
+  body.lucio-mode .course-section,
+  body.lucio-mode .preview-list li,
+  body.lucio-mode .history-item,
+  body.lucio-mode .game-stat,
+  body.lucio-mode .explication,
+  body.lucio-mode .option {
+    background: rgba(7, 35, 24, 0.92);
+    border-color: rgba(74, 222, 128, 0.38);
+  }
+
+  body.lucio-mode .menu-title,
+  body.lucio-mode .course-title,
+  body.lucio-mode .question,
+  body.lucio-mode .grade,
+  body.lucio-mode .history-header h2,
+  body.lucio-mode .course-access h2,
+  body.lucio-mode .game-access h2,
+  body.lucio-mode .course-section h3 {
+    color: #ecfccb;
+  }
+
+  body.lucio-mode .menu-text,
+  body.lucio-mode .course-subtitle,
+  body.lucio-mode .course-access p,
+  body.lucio-mode .game-access p,
+  body.lucio-mode .game-help,
+  body.lucio-mode .course-section li,
+  body.lucio-mode .course-section p,
+  body.lucio-mode .counter,
+  body.lucio-mode .score-label,
+  body.lucio-mode .history-date {
+    color: #b7f7c8;
+  }
+
+  body.lucio-mode .history-section h3,
+  body.lucio-mode .history-toggle,
+  body.lucio-mode .course-section h2,
+  body.lucio-mode .highlight,
+  body.lucio-mode .big-score,
+  body.lucio-mode .history-score {
+    color: #86efac;
+  }
+
+  body.lucio-mode .score-bar,
+  body.lucio-mode .progress-bar {
+    background: rgba(8, 47, 31, 0.95);
+  }
+
+  body.lucio-mode .qcm-separator,
+  body.lucio-mode .history-details {
+    border-color: rgba(74, 222, 128, 0.36);
+    background: rgba(132, 204, 22, 0.45);
+  }
+
+  body.lucio-mode .option:hover:not(:disabled) {
+    border-color: #a3e635;
+    color: #f4ffe8;
+    box-shadow: 0 0 18px rgba(132, 204, 22, 0.16);
+  }
+
+  body.lucio-mode .opt-letter {
+    background: #166534;
+    color: #ecfccb;
+  }
+
+  body.lucio-mode .site-footer-note {
+    color: #5aa873;
+  }
+
+  body.lucio-mode .site-footer-note:hover,
+  body.lucio-mode .site-footer-note:focus-visible {
+    color: #bbf7d0;
+  }
+
+  body.lucio-mode .home-easter-egg.revealed {
+    filter: saturate(1.28) brightness(1.14) drop-shadow(0 0 26px rgba(74, 255, 142, 0.58));
+  }
+
   .hidden {
     display: none;
   }
@@ -1198,6 +1333,7 @@
 const STAR_VISIBILITY_STORAGE_KEY = "qcm-stars-disabled";
 let shootingStarTimer = null;
 let homeEasterEggRevealTimer = null;
+let lucioModeTimer = null;
 
 function setHomeEasterEggVisible(isVisible) {
   const easterEgg = document.getElementById("home-easter-egg");
@@ -1216,15 +1352,25 @@ function activateHomeEasterEgg() {
   if (!easterEgg || !document.body.classList.contains("menu-screen-active")) return;
 
   easterEgg.classList.add("revealed");
+  document.body.classList.add("lucio-mode");
 
   if (homeEasterEggRevealTimer) {
     clearTimeout(homeEasterEggRevealTimer);
+  }
+
+  if (lucioModeTimer) {
+    clearTimeout(lucioModeTimer);
   }
 
   homeEasterEggRevealTimer = setTimeout(() => {
     easterEgg.classList.remove("revealed");
     homeEasterEggRevealTimer = null;
   }, 3200);
+
+  lucioModeTimer = setTimeout(() => {
+    document.body.classList.remove("lucio-mode");
+    lucioModeTimer = null;
+  }, 10000);
 
   if (audio) {
     audio.currentTime = 0;
