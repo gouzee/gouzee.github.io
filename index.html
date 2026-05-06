@@ -1333,16 +1333,30 @@
 const STAR_VISIBILITY_STORAGE_KEY = "qcm-stars-disabled";
 let shootingStarTimer = null;
 let homeEasterEggRevealTimer = null;
-let lucioModeTimer = null;
 
 function setHomeEasterEggVisible(isVisible) {
   const easterEgg = document.getElementById("home-easter-egg");
 
   document.body.classList.toggle("menu-screen-active", isVisible);
 
-  if (!isVisible && easterEgg) {
+  if (!isVisible) {
+    deactivateHomeEasterEgg();
+  }
+}
+
+function deactivateHomeEasterEgg() {
+  const easterEgg = document.getElementById("home-easter-egg");
+
+  if (homeEasterEggRevealTimer) {
+    clearTimeout(homeEasterEggRevealTimer);
+    homeEasterEggRevealTimer = null;
+  }
+
+  if (easterEgg) {
     easterEgg.classList.remove("revealed");
   }
+
+  document.body.classList.remove("lucio-mode");
 }
 
 function activateHomeEasterEgg() {
@@ -1358,29 +1372,22 @@ function activateHomeEasterEgg() {
     clearTimeout(homeEasterEggRevealTimer);
   }
 
-  if (lucioModeTimer) {
-    clearTimeout(lucioModeTimer);
-  }
-
-  homeEasterEggRevealTimer = setTimeout(() => {
-    easterEgg.classList.remove("revealed");
-    homeEasterEggRevealTimer = null;
-  }, 3200);
-
-  lucioModeTimer = setTimeout(() => {
-    document.body.classList.remove("lucio-mode");
-    lucioModeTimer = null;
-  }, 10000);
-
   if (audio) {
     audio.currentTime = 0;
     audio.volume = 0.85;
+    audio.onended = deactivateHomeEasterEgg;
 
     const playPromise = audio.play();
 
     if (playPromise) {
-      playPromise.catch(() => {});
+      playPromise.catch(() => {
+        homeEasterEggRevealTimer = setTimeout(deactivateHomeEasterEgg, 3200);
+      });
+    } else {
+      homeEasterEggRevealTimer = setTimeout(deactivateHomeEasterEgg, 3200);
     }
+  } else {
+    homeEasterEggRevealTimer = setTimeout(deactivateHomeEasterEgg, 3200);
   }
 }
 
