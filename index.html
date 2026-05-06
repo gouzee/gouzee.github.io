@@ -420,7 +420,7 @@
 
   .doigby-progress-ring {
     position: absolute;
-    right: 14px;
+    left: 14px;
     bottom: 14px;
     z-index: 2;
     width: 48px;
@@ -531,7 +531,8 @@
     opacity: 0.9;
   }
 
-  .course-access {
+  .course-access,
+  .calendar-access {
     margin-top: 26px;
     background: #1a1a2e;
     border: 1px solid #2a2a4a;
@@ -539,17 +540,153 @@
     padding: 16px;
   }
 
-  .course-access h2 {
+  .course-access h2,
+  .calendar-access h2 {
     color: #f0f0ff;
     font-size: 18px;
     margin-bottom: 8px;
   }
 
-  .course-access p {
+  .course-access p,
+  .calendar-access p {
     color: #aab;
     font-size: 13px;
     line-height: 1.5;
     margin-bottom: 14px;
+  }
+
+  .calendar-week-nav {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .calendar-week-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #6366f1;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.22);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+
+  .calendar-week-btn:hover,
+  .calendar-week-btn:focus-visible {
+    transform: translateY(-1px) scale(1.04);
+    box-shadow: 0 0 26px rgba(168, 85, 247, 0.34);
+    outline: none;
+  }
+
+  .calendar-week-label {
+    min-height: 58px;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: #aab;
+    text-align: center;
+  }
+
+  .calendar-week-label strong {
+    display: block;
+    color: #f0f0ff;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .calendar-week-label span {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .calendar-content {
+    max-height: 68vh;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-bottom: 16px;
+  }
+
+  .calendar-day-group {
+    margin-bottom: 16px;
+  }
+
+  .calendar-day-title {
+    color: #a855f7;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+  }
+
+  .calendar-event {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 12px;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  .calendar-event-time {
+    color: #f0f0ff;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .calendar-event-title {
+    color: #f0f0ff;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 5px;
+  }
+
+  .calendar-event-details {
+    color: #aab;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .calendar-event-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .calendar-event-badge {
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.18);
+    color: #c4b5fd;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 8px;
+  }
+
+  .calendar-empty {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    color: #aab;
+    padding: 14px;
+    text-align: center;
+    line-height: 1.5;
   }
 
   .question {
@@ -983,6 +1120,33 @@
     margin-bottom: 14px;
   }
 
+  .mini-game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .mini-game-card {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .mini-game-card h2 {
+    color: #f0f0ff;
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .mini-game-card p {
+    color: #aab;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
   .game-panel {
     position: relative;
     background: linear-gradient(180deg, #171735, #101024);
@@ -992,10 +1156,19 @@
     margin-bottom: 14px;
   }
 
-  #runner-game {
+  #runner-game,
+  #snake-game {
     display: block;
     width: 100%;
+    touch-action: none;
+  }
+
+  #runner-game {
     height: 260px;
+  }
+
+  #snake-game {
+    height: 420px;
   }
 
   .game-overlay {
@@ -1166,8 +1339,13 @@
   }
 
   body.lucio-mode .course-access,
+  body.lucio-mode .calendar-access,
   body.lucio-mode .history-box,
   body.lucio-mode .game-access,
+  body.lucio-mode .mini-game-card,
+  body.lucio-mode .calendar-week-label,
+  body.lucio-mode .calendar-event,
+  body.lucio-mode .calendar-empty,
   body.lucio-mode .course-section,
   body.lucio-mode .preview-list li,
   body.lucio-mode .history-item,
@@ -1184,7 +1362,10 @@
   body.lucio-mode .grade,
   body.lucio-mode .history-header h2,
   body.lucio-mode .course-access h2,
+  body.lucio-mode .calendar-access h2,
+  body.lucio-mode .calendar-week-label strong,
   body.lucio-mode .game-access h2,
+  body.lucio-mode .calendar-event-title,
   body.lucio-mode .course-section h3 {
     color: #ecfccb;
   }
@@ -1192,6 +1373,10 @@
   body.lucio-mode .menu-text,
   body.lucio-mode .course-subtitle,
   body.lucio-mode .course-access p,
+  body.lucio-mode .calendar-access p,
+  body.lucio-mode .calendar-week-label,
+  body.lucio-mode .calendar-event-details,
+  body.lucio-mode .calendar-empty,
   body.lucio-mode .game-access p,
   body.lucio-mode .game-help,
   body.lucio-mode .course-section li,
@@ -1205,6 +1390,7 @@
   body.lucio-mode .history-section h3,
   body.lucio-mode .history-toggle,
   body.lucio-mode .course-section h2,
+  body.lucio-mode .calendar-day-title,
   body.lucio-mode .highlight,
   body.lucio-mode .big-score,
   body.lucio-mode .history-score {
@@ -1214,6 +1400,13 @@
   body.lucio-mode .score-bar,
   body.lucio-mode .progress-bar {
     background: rgba(8, 47, 31, 0.95);
+  }
+
+  body.lucio-mode .calendar-week-btn {
+    background: linear-gradient(90deg, #16a34a, #84cc16, #22c55e);
+    border-color: #22c55e;
+    color: #04130a;
+    box-shadow: 0 0 22px rgba(74, 222, 128, 0.24);
   }
 
   body.lucio-mode .qcm-separator,
@@ -1284,8 +1477,36 @@
       grid-template-columns: 1fr;
     }
 
+    .calendar-week-nav {
+      grid-template-columns: 40px minmax(0, 1fr) 40px;
+      gap: 8px;
+    }
+
+    .calendar-week-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+    }
+
+    .calendar-event {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .calendar-content {
+      max-height: 62vh;
+    }
+
+    .mini-game-grid {
+      grid-template-columns: 1fr;
+    }
+
     #runner-game {
       height: 220px;
+    }
+
+    #snake-game {
+      height: 320px;
     }
 
     .scroll-top-btn {
@@ -1336,7 +1557,7 @@
     }
 
     .doigby-progress-ring {
-      right: 10px;
+      left: 10px;
       bottom: 10px;
       width: 42px;
       height: 42px;
@@ -1367,6 +1588,7 @@
     .home-easter-egg,
     .doigby-easter-egg,
     .doigby-video-layer,
+    .mini-game-grid,
     .header,
     .course-subtitle {
       display: none;
@@ -1502,6 +1724,13 @@
       <button class="btn secondary-btn" onclick="showCourse('developpement')">Développement Web</button>
       <button class="btn secondary-btn" onclick="showCourse('cultureCreation')">Culture de la Création</button>
     </div>
+
+    <div class="calendar-access">
+      <h2>Calendrier Wesford</h2>
+      <p>Consulte les prochains cours, horaires, salles et événements importants.</p>
+      <button class="btn" onclick="showCalendar()">Ouvrir le calendrier</button>
+    </div>
+
     <div class="history-box">
       <div class="history-header">
         <h2>Historique des essais</h2>
@@ -1526,9 +1755,9 @@
     </div>
 
     <div class="game-access">
-      <h2>Petite pause</h2>
-      <p>Un mini-jeu indépendant des cours, façon dinosaure de Chrome quand Internet ne marche plus.</p>
-      <button class="btn" onclick="showGame()">Lancer le mini-jeu</button>
+      <h2>Mini-jeux</h2>
+      <p>Une zone séparée des cours pour choisir un mini-jeu et faire une vraie pause.</p>
+      <button class="btn" onclick="showGame()">Voir les mini-jeux</button>
     </div>
 
     <a
@@ -1575,6 +1804,30 @@
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
+  <div id="calendar-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Calendrier</span>
+    </div>
+
+    <h1 class="course-title">Calendrier Wesford</h1>
+    <p class="course-subtitle">
+      Cours, horaires, salles et événements importants.
+    </p>
+
+    <div class="calendar-week-nav">
+      <button class="calendar-week-btn" type="button" onclick="changeCalendarWeek(-1)" aria-label="Semaine précédente">‹</button>
+      <div class="calendar-week-label">
+        <strong id="calendar-week-title">Semaine</strong>
+        <span id="calendar-week-range"></span>
+      </div>
+      <button class="calendar-week-btn" type="button" onclick="changeCalendarWeek(1)" aria-label="Semaine suivante">›</button>
+    </div>
+
+    <div class="calendar-content" id="calendar-content"></div>
+
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
   <div id="quiz-screen" class="hidden">
     <div class="header">
       <span class="tag" id="course-tag">QCM</span>
@@ -1597,6 +1850,35 @@
   </div>
 
   <div id="game-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Mini-jeux</span>
+    </div>
+
+    <h1 class="course-title">Choisis un mini-jeu</h1>
+    <p class="course-subtitle">
+      Les jeux sont indépendants des QCM et conservent leur meilleur score sur cet appareil.
+    </p>
+
+    <div class="mini-game-grid">
+      <div class="mini-game-card">
+        <h2>Course du dinosaure</h2>
+        <p>Saute par-dessus les obstacles et garde le rythme le plus longtemps possible.</p>
+        <div class="game-stat">Meilleur score<strong id="runner-menu-best-score">0</strong></div>
+        <button class="btn" onclick="showRunnerGame()">Jouer</button>
+      </div>
+
+      <div class="mini-game-card">
+        <h2>Snake</h2>
+        <p>Guide le serpent, mange les points lumineux et évite les murs comme ta propre queue.</p>
+        <div class="game-stat">Meilleur score<strong id="snake-menu-best-score">0</strong></div>
+        <button class="btn" onclick="showSnakeGame()">Jouer</button>
+      </div>
+    </div>
+
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="runner-screen" class="hidden">
     <div class="header">
       <span class="tag">Mini-jeu</span>
       <span class="counter" id="game-live-score">Score : 0</span>
@@ -1624,6 +1906,39 @@
     </p>
 
     <button class="btn" onclick="startMiniGame()">Démarrer / recommencer</button>
+    <button class="btn secondary-btn" onclick="showGame()">Changer de mini-jeu</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="snake-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Mini-jeu</span>
+      <span class="counter" id="snake-live-score">Score : 0</span>
+    </div>
+
+    <h1 class="course-title">Snake</h1>
+    <p class="course-subtitle">
+      Mange les points violets, grandis, et évite les murs ainsi que ta propre queue.
+    </p>
+
+    <div class="game-panel">
+      <canvas id="snake-game" width="704" height="420" aria-label="Mini-jeu Snake"></canvas>
+      <div class="game-overlay" id="snake-overlay">
+        Clique sur Démarrer, puis utilise les flèches ou ZQSD pour diriger le serpent.
+      </div>
+    </div>
+
+    <div class="game-stats">
+      <div class="game-stat">Score actuel<strong id="snake-current-score">0</strong></div>
+      <div class="game-stat">Meilleur score<strong id="snake-best-score">0</strong></div>
+    </div>
+
+    <p class="game-help">
+      Sur ordinateur : flèches ou ZQSD. Sur mobile : touche le côté où tu veux aller. Chaque point mangé rapporte 1.
+    </p>
+
+    <button class="btn" onclick="startSnakeGame()">Démarrer / recommencer</button>
+    <button class="btn secondary-btn" onclick="showGame()">Changer de mini-jeu</button>
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
@@ -1682,6 +1997,10 @@ let doigbyAudioAnalyser = null;
 let doigbyAudioSource = null;
 let doigbySilentGain = null;
 let doigbyFrequencyData = null;
+const wesfordCalendarEvents=[{"details":"Réunion de rentrée - salle 41","start":"2025-09-08T08:45:00","end":"2025-09-08T10:45:00","title":"Accueil"},{"details":"J. Tiveyrat · salle 31","start":"2025-09-08T10:45:00","end":"2025-09-08T12:30:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 31","start":"2025-09-08T13:30:00","end":"2025-09-08T17:15:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 25","start":"2025-09-09T08:45:00","end":"2025-09-09T12:30:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 25","start":"2025-09-09T13:30:00","end":"2025-09-09T17:15:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · meet.google.com/uvn-yypu-ydu · En distanciel","start":"2025-09-10T08:45:00","end":"2025-09-10T12:30:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · meet.google.com/uvn-yypu-ydu · En distanciel","start":"2025-09-10T13:30:00","end":"2025-09-10T17:15:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 35","start":"2025-09-11T08:45:00","end":"2025-09-11T12:30:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 35","start":"2025-09-11T13:30:00","end":"2025-09-11T17:15:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 40","start":"2025-09-12T08:45:00","end":"2025-09-12T12:30:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 40","start":"2025-09-12T13:30:00","end":"2025-09-12T17:15:00","title":"Mise à niveau"},{"details":"J. Tiveyrat · salle 21","start":"2025-09-24T08:45:00","end":"2025-09-24T12:30:00","title":"Strat. Com"},{"details":"R. Gasquet · salle 21","start":"2025-09-24T13:30:00","end":"2025-09-24T17:15:00","title":"PAO"},{"details":"A. Gerber · salle 21","start":"2025-09-25T08:45:00","end":"2025-09-25T12:30:00","title":"Vidéo"},{"details":"M. Bernard · salle 21","start":"2025-09-25T13:30:00","end":"2025-09-25T17:15:00","title":"Conception rédaction"},{"details":"R. Gasquet · salle 21","start":"2025-09-26T08:45:00","end":"2025-09-26T12:30:00","title":"PAO"},{"details":"H. Roche · salle 21","start":"2025-09-26T13:30:00","end":"2025-09-26T17:15:00","title":"Veille et stratégie marketing"},{"details":"J. Tiveyrat · salle 35","start":"2025-10-08T08:45:00","end":"2025-10-08T12:30:00","title":"Strat. Com"},{"details":"SALLE 35 - Travail donné par A. GERBER","start":"2025-10-08T13:30:00","end":"2025-10-08T17:15:00","title":"Vidéo"},{"details":"H. Roche · salle 70","start":"2025-10-09T08:45:00","end":"2025-10-09T12:30:00","title":"Veille et stratégie marketing"},{"details":"L. Blondeau · salle 70","start":"2025-10-09T13:30:00","end":"2025-10-09T17:15:00","title":"événementiel"},{"details":"R. Gasquet · salle 41","start":"2025-10-10T08:45:00","end":"2025-10-10T12:30:00","title":"PAO"},{"details":"H. Roche · salle 43","start":"2025-10-10T13:30:00","end":"2025-10-10T17:15:00","title":"Veille et stratégie marketing"},{"details":"J. Tiveyrat · salle 61","start":"2025-10-22T08:45:00","end":"2025-10-22T12:30:00","title":"Strat. Com"},{"details":"M. Bernard · salle 61","start":"2025-10-22T13:30:00","end":"2025-10-22T17:15:00","title":"Conception rédaction"},{"details":"R. Gasquet · salle 40","start":"2025-10-23T08:45:00","end":"2025-10-23T12:30:00","title":"PAO"},{"details":"A. Gerber · salle 40","start":"2025-10-23T13:30:00","end":"2025-10-23T17:15:00","title":"Vidéo"},{"details":"B. Leyritz · salle 31","start":"2025-10-24T08:45:00","end":"2025-10-24T12:30:00","title":"Safe & Smart Com"},{"details":"R. Gasquet · salle 31","start":"2025-10-24T13:30:00","end":"2025-10-24T17:15:00","title":"PAO"},{"details":"J. Tiveyrat · salle 41","start":"2025-11-05T08:45:00","end":"2025-11-05T12:30:00","title":"Rapport de mission + prépa Grand Oral"},{"details":"J. Tiveyrat · salle 40","start":"2025-11-05T13:30:00","end":"2025-11-05T17:15:00","title":"Safe & Smart Com"},{"details":"M. Bernard · salle 43","start":"2025-11-06T08:45:00","end":"2025-11-06T12:30:00","title":"Conception rédaction"},{"details":"L. Blondeau · salle 43","start":"2025-11-06T13:30:00","end":"2025-11-06T17:15:00","title":"événementiel"},{"details":"R. Gasquet · salle 31","start":"2025-11-07T08:45:00","end":"2025-11-07T12:30:00","title":"PAO"},{"details":"H. Roche · salle 31","start":"2025-11-07T13:30:00","end":"2025-11-07T17:15:00","title":"Veille et stratégie marketing"},{"details":"J. Tiveyrat · salle 35","start":"2025-11-19T08:45:00","end":"2025-11-19T12:30:00","title":"Strat. Com"},{"details":"F. Lormand · salle 35","start":"2025-11-19T13:30:00","end":"2025-11-19T17:15:00","title":"community mgt"},{"details":"B. Leyritz · salle 61","start":"2025-11-20T08:45:00","end":"2025-11-20T12:30:00","title":"Safe & Smart Com"},{"details":"R. Gasquet · salle 61","start":"2025-11-20T13:30:00","end":"2025-11-20T17:15:00","title":"PAO"},{"details":"H. Roche · salle 21","start":"2025-11-21T08:45:00","end":"2025-11-21T12:30:00","title":"Veille et stratégie marketing"},{"details":"A. Gerber · salle 21","start":"2025-11-21T13:30:00","end":"2025-11-21T17:15:00","title":"Vidéo"},{"details":"J. Tiveyrat · salle 61","start":"2025-12-03T08:45:00","end":"2025-12-03T12:30:00","title":"Strat. Com"},{"details":"F. Lormand · salle 61","start":"2025-12-03T13:30:00","end":"2025-12-03T17:15:00","title":"community mgt"},{"details":"N. Zamboni · salle 31","start":"2025-12-04T08:45:00","end":"2025-12-04T12:30:00","title":"Culture de la création"},{"details":"H. Roche · salle 31","start":"2025-12-04T13:30:00","end":"2025-12-04T17:15:00","title":"Veille et stratégie marketing"},{"details":"R. Gasquet · salle 40","start":"2025-12-05T08:45:00","end":"2025-12-05T12:30:00","title":"PAO"},{"details":"H. Roche · salle 40","start":"2025-12-05T13:30:00","end":"2025-12-05T17:15:00","title":"Veille et stratégie marketing"},{"details":"J. Tiveyrat · salle 61","start":"2025-12-17T08:45:00","end":"2025-12-17T12:30:00","title":"Rapport de mission + prépa Grand Oral"},{"details":"M. Bernard · salle 61","start":"2025-12-17T13:30:00","end":"2025-12-17T17:15:00","title":"Conception rédaction"},{"details":"J. Tiveyrat · Saint-Étienne","start":"2025-12-18T08:45:00","end":"2025-12-18T12:30:00","title":"Compet MSDI"},{"details":"J. Tiveyrat · Saint-Étienne","start":"2025-12-18T13:30:00","end":"2025-12-18T17:15:00","title":"Compet MSDI"},{"details":"N. Chibret · salle 40","start":"2025-12-19T08:45:00","end":"2025-12-19T12:30:00","title":"Anglais"},{"details":"B. Leyritz · salle 40","start":"2025-12-19T13:30:00","end":"2025-12-19T17:15:00","title":"Com. et création écoresponsable"},{"details":"J. Tiveyrat · 35","start":"2026-01-14T08:45:00","end":"2026-01-14T12:30:00","title":"Strat. Com"},{"details":"M. Bernard · 35","start":"2026-01-14T13:30:00","end":"2026-01-14T17:15:00","title":"Conception rédaction"},{"details":"R. Gasquet · 40","start":"2026-01-15T08:45:00","end":"2026-01-15T12:30:00","title":"PAO"},{"details":"A. Gerber · 40","start":"2026-01-15T13:30:00","end":"2026-01-15T17:15:00","title":"Vidéo"},{"details":"H. Roche · 40","start":"2026-01-16T08:45:00","end":"2026-01-16T12:30:00","title":"Oral VST"},{"details":"H. Roche · 40","start":"2026-01-16T13:30:00","end":"2026-01-16T17:15:00","title":"Oral VST"},{"details":"J. Tiveyrat · 41","start":"2026-01-28T08:45:00","end":"2026-01-28T12:30:00","title":"Rapport de mission + prépa Grand Oral"},{"details":"A. Gerber · 41","start":"2026-01-28T13:30:00","end":"2026-01-28T17:15:00","title":"Vidéo"},{"details":"N. Zamboni · 31","start":"2026-01-29T08:45:00","end":"2026-01-29T12:30:00","title":"Culture de la création"},{"details":"G. Estorgues · 31","start":"2026-01-29T13:30:00","end":"2026-01-29T17:15:00","title":"Communication orale"},{"details":"R. Gasquet · 40","start":"2026-01-30T08:45:00","end":"2026-01-30T12:30:00","title":"PAO"},{"details":"L. Blondeau · 40","start":"2026-01-30T13:30:00","end":"2026-01-30T17:15:00","title":"événementiel"},{"details":"R. Gasquet · 40","start":"2026-02-11T08:45:00","end":"2026-02-11T12:30:00","title":"PAO"},{"details":"N. Zamboni · 40","start":"2026-02-11T13:30:00","end":"2026-02-11T17:15:00","title":"Culture de la création"},{"details":"A. Gerber · 31","start":"2026-02-12T08:45:00","end":"2026-02-12T12:30:00","title":"Vidéo"},{"details":"F. Lormand · 31","start":"2026-02-12T13:30:00","end":"2026-02-12T17:15:00","title":"community mgt"},{"details":"N. Zamboni · 40","start":"2026-02-13T08:45:00","end":"2026-02-13T12:30:00","title":"Culture de la création"},{"details":"L. Blondeau · 40","start":"2026-02-13T13:30:00","end":"2026-02-13T17:15:00","title":"événementiel"},{"details":"R. Gasquet · 31","start":"2026-02-19T08:45:00","end":"2026-02-19T12:30:00","title":"PAO"},{"details":"B. Leyritz · 31","start":"2026-02-19T13:30:00","end":"2026-02-19T17:15:00","title":"Com. et création écoresponsable"},{"details":"63","start":"2026-02-20T08:45:00","end":"2026-02-20T12:30:00","title":"Compet KABRIEF"},{"details":"J. Tiveyrat · 63","start":"2026-02-20T13:30:00","end":"2026-02-20T17:15:00","title":"Compet KABRIEF"},{"details":"40","start":"2026-02-23T08:45:00","end":"2026-02-23T12:30:00","title":"Compet KABRIEF"},{"details":"40","start":"2026-02-23T13:30:00","end":"2026-02-23T17:15:00","title":"Compet KABRIEF"},{"details":"40","start":"2026-02-24T08:45:00","end":"2026-02-24T12:30:00","title":"Compet KABRIEF"},{"details":"J. Tiveyrat · 40","start":"2026-02-24T13:30:00","end":"2026-02-24T17:15:00","title":"Compet KABRIEF"},{"details":"J. Tiveyrat · 40","start":"2026-02-25T08:45:00","end":"2026-02-25T12:30:00","title":"Compet KABRIEF"},{"details":"J. Tiveyrat · 40","start":"2026-02-25T13:30:00","end":"2026-02-25T17:15:00","title":"Compet KABRIEF"},{"details":"J. Tiveyrat · Saint-Étienne","start":"2026-02-26T08:45:00","end":"2026-02-26T12:30:00","title":"Compet KABRIEF"},{"details":"J. Tiveyrat · Saint-Étienne","start":"2026-02-26T13:30:00","end":"2026-02-26T17:15:00","title":"Compet KABRIEF"},{"details":"jury - 40","start":"2026-02-27T08:45:00","end":"2026-02-27T12:30:00","title":"Compet KABRIEF"},{"details":"jury - 40","start":"2026-02-27T13:30:00","end":"2026-02-27T17:15:00","title":"Compet KABRIEF"},{"details":"J. Tiveyrat · 35","start":"2026-03-11T08:45:00","end":"2026-03-11T12:30:00","title":"Rapport de mission + prépa Grand Oral"},{"details":"N. Zamboni · 35","start":"2026-03-11T13:30:00","end":"2026-03-11T17:15:00","title":"Dvt web, initiation, référencement"},{"details":"R. Gasquet · 40","start":"2026-03-12T08:45:00","end":"2026-03-12T12:30:00","title":"PAO"},{"details":"N. Chibret · 40","start":"2026-03-12T13:30:00","end":"2026-03-12T17:15:00","title":"Anglais"},{"details":"N. Zamboni · 61","start":"2026-03-13T08:45:00","end":"2026-03-13T12:30:00","title":"Dvt web, initiation, référencement"},{"details":"L. Blondeau · 61","start":"2026-03-13T13:30:00","end":"2026-03-13T17:15:00","title":"événementiel"},{"details":"A. Gerber · 40","start":"2026-03-25T08:45:00","end":"2026-03-25T12:30:00","title":"Vidéo"},{"details":"L. Blondeau · 40","start":"2026-03-25T13:30:00","end":"2026-03-25T17:15:00","title":"événementiel"},{"details":"C. Gouvernelle · 61","start":"2026-03-26T08:45:00","end":"2026-03-26T12:30:00","title":"Communication orale"},{"details":"C. Gouvernelle · 61","start":"2026-03-26T13:30:00","end":"2026-03-26T17:15:00","title":"Communication orale"},{"details":"B. Leyritz · 40","start":"2026-03-27T08:45:00","end":"2026-03-27T12:30:00","title":"Com. et création écoresponsable"},{"details":"R. Gasquet · 40","start":"2026-03-27T13:30:00","end":"2026-03-27T17:15:00","title":"PAO"},{"details":"R. Gasquet · 40","start":"2026-04-08T08:45:00","end":"2026-04-08T12:30:00","title":"PAO"},{"details":"L. Blondeau · 40","start":"2026-04-08T13:30:00","end":"2026-04-08T17:15:00","title":"événementiel"},{"details":"R. Gasquet · 40","start":"2026-04-09T08:45:00","end":"2026-04-09T12:30:00","title":"PAO"},{"details":"N. Chibret · 40","start":"2026-04-09T13:30:00","end":"2026-04-09T17:15:00","title":"Anglais"},{"details":"N. Zamboni · 31","start":"2026-04-10T08:45:00","end":"2026-04-10T12:30:00","title":"7 j de la créa"},{"details":"N. Zamboni · 31","start":"2026-04-10T13:30:00","end":"2026-04-10T17:15:00","title":"7 j de la créa"},{"details":"N. Zamboni · 40","start":"2026-04-16T08:45:00","end":"2026-04-16T12:30:00","title":"7 j de la créa"},{"details":"Salle 40 à disposition · En distanciel","start":"2026-04-16T13:30:00","end":"2026-04-16T17:15:00","title":"7 j de la créa"},{"details":"N. Zamboni · 40","start":"2026-04-17T08:45:00","end":"2026-04-17T12:30:00","title":"7 j de la créa"},{"details":"N. Zamboni · 40","start":"2026-04-17T13:30:00","end":"2026-04-17T17:15:00","title":"7 j de la créa"},{"details":"F. Lormand · 21","start":"2026-04-22T08:45:00","end":"2026-04-22T12:30:00","title":"community mgt"},{"details":"N. Chibret · 21","start":"2026-04-22T13:30:00","end":"2026-04-22T17:15:00","title":"Anglais"},{"details":"B. Leyritz · 31 - INTERVENTION APEC à 11h00","start":"2026-04-23T08:45:00","end":"2026-04-23T12:30:00","title":"Com. et création écoresponsable"},{"details":"N. Zamboni · 31","start":"2026-04-23T13:30:00","end":"2026-04-23T17:15:00","title":"Dvt web, initiation, référencement"},{"details":"N. Zamboni · 21","start":"2026-04-24T08:45:00","end":"2026-04-24T12:30:00","title":"Dvt web, initiation, référencement"},{"details":"A. Gerber · 21","start":"2026-04-24T13:30:00","end":"2026-04-24T17:15:00","title":"Vidéo"},{"details":"L. Blondeau · 40","start":"2026-05-05T08:45:00","end":"2026-05-05T12:30:00","title":"événementiel"},{"details":"N. Zamboni · 40","start":"2026-05-05T13:30:00","end":"2026-05-05T17:15:00","title":"Dvt web, initiation, référencement"},{"details":"N. Zamboni · 63","start":"2026-05-06T08:45:00","end":"2026-05-06T12:30:00","title":"Dvt web, initiation, référencement"},{"details":"N. Chibret · 63","start":"2026-05-06T13:30:00","end":"2026-05-06T17:15:00","title":"Anglais"},{"details":"N. Zamboni · 41","start":"2026-05-07T08:45:00","end":"2026-05-07T12:30:00","title":"Brief créatif"},{"details":"F. Lormand · 41","start":"2026-05-07T13:30:00","end":"2026-05-07T17:15:00","title":"community mgt"},{"details":"N. Zamboni · 21","start":"2026-05-20T08:45:00","end":"2026-05-20T12:30:00","title":"Dvt web, initiation, référencement"},{"details":"N. Zamboni · 21","start":"2026-05-20T13:30:00","end":"2026-05-20T17:15:00","title":"Dvt web, initiation, référencement"},{"details":"41","start":"2026-05-21T08:45:00","end":"2026-05-21T12:30:00","title":"Groka"},{"details":"41","start":"2026-05-21T13:30:00","end":"2026-05-21T17:15:00","title":"Groka"},{"details":"N. Zamboni · 40","start":"2026-05-22T08:45:00","end":"2026-05-22T12:30:00","title":"Intelligence artificielle"},{"details":"41","start":"2026-05-22T13:30:00","end":"2026-05-22T17:15:00","title":"Brief créatif"},{"details":"J. Tiveyrat · 70","start":"2026-06-03T08:45:00","end":"2026-06-03T12:30:00","title":"Rapport de mission + prépa Grand Oral"},{"details":"N. Chibret · 70","start":"2026-06-03T13:30:00","end":"2026-06-03T17:15:00","title":"Anglais"},{"details":"G. Estorgues · 70","start":"2026-06-04T08:45:00","end":"2026-06-04T12:30:00","title":"Communication orale"},{"details":"G. Estorgues · 70","start":"2026-06-04T13:30:00","end":"2026-06-04T17:15:00","title":"Communication orale"},{"details":"F. Lormand · 71","start":"2026-06-05T08:45:00","end":"2026-06-05T12:30:00","title":"community mgt"},{"details":"L. Blondeau · 71","start":"2026-06-05T13:30:00","end":"2026-06-05T17:15:00","title":"événementiel"},{"details":"J. Tiveyrat · 40","start":"2026-06-12T08:45:00","end":"2026-06-12T12:30:00","title":"Compét nationale"},{"details":"40","start":"2026-06-12T13:30:00","end":"2026-06-12T17:15:00","title":"Compét nationale"},{"details":"40","start":"2026-06-15T08:45:00","end":"2026-06-15T12:30:00","title":"Compét nationale"},{"details":"J. Tiveyrat · 40","start":"2026-06-15T13:30:00","end":"2026-06-15T17:15:00","title":"Compét nationale"},{"details":"J. Tiveyrat · 40","start":"2026-06-16T08:45:00","end":"2026-06-16T12:30:00","title":"Compét nationale"},{"details":"40","start":"2026-06-16T13:30:00","end":"2026-06-16T17:15:00","title":"Compét nationale"},{"details":"J. Tiveyrat · 41","start":"2026-06-17T08:45:00","end":"2026-06-17T12:30:00","title":"Compét nationale"},{"details":"J. Tiveyrat · 41","start":"2026-06-17T13:30:00","end":"2026-06-17T17:15:00","title":"Compét nationale"},{"details":"J. Tiveyrat · 41","start":"2026-06-18T08:45:00","end":"2026-06-18T12:30:00","title":"Compét nationale"},{"details":"J. Tiveyrat · 41","start":"2026-06-18T13:30:00","end":"2026-06-18T17:15:00","title":"Compét nationale"},{"details":"N. Chibret · 40","start":"2026-06-19T08:45:00","end":"2026-06-19T12:30:00","title":"Anglais"},{"details":"N. Zamboni · 40","start":"2026-06-19T13:30:00","end":"2026-06-19T17:15:00","title":"Intelligence artificielle"},{"details":"N. Zamboni · 61","start":"2026-07-01T08:45:00","end":"2026-07-01T12:30:00","title":"Intelligence artificielle"},{"details":"L. Blondeau · 61","start":"2026-07-01T13:30:00","end":"2026-07-01T17:15:00","title":"événementiel"},{"details":"N. Zamboni · 63","start":"2026-07-02T08:45:00","end":"2026-07-02T12:30:00","title":"Intelligence artificielle"},{"details":"N. Chibret · 63","start":"2026-07-02T13:30:00","end":"2026-07-02T17:15:00","title":"Anglais"},{"details":"61","start":"2026-07-03T08:45:00","end":"2026-07-03T12:30:00","title":"Grand Oral"},{"details":"61","start":"2026-07-03T13:30:00","end":"2026-07-03T17:15:00","title":"Grand Oral"}];
+let activeWesfordCalendarEvents = wesfordCalendarEvents.slice();
+let wesfordCalendarStatus = "ready";
+let calendarWeekStartDate = getCalendarWeekStart(new Date());
 
 function setHomeEasterEggVisible(isVisible) {
   const easterEgg = document.getElementById("home-easter-egg");
@@ -2738,6 +3057,142 @@ const courseContents = {
         ]
       },
       {
+        title: "Crédibilité, contenu et autorité SEO",
+        blocks: [
+          {
+            subtitle: "E comme Experience",
+            items: [
+              "Experience signifie la preuve par l’usage.",
+              "Google privilégie les contenus créés par quelqu’un qui a réellement utilisé le produit ou vécu la situation.",
+              "Exemple : un test d’iPhone par un journaliste tech qui l’a eu en main est plus crédible qu’un article généré par IA sans test physique.",
+              "Pour montrer l’expérience, on peut utiliser le « je », afficher des photos originales et raconter des anecdotes réelles."
+            ]
+          },
+          {
+            subtitle: "E comme Expertise",
+            items: [
+              "Expertise correspond au savoir-faire et à la profondeur des connaissances sur un sujet.",
+              "YMYL signifie Your Money or Your Life : ce sont les sujets sensibles comme la santé, la finance ou le juridique.",
+              "Sur les sujets YMYL, l’expertise doit être certifiée avec des diplômes, des citations ou des preuves sérieuses.",
+              "Il faut faire attention à qui signe les articles.",
+              "La page Auteurs devient importante pour prouver qui parle et pourquoi cette personne est légitime."
+            ]
+          },
+          {
+            subtitle: "A comme Autorité",
+            items: [
+              "Autorité signifie la reconnaissance par les pairs et la réputation dans un secteur.",
+              "Un site gagne en autorité quand d’autres sources reconnues parlent de lui.",
+              "Signaux d’autorité : être cité par des sites officiels comme .gov ou .edu.",
+              "Wikipédia peut être un signal d’autorité.",
+              "Les partages par des leaders d’opinion du milieu renforcent aussi cette autorité."
+            ]
+          },
+          {
+            subtitle: "T comme Trust",
+            items: [
+              "Trust est le pilier de la confiance et le plus important de E-E-A-T.",
+              "Trust concerne la sécurité et l’honnêteté du site.",
+              "Critères de confiance : mentions légales claires, certificat HTTPS, avis client authentiques.",
+              "La transparence sur les partenariats et la publicité est également importante.",
+              "Un site fiable doit montrer clairement qui il est, comment il fonctionne et pourquoi on peut lui faire confiance."
+            ]
+          },
+          {
+            subtitle: "Topics Clusters",
+            items: [
+              "Les Topics Clusters correspondent à une organisation thématique du contenu.",
+              "Au lieu de viser seulement un mot-clé, on vise une thématique entière.",
+              "La Pillar Page, ou page pilier, est un guide complet sur un sujet large.",
+              "Le Cluster Content correspond aux articles satellites.",
+              "Les articles satellites traitent des sous-sujets précis et font des liens vers la page pilier."
+            ]
+          },
+          {
+            subtitle: "Cocon sémantique",
+            items: [
+              "Le cocon sémantique est une architecture de site basée sur les besoins réels de l’utilisateur.",
+              "Il ne part pas seulement du catalogue de la marque.",
+              "La méthode consiste à créer une arborescence logique où chaque page pousse la page parente.",
+              "On ne fait pas du SEO pour les moteurs : on capture des intentions de recherche.",
+              "Le cocon sémantique aide à structurer les contenus selon les questions, besoins et parcours des utilisateurs."
+            ]
+          },
+          {
+            subtitle: "Contenu 10x",
+            items: [
+              "Pour être numéro 1, un contenu doit être 10 fois meilleur que tout ce qui existe déjà sur le sujet.",
+              "Les critères peuvent être : meilleur design, meilleures données, meilleure pédagogie et contenu plus complet.",
+              "La quantité ne bat plus la qualité.",
+              "Un article génial vaut mieux que 50 articles moyens.",
+              "Le contenu 10x cherche à devenir la meilleure réponse disponible pour une intention de recherche."
+            ]
+          },
+          {
+            subtitle: "Backlinks et autorité",
+            items: [
+              "Un backlink est un lien provenant d’un site B vers votre site A.",
+              "Un backlink fonctionne comme un vote de confiance ou une recommandation dans le monde réel.",
+              "L’ancre de lien est le texte cliquable du lien.",
+              "Une bonne ancre de lien doit être descriptive.",
+              "La qualité des liens compte plus que la quantité."
+            ]
+          },
+          {
+            subtitle: "Qualité des liens",
+            items: [
+              "Tous les liens ne se valent pas.",
+              "Un lien toxique provient d’un site de casino, de spam ou d’un site sans rapport thématique.",
+              "Un lien d’autorité, par exemple depuis Le Monde, vaut beaucoup plus que de nombreux liens de petits blogs inconnus.",
+              "Le score d’autorité peut être abordé avec des métriques comme Domain Authority chez Moz ou Domain Rating chez Ahrefs.",
+              "Un bon netlinking doit chercher la pertinence, la qualité et la crédibilité."
+            ]
+          },
+          {
+            subtitle: "Netlinking éthique et Black Hat",
+            items: [
+              "Le netlinking éthique est aussi appelé White Hat.",
+              "Le Linkbaiting consiste à créer un contenu tellement fort, comme une infographie ou une étude chiffrée, que les gens le citent naturellement.",
+              "Les Relations Presse Digitales consistent à contacter des journalistes pour qu’ils parlent d’une innovation.",
+              "Le Guest Posting raisonné consiste à écrire un article invité sur un site partenaire pertinent.",
+              "Les pratiques Black Hat incluent l’achat massif de liens sur des plateformes louches.",
+              "Les PBN, Private Blog Networks, sont de faux sites créés pour fabriquer des liens.",
+              "Le risque est une pénalité Google, parfois appelée Sandbox, pouvant aller jusqu’à la disparition des résultats."
+            ]
+          },
+          {
+            subtitle: "Social SEO",
+            items: [
+              "Les réseaux sociaux n’aident pas directement le SEO de manière classique.",
+              "Un lien sur Facebook est souvent en nofollow et ne transmet pas de jus de lien.",
+              "Indirectement, les réseaux sociaux peuvent aider le SEO.",
+              "Plus on parle d’une marque sur TikTok ou Instagram, plus des gens peuvent rechercher son nom sur Google.",
+              "La notoriété de marque et le volume de recherche du nom de marque sont de grands signaux de confiance."
+            ]
+          },
+          {
+            subtitle: "Duplicate Content",
+            items: [
+              "Le Duplicate Content est l’ennemi du rédacteur.",
+              "Il consiste à copier-coller le texte d’un autre site ou à avoir deux pages identiques sur son propre site.",
+              "Google choisit généralement une seule page et ignore les autres.",
+              "Des outils comme Copyscape ou Siteliner peuvent aider à repérer le contenu dupliqué.",
+              "Il faut créer un contenu original, utile et différenciant."
+            ]
+          },
+          {
+            subtitle: "Audit sémantique express",
+            items: [
+              "L’audit sémantique consiste à analyser ses concurrents.",
+              "Des outils comme YourText.Guru ou SEMRush peuvent aider.",
+              "L’objectif est de regarder quels mots le numéro 1 utilise et que votre contenu n’utilise pas encore.",
+              "Enrichir le champ lexical permet de paraître plus expert aux yeux de l’algorithme.",
+              "Un bon contenu couvre le vocabulaire réellement attendu autour d’un sujet."
+            ]
+          }
+        ]
+      },
+      {
         title: "Résumé du cours",
         blocks: [
           {
@@ -3096,7 +3551,41 @@ const questionBanks = {
       { q: "Qu'est-ce que le maillage interne ?", options: ["L'art de faire des liens entre ses propres pages", "L'achat de publicités SEA", "Le bourrage de mots-clés", "La suppression de tous les liens"], answer: 0, exp: "Le maillage interne consiste à relier les pages ou articles d'un même site pour guider Googlebot et les utilisateurs." },
       { q: "Que désigne le Link Juice dans le maillage interne ?", options: ["La circulation de valeur entre les pages via les liens", "La couleur d'un bouton", "Un format vidéo", "Un code d'erreur"], answer: 0, exp: "Le Link Juice, ou jus de lien, représente la circulation de valeur transmise par les liens à travers le site." },
       { q: "Que signifie E-E-A-T chez Google ?", options: ["Experience, Expertise, Authoritativeness, Trustworthiness", "Email, Engine, Animation, Tracking", "Edit, Export, Align, Type", "Error, Event, Article, Tag"], answer: 0, exp: "E-E-A-T signifie Experience, Expertise, Authoritativeness et Trustworthiness : expérience, expertise, autorité et confiance." },
-      { q: "Quelle idée résume le SEO moderne avec E-E-A-T ?", options: ["Écrire pour être une source fiable, pas seulement pour les robots", "Écrire uniquement pour répéter le même mot-clé", "Cacher le texte dans des images", "Ignorer l'utilisateur"], answer: 0, exp: "Le SEO moderne consiste à devenir une source de confiance pour l'utilisateur, logique encore plus importante avec le référencement pour les IA." }
+      { q: "Quelle idée résume le SEO moderne avec E-E-A-T ?", options: ["Écrire pour être une source fiable, pas seulement pour les robots", "Écrire uniquement pour répéter le même mot-clé", "Cacher le texte dans des images", "Ignorer l'utilisateur"], answer: 0, exp: "Le SEO moderne consiste à devenir une source de confiance pour l'utilisateur, logique encore plus importante avec le référencement pour les IA." },
+      { q: "Dans E-E-A-T, que signifie le E de Experience ?", options: ["La preuve par l'usage et l'expérience vécue", "Le nombre d'e-mails envoyés", "La vitesse exacte du serveur", "Le budget publicitaire"], answer: 0, exp: "Experience correspond à la preuve par l'usage : le contenu est plus crédible s'il vient de quelqu'un qui a réellement utilisé le produit ou vécu la situation." },
+      { q: "Quel exemple montre le mieux le E de Experience ?", options: ["Un test d'iPhone par un journaliste qui l'a réellement utilisé", "Un article IA sans test physique", "Une page vide avec beaucoup de mots-clés", "Un lien nofollow sur Facebook"], answer: 0, exp: "Un test réalisé par quelqu'un qui a vraiment utilisé le produit apporte une preuve d'expérience." },
+      { q: "Comment peut-on montrer son expérience dans un contenu SEO ?", options: ["Utiliser le « je », des photos originales et des anecdotes réelles", "Cacher le texte dans une image", "Copier le texte d'un concurrent", "Supprimer la page auteur"], answer: 0, exp: "Le « je », les photos originales et les anecdotes réelles montrent que l'auteur a vécu ou testé ce dont il parle." },
+      { q: "Dans E-E-A-T, que signifie Expertise ?", options: ["Le savoir-faire et la profondeur des connaissances sur un sujet", "Le nombre de couleurs d'une page", "La publicité instantanée", "Le nom du serveur DNS"], answer: 0, exp: "Expertise désigne le savoir-faire réel et la profondeur des connaissances sur le sujet traité." },
+      { q: "Que désigne YMYL chez Google ?", options: ["Les sujets sensibles comme santé, finance ou juridique", "Une méthode CSS d'alignement", "Un type de lien toxique", "Un format d'image"], answer: 0, exp: "YMYL signifie Your Money or Your Life : cela concerne les sujets sensibles comme la santé, la finance ou le juridique." },
+      { q: "Pourquoi la page Auteurs est-elle importante en SEO ?", options: ["Elle aide à prouver qui signe les contenus et pourquoi cette personne est légitime", "Elle remplace le HTTPS", "Elle sert à cacher les partenariats", "Elle supprime les backlinks"], answer: 0, exp: "La page Auteurs renforce l'expertise et la confiance en montrant qui parle et avec quelle légitimité." },
+      { q: "Dans E-E-A-T, que signifie Autorité ?", options: ["La reconnaissance par les pairs et la réputation dans un secteur", "Le fait d'avoir le plus grand logo", "Le nombre d'animations CSS", "Le prix du nom de domaine"], answer: 0, exp: "L'autorité correspond à la reconnaissance par les pairs et à la réputation du site ou de l'auteur dans son domaine." },
+      { q: "Quel signal peut renforcer l'autorité d'un site ?", options: ["Être cité par des sites officiels comme .gov ou .edu", "Avoir deux pages identiques", "Acheter des liens massivement", "Supprimer les mentions légales"], answer: 0, exp: "Les citations par des sites officiels, Wikipédia ou des leaders d'opinion renforcent l'autorité." },
+      { q: "Dans E-E-A-T, quel pilier est présenté comme le plus important ?", options: ["Trust, la confiance", "La couleur", "Le nombre de pages", "La longueur de l'URL"], answer: 0, exp: "Trust est le pilier de la confiance : il concerne la sécurité et l'honnêteté du site." },
+      { q: "Quel élément renforce le Trust d'un site ?", options: ["Mentions légales claires, HTTPS et avis authentiques", "Keyword Stuffing massif", "Achat de liens toxiques", "Texte copié-collé"], answer: 0, exp: "Le Trust repose sur des signaux de confiance comme les mentions légales, HTTPS, les avis authentiques et la transparence." },
+      { q: "Que sont les Topics Clusters en SEO ?", options: ["Une organisation thématique autour d'une page pilier et de contenus satellites", "Une liste de couleurs CSS", "Une méthode pour acheter des liens", "Un outil pour couper une vidéo"], answer: 0, exp: "Les Topics Clusters structurent le contenu autour d'une thématique entière avec une page pilier et des articles satellites." },
+      { q: "Qu'est-ce qu'une Pillar Page ?", options: ["Un guide complet sur un sujet large", "Une page sans lien interne", "Un article copié depuis un concurrent", "Un lien depuis un site de spam"], answer: 0, exp: "La Pillar Page, ou page pilier, est un guide complet qui couvre un sujet large." },
+      { q: "Quel est le rôle du Cluster Content ?", options: ["Traiter des sous-sujets précis et faire des liens vers la page pilier", "Remplacer le HTTPS", "Cacher les auteurs", "Supprimer les intentions de recherche"], answer: 0, exp: "Les articles satellites couvrent des sous-sujets et renvoient vers la page pilier." },
+      { q: "Qu'est-ce que le cocon sémantique ?", options: ["Une architecture basée sur les besoins réels de l'utilisateur", "Un catalogue de marque sans logique utilisateur", "Une technique de bourrage de mots-clés", "Une pénalité Google"], answer: 0, exp: "Le cocon sémantique organise le site selon les besoins et intentions réelles de l'utilisateur." },
+      { q: "Quelle phrase résume l'idée du cocon sémantique ?", options: ["On ne fait pas du SEO pour les moteurs, on capture des intentions de recherche", "On écrit uniquement pour les robots", "On supprime les liens internes", "On classe tout par ordre alphabétique"], answer: 0, exp: "Le cocon sémantique consiste à répondre à des intentions de recherche, pas seulement à plaire à l'algorithme." },
+      { q: "Que signifie le contenu 10x ?", options: ["Un contenu 10 fois meilleur que ce qui existe déjà sur le sujet", "Un article répété dix fois", "Dix liens achetés sur un site de spam", "Une page avec dix balises h1"], answer: 0, exp: "Le contenu 10x cherche à devenir la meilleure réponse disponible, avec meilleur design, meilleures données et meilleure pédagogie." },
+      { q: "Quelle idée résume le mieux la qualité de contenu en SEO moderne ?", options: ["Un article génial vaut mieux que 50 articles moyens", "La quantité bat toujours la qualité", "Il faut copier les concurrents", "Il faut écrire uniquement pour Googlebot"], answer: 0, exp: "La quantité ne bat plus la qualité : un contenu excellent est plus fort qu'une masse de contenus moyens." },
+      { q: "Qu'est-ce qu'un backlink ?", options: ["Un lien provenant d'un site B vers votre site A", "Une balise HTML invisible", "Une publicité SEA", "Un code d'erreur"], answer: 0, exp: "Un backlink est un lien entrant : il fonctionne comme une recommandation ou un vote de confiance." },
+      { q: "Qu'est-ce que l'ancre de lien ?", options: ["Le texte cliquable d'un lien", "Le nom du serveur", "La couleur du bouton", "La taille d'une image"], answer: 0, exp: "L'ancre de lien est le texte cliquable. Elle doit être descriptive pour être utile." },
+      { q: "Quelle différence entre lien toxique et lien d'autorité ?", options: ["Un lien toxique vient d'un site spam ou hors sujet, un lien d'autorité vient d'une source reconnue", "Un lien toxique est toujours en HTTPS", "Un lien d'autorité vient forcément d'un petit blog inconnu", "Il n'y a aucune différence"], answer: 0, exp: "La qualité du lien compte : un lien pertinent et reconnu vaut bien plus qu'un lien spam ou hors thématique." },
+      { q: "À quoi servent Domain Authority ou Domain Rating ?", options: ["À estimer l'autorité d'un domaine", "À mesurer le contraste CSS", "À créer une balise Open Graph", "À remplacer les mentions légales"], answer: 0, exp: "Domain Authority chez Moz et Domain Rating chez Ahrefs sont des métriques d'autorité de domaine." },
+      { q: "Qu'est-ce que le netlinking White Hat ?", options: ["Obtenir des liens sans tricher avec des méthodes éthiques", "Créer de faux sites pour se lier soi-même", "Acheter des liens massivement", "Copier le contenu d'un concurrent"], answer: 0, exp: "Le White Hat désigne des pratiques propres, durables et conformes aux règles." },
+      { q: "Que signifie Linkbaiting ?", options: ["Créer un contenu tellement fort que les gens le citent naturellement", "Acheter des liens sur une plateforme louche", "Créer un PBN", "Supprimer les liens internes"], answer: 0, exp: "Le Linkbaiting consiste à produire un contenu remarquable, comme une étude ou une infographie, qui attire naturellement des liens." },
+      { q: "Que sont les Relations Presse Digitales en SEO ?", options: ["Contacter des journalistes pour qu'ils parlent d'une innovation", "Envoyer du spam à des annuaires", "Créer des pages identiques", "Masquer les partenariats"], answer: 0, exp: "Les RP digitales peuvent générer de la visibilité et des liens depuis des médias ou sites reconnus." },
+      { q: "Qu'est-ce que le Guest Posting raisonné ?", options: ["Écrire un article invité sur un site partenaire pertinent", "Créer des faux sites en réseau", "Répéter un mot-clé partout", "Copier-coller une page existante"], answer: 0, exp: "Le Guest Posting raisonné consiste à publier un article invité sur un site partenaire cohérent et pertinent." },
+      { q: "Que signifie PBN en Black Hat SEO ?", options: ["Private Blog Networks, des faux sites créés pour fabriquer des liens", "Public Browser Navigation", "Page Builder Native", "Primary Brand Name"], answer: 0, exp: "Les PBN sont des réseaux de faux sites créés pour manipuler les backlinks." },
+      { q: "Quel risque accompagne les pratiques Black Hat ?", options: ["Une pénalité Google pouvant aller jusqu'à la disparition des résultats", "Une meilleure accessibilité automatique", "Une hausse garantie du Trust", "Une validation officielle du W3C"], answer: 0, exp: "Le Black Hat expose à des pénalités manuelles ou algorithmiques, parfois appelées Sandbox dans le cours." },
+      { q: "Les réseaux sociaux transmettent-ils directement du Link Juice SEO ?", options: ["Non, beaucoup de liens sociaux sont en nofollow", "Oui, toujours autant qu'un lien du Monde", "Oui, uniquement sur Facebook", "Non, car les réseaux sociaux n'ont aucun effet indirect"], answer: 0, exp: "Directement, les liens sociaux sont souvent nofollow et ne transmettent pas de jus de lien classique." },
+      { q: "Comment le Social SEO peut-il aider indirectement ?", options: ["En augmentant la notoriété et les recherches de marque sur Google", "En remplaçant le contenu dupliqué", "En supprimant HTTPS", "En créant automatiquement des diplômes"], answer: 0, exp: "Si une marque devient visible sur TikTok ou Instagram, plus de personnes peuvent rechercher son nom sur Google." },
+      { q: "Qu'est-ce que le Duplicate Content ?", options: ["Du texte copié-collé ou deux pages identiques", "Un contenu 10 fois meilleur", "Une page pilier", "Un lien d'autorité"], answer: 0, exp: "Le Duplicate Content désigne un contenu copié ou dupliqué, sur un autre site ou au sein du même site." },
+      { q: "Que fait souvent Google face à plusieurs pages identiques ?", options: ["Il choisit une seule page et ignore les autres", "Il classe toutes les pages premières", "Il transforme les pages en publicités", "Il supprime automatiquement le CSS"], answer: 0, exp: "Google évite de montrer plusieurs fois le même contenu : il choisit souvent une version et ignore les autres." },
+      { q: "Quels outils peuvent aider à repérer le contenu dupliqué ?", options: ["Copyscape ou Siteliner", "Who Can Use ou Figma", "Google Fonts ou Canva", "PageRank ou HTML"], answer: 0, exp: "Copyscape et Siteliner sont cités pour repérer le Duplicate Content." },
+      { q: "Quel est l'objectif d'un audit sémantique express ?", options: ["Analyser les mots utilisés par les concurrents pour enrichir son champ lexical", "Acheter des liens toxiques", "Réduire le contenu à un seul mot-clé", "Supprimer les pages auteurs"], answer: 0, exp: "L'audit sémantique observe les mots utilisés par les meilleurs concurrents pour compléter son vocabulaire et paraître plus expert." },
+      { q: "Quels outils sont cités pour un audit sémantique express ?", options: ["YourText.Guru ou SEMRush", "Copyscape uniquement", "Le DNS et le code 404", "F12 uniquement"], answer: 0, exp: "YourText.Guru et SEMRush peuvent aider à analyser le champ lexical utilisé par les concurrents." }
     ]
   },
 
@@ -3208,14 +3697,32 @@ let miniGame = {
   ]
 };
 
+let snakeGame = {
+  running: false,
+  animationId: null,
+  lastMoveTime: 0,
+  moveDelay: 132,
+  score: 0,
+  bestScore: Number(localStorage.getItem("miniSnakeBestScore") || 0),
+  gridSize: 20,
+  direction: { x: 1, y: 0 },
+  nextDirection: { x: 1, y: 0 },
+  snake: [],
+  food: { x: 12, y: 6 }
+};
+
 function hideAllScreens() {
   stopMiniGame();
+  stopSnakeGame();
   setHomeEasterEggVisible(false);
   document.getElementById("menu-screen").classList.add("hidden");
   document.getElementById("course-screen").classList.add("hidden");
   document.getElementById("preview-screen").classList.add("hidden");
+  document.getElementById("calendar-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.add("hidden");
+  document.getElementById("runner-screen").classList.add("hidden");
+  document.getElementById("snake-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.add("hidden");
 
   setTimeout(updateScrollTopButton, 0);
@@ -3348,6 +3855,31 @@ function applyNavigationState(state) {
     return;
   }
 
+  if (targetState.screen === "runner") {
+    showRunnerGame({
+      pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "snake") {
+    showSnakeGame({
+      pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "calendar") {
+    showCalendar({
+      pushState: false,
+      confirm: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
   if (targetState.screen === "course" && targetState.courseKey) {
     showCourse(targetState.courseKey, {
       confirm: false,
@@ -3426,6 +3958,346 @@ function initializeNavigation() {
   });
 }
 
+function getCalendarEventsWithDates() {
+  return activeWesfordCalendarEvents.map(event => ({
+    title: event.title,
+    details: event.details,
+    start: new Date(event.start),
+    end: new Date(event.end)
+  }));
+}
+
+function cleanIcsCalendarValue(value) {
+  const htmlDecoder = document.createElement("textarea");
+  const unescaped = String(value || "")
+    .replace(/\\n/g, "\n")
+    .replace(/\\,/g, ",")
+    .replace(/\\;/g, ";")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\bAppel fait\b/gi, " ")
+    .replace(/&nbsp;/g, " ");
+
+  htmlDecoder.innerHTML = unescaped;
+
+  return htmlDecoder.value
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n[ \t]+/g, "\n")
+    .replace(/[ \t]+\n/g, "\n")
+    .split("\n")
+    .map(line => line.trim())
+    .filter(Boolean)
+    .join(" · ")
+    .replace(/ · · /g, " · ")
+    .trim();
+}
+
+function formatIcsLocalDate(year, month, day, hour, minute, second) {
+  return (
+    year + "-" +
+    month + "-" +
+    day + "T" +
+    hour + ":" +
+    minute + ":" +
+    second
+  );
+}
+
+function parseIcsCalendarDate(value) {
+  const match = String(value || "").match(/^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(\d{2})(\d{2})?)?(Z)?/);
+
+  if (!match) return null;
+
+  const [, year, month, day, hour = "00", minute = "00", second = "00", isUtc] = match;
+
+  if (isUtc) {
+    return new Date(Date.UTC(
+      Number(year),
+      Number(month) - 1,
+      Number(day),
+      Number(hour),
+      Number(minute),
+      Number(second)
+    )).toISOString();
+  }
+
+  return formatIcsLocalDate(year, month, day, hour, minute, second);
+}
+
+function parseIcsCalendar(text) {
+  const unfoldedText = String(text || "")
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .replace(/\n[ \t]/g, "");
+
+  const eventBlocks = unfoldedText.match(/BEGIN:VEVENT\n[\s\S]*?\nEND:VEVENT/g) || [];
+
+  return eventBlocks.map(block => {
+    const event = {};
+
+    block.split("\n").forEach(line => {
+      const separatorIndex = line.indexOf(":");
+
+      if (separatorIndex < 0) return;
+
+      const propertyName = line.slice(0, separatorIndex).split(";")[0].toUpperCase();
+      const value = line.slice(separatorIndex + 1);
+
+      if (propertyName === "SUMMARY") {
+        event.title = cleanIcsCalendarValue(value);
+      }
+
+      if (propertyName === "DESCRIPTION") {
+        event.details = cleanIcsCalendarValue(value);
+      }
+
+      if (propertyName === "LOCATION") {
+        const location = cleanIcsCalendarValue(value);
+        event.details = event.details ? event.details + " · " + location : location;
+      }
+
+      if (propertyName === "DTSTART") {
+        event.start = parseIcsCalendarDate(value);
+      }
+
+      if (propertyName === "DTEND") {
+        event.end = parseIcsCalendarDate(value);
+      }
+    });
+
+    return event;
+  })
+  .filter(event => event.title && event.start && event.end)
+  .sort((eventA, eventB) => eventA.start.localeCompare(eventB.start));
+}
+
+function formatCalendarDate(date) {
+  return date.toLocaleDateString("fr-FR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+function formatCalendarTime(date) {
+  return date.toLocaleTimeString("fr-FR", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+function formatCalendarEventTime(event) {
+  return formatCalendarTime(event.start) + " - " + formatCalendarTime(event.end);
+}
+
+function getCalendarDayKey(date) {
+  return (
+    date.getFullYear() + "-" +
+    String(date.getMonth() + 1).padStart(2, "0") + "-" +
+    String(date.getDate()).padStart(2, "0")
+  );
+}
+
+function getCalendarWeekStart(date) {
+  const weekStart = new Date(date);
+  const day = weekStart.getDay() || 7;
+
+  weekStart.setHours(0, 0, 0, 0);
+  weekStart.setDate(weekStart.getDate() - day + 1);
+
+  return weekStart;
+}
+
+function getCalendarWeekEnd(weekStart) {
+  const weekEnd = new Date(weekStart);
+  weekEnd.setDate(weekEnd.getDate() + 7);
+  return weekEnd;
+}
+
+function addCalendarWeeks(date, amount) {
+  const nextWeek = new Date(date);
+  nextWeek.setDate(nextWeek.getDate() + (amount * 7));
+  return getCalendarWeekStart(nextWeek);
+}
+
+function getIsoWeekNumber(date) {
+  const target = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNumber = target.getUTCDay() || 7;
+  target.setUTCDate(target.getUTCDate() + 4 - dayNumber);
+
+  const yearStart = new Date(Date.UTC(target.getUTCFullYear(), 0, 1));
+  return Math.ceil((((target - yearStart) / 86400000) + 1) / 7);
+}
+
+function formatCalendarShortDate(date) {
+  return date.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long"
+  });
+}
+
+function updateCalendarWeekLabel(weekStart) {
+  const weekTitle = document.getElementById("calendar-week-title");
+  const weekRange = document.getElementById("calendar-week-range");
+  const weekEnd = new Date(getCalendarWeekEnd(weekStart));
+
+  weekEnd.setDate(weekEnd.getDate() - 1);
+
+  if (weekTitle) {
+    weekTitle.textContent = "Semaine " + getIsoWeekNumber(weekStart) + " - " + weekEnd.getFullYear();
+  }
+
+  if (weekRange) {
+    const weekStartYear = weekStart.getFullYear();
+    const weekEndYear = weekEnd.getFullYear();
+    weekRange.textContent = weekStartYear === weekEndYear
+      ? "Du " + formatCalendarShortDate(weekStart) + " au " + formatCalendarShortDate(weekEnd) + " " + weekEndYear
+      : "Du " + formatCalendarShortDate(weekStart) + " " + weekStartYear + " au " + formatCalendarShortDate(weekEnd) + " " + weekEndYear;
+  }
+}
+
+function getCalendarEventsForWeek(events, weekStart) {
+  const weekEnd = getCalendarWeekEnd(weekStart);
+  return events.filter(event => event.end > weekStart && event.start < weekEnd);
+}
+
+function chooseInitialCalendarWeek(events) {
+  const now = new Date();
+  const currentWeekStart = getCalendarWeekStart(now);
+
+  if (getCalendarEventsForWeek(events, currentWeekStart).length > 0) {
+    return currentWeekStart;
+  }
+
+  const nextEvent = events.find(event => event.end >= now);
+
+  if (nextEvent) {
+    return getCalendarWeekStart(nextEvent.start);
+  }
+
+  if (events.length > 0) {
+    return getCalendarWeekStart(events[events.length - 1].start);
+  }
+
+  return currentWeekStart;
+}
+
+function changeCalendarWeek(direction) {
+  calendarWeekStartDate = addCalendarWeeks(calendarWeekStartDate, direction);
+  renderCalendar();
+}
+
+function createCalendarBadge(text) {
+  const badge = document.createElement("span");
+  badge.className = "calendar-event-badge";
+  badge.textContent = text;
+  return badge;
+}
+
+function createCalendarEventElement(event) {
+  const item = document.createElement("article");
+  item.className = "calendar-event";
+
+  const time = document.createElement("div");
+  time.className = "calendar-event-time";
+  time.textContent = formatCalendarEventTime(event);
+
+  const body = document.createElement("div");
+
+  const title = document.createElement("div");
+  title.className = "calendar-event-title";
+  title.textContent = event.title;
+
+  const details = document.createElement("div");
+  details.className = "calendar-event-details";
+  details.textContent = event.details || "Aucun détail indiqué.";
+
+  const badges = document.createElement("div");
+  badges.className = "calendar-event-badges";
+
+  if (/distanciel|meet\.google/i.test(event.details || "")) {
+    badges.appendChild(createCalendarBadge("Distanciel"));
+  }
+
+  body.appendChild(title);
+  body.appendChild(details);
+
+  if (badges.children.length > 0) {
+    body.appendChild(badges);
+  }
+
+  item.appendChild(time);
+  item.appendChild(body);
+
+  return item;
+}
+
+function renderCalendar() {
+  const content = document.getElementById("calendar-content");
+
+  if (!content) return;
+
+  const allEvents = getCalendarEventsWithDates();
+  const weekStart = calendarWeekStartDate || chooseInitialCalendarWeek(allEvents);
+  const visibleEvents = getCalendarEventsForWeek(allEvents, weekStart);
+
+  updateCalendarWeekLabel(weekStart);
+
+  content.innerHTML = "";
+  content.scrollTop = 0;
+
+  if (visibleEvents.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "calendar-empty";
+    if (wesfordCalendarStatus === "loading") {
+      empty.textContent = "Chargement du calendrier Wesford...";
+    } else if (wesfordCalendarStatus === "error") {
+      empty.textContent = "Impossible de charger le calendrier.";
+    } else {
+      empty.textContent = "Aucun événement cette semaine.";
+    }
+    content.appendChild(empty);
+    return;
+  }
+
+  let currentDayKey = "";
+  let currentGroup = null;
+
+  visibleEvents.forEach(event => {
+    const dayKey = getCalendarDayKey(event.start);
+
+    if (dayKey !== currentDayKey) {
+      currentDayKey = dayKey;
+      currentGroup = document.createElement("section");
+      currentGroup.className = "calendar-day-group";
+
+      const dayTitle = document.createElement("h2");
+      dayTitle.className = "calendar-day-title";
+      dayTitle.textContent = formatCalendarDate(event.start);
+
+      currentGroup.appendChild(dayTitle);
+      content.appendChild(currentGroup);
+    }
+
+    currentGroup.appendChild(createCalendarEventElement(event));
+  });
+}
+
+function showCalendar(options = {}) {
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
+
+  hideAllScreens();
+  revealScreen("calendar-screen");
+  calendarWeekStartDate = chooseInitialCalendarWeek(getCalendarEventsWithDates());
+  renderCalendar();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "calendar" });
+  }
+}
 
 function showGame(options = {}) {
   const shouldPushState = options.pushState !== false;
@@ -3433,12 +4305,45 @@ function showGame(options = {}) {
   hideAllScreens();
   revealScreen("game-screen");
 
-  updateMiniGameScores();
-  drawMiniGameStartScreen();
+  updateGameHubScores();
 
   if (shouldPushState) {
     pushNavigationState({ screen: "game" });
   }
+}
+
+function showRunnerGame(options = {}) {
+  const shouldPushState = options.pushState !== false;
+
+  hideAllScreens();
+  revealScreen("runner-screen");
+  updateMiniGameScores();
+  drawMiniGameStartScreen();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "runner" });
+  }
+}
+
+function showSnakeGame(options = {}) {
+  const shouldPushState = options.pushState !== false;
+
+  hideAllScreens();
+  revealScreen("snake-screen");
+  updateSnakeScores();
+  drawSnakeStartScreen();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "snake" });
+  }
+}
+
+function updateGameHubScores() {
+  const runnerBestScore = document.getElementById("runner-menu-best-score");
+  const snakeBestScore = document.getElementById("snake-menu-best-score");
+
+  if (runnerBestScore) runnerBestScore.textContent = miniGame.bestScore;
+  if (snakeBestScore) snakeBestScore.textContent = snakeGame.bestScore;
 }
 
 function getMiniGameCanvas() {
@@ -3458,6 +4363,8 @@ function updateMiniGameScores() {
   if (liveScore) liveScore.textContent = "Score : " + miniGame.score;
   if (currentScore) currentScore.textContent = miniGame.score;
   if (bestScore) bestScore.textContent = miniGame.bestScore;
+
+  updateGameHubScores();
 }
 
 function resetMiniGameState() {
@@ -3499,7 +4406,7 @@ function stopMiniGame() {
 }
 
 function jumpMiniGame() {
-  const gameScreen = document.getElementById("game-screen");
+  const gameScreen = document.getElementById("runner-screen");
 
   if (!gameScreen || gameScreen.classList.contains("hidden")) return;
 
@@ -3842,6 +4749,289 @@ function drawMiniGame() {
   drawMiniGameDino(ctx, miniGame.player);
 }
 
+function getSnakeCanvas() {
+  return document.getElementById("snake-game");
+}
+
+function getSnakeContext() {
+  const canvas = getSnakeCanvas();
+  return canvas ? canvas.getContext("2d") : null;
+}
+
+function getSnakeGridMetrics() {
+  const canvas = getSnakeCanvas();
+  const cellSize = Math.floor(Math.min(canvas.width, canvas.height) / snakeGame.gridSize);
+  const boardSize = cellSize * snakeGame.gridSize;
+
+  return {
+    cellSize: cellSize,
+    boardSize: boardSize,
+    offsetX: Math.floor((canvas.width - boardSize) / 2),
+    offsetY: Math.floor((canvas.height - boardSize) / 2)
+  };
+}
+
+function updateSnakeScores() {
+  const liveScore = document.getElementById("snake-live-score");
+  const currentScore = document.getElementById("snake-current-score");
+  const bestScore = document.getElementById("snake-best-score");
+
+  if (liveScore) liveScore.textContent = "Score : " + snakeGame.score;
+  if (currentScore) currentScore.textContent = snakeGame.score;
+  if (bestScore) bestScore.textContent = snakeGame.bestScore;
+
+  updateGameHubScores();
+}
+
+function resetSnakeGameState() {
+  const center = Math.floor(snakeGame.gridSize / 2);
+
+  snakeGame.score = 0;
+  snakeGame.moveDelay = 132;
+  snakeGame.lastMoveTime = 0;
+  snakeGame.direction = { x: 1, y: 0 };
+  snakeGame.nextDirection = { x: 1, y: 0 };
+  snakeGame.snake = [
+    { x: center - 1, y: center },
+    { x: center - 2, y: center },
+    { x: center - 3, y: center }
+  ];
+
+  placeSnakeFood();
+  updateSnakeScores();
+}
+
+function startSnakeGame() {
+  stopSnakeGame();
+  resetSnakeGameState();
+
+  const overlay = document.getElementById("snake-overlay");
+  if (overlay) {
+    overlay.classList.add("hidden");
+  }
+
+  snakeGame.running = true;
+  snakeGame.animationId = requestAnimationFrame(runSnakeFrame);
+}
+
+function stopSnakeGame() {
+  if (typeof snakeGame === "undefined" || !snakeGame.animationId) {
+    if (typeof snakeGame !== "undefined") snakeGame.running = false;
+    return;
+  }
+
+  cancelAnimationFrame(snakeGame.animationId);
+  snakeGame.animationId = null;
+  snakeGame.running = false;
+}
+
+function isSnakeCellOccupied(x, y) {
+  return snakeGame.snake.some(segment => segment.x === x && segment.y === y);
+}
+
+function placeSnakeFood() {
+  let nextFood = null;
+
+  for (let attempt = 0; attempt < 500; attempt += 1) {
+    const x = Math.floor(Math.random() * snakeGame.gridSize);
+    const y = Math.floor(Math.random() * snakeGame.gridSize);
+
+    if (!isSnakeCellOccupied(x, y)) {
+      nextFood = { x: x, y: y };
+      break;
+    }
+  }
+
+  snakeGame.food = nextFood || { x: 0, y: 0 };
+}
+
+function setSnakeDirection(x, y) {
+  const currentDirection = snakeGame.direction;
+
+  if (currentDirection.x + x === 0 && currentDirection.y + y === 0) {
+    return;
+  }
+
+  snakeGame.nextDirection = { x: x, y: y };
+}
+
+function endSnakeGame() {
+  stopSnakeGame();
+
+  if (snakeGame.score > snakeGame.bestScore) {
+    snakeGame.bestScore = snakeGame.score;
+    localStorage.setItem("miniSnakeBestScore", String(snakeGame.bestScore));
+  }
+
+  updateSnakeScores();
+  drawSnakeGame();
+
+  const overlay = document.getElementById("snake-overlay");
+  if (overlay) {
+    overlay.textContent = "Perdu ! Score : " + snakeGame.score + ". Clique sur Démarrer pour recommencer.";
+    overlay.classList.remove("hidden");
+  }
+}
+
+function moveSnake() {
+  snakeGame.direction = snakeGame.nextDirection;
+
+  const head = snakeGame.snake[0];
+  const nextHead = {
+    x: head.x + snakeGame.direction.x,
+    y: head.y + snakeGame.direction.y
+  };
+
+  const hitWall =
+    nextHead.x < 0 ||
+    nextHead.x >= snakeGame.gridSize ||
+    nextHead.y < 0 ||
+    nextHead.y >= snakeGame.gridSize;
+
+  const ateFood = nextHead.x === snakeGame.food.x && nextHead.y === snakeGame.food.y;
+  const bodyToCheck = ateFood ? snakeGame.snake : snakeGame.snake.slice(0, -1);
+  const hitSelf = bodyToCheck.some(segment => segment.x === nextHead.x && segment.y === nextHead.y);
+
+  if (hitWall || hitSelf) {
+    endSnakeGame();
+    return;
+  }
+
+  snakeGame.snake.unshift(nextHead);
+
+  if (ateFood) {
+    snakeGame.score += 1;
+    snakeGame.moveDelay = Math.max(76, snakeGame.moveDelay - 3);
+    placeSnakeFood();
+  } else {
+    snakeGame.snake.pop();
+  }
+
+  updateSnakeScores();
+  drawSnakeGame();
+}
+
+function runSnakeFrame(timestamp) {
+  if (!snakeGame.running) return;
+
+  if (!snakeGame.lastMoveTime) {
+    snakeGame.lastMoveTime = timestamp;
+  }
+
+  if (timestamp - snakeGame.lastMoveTime >= snakeGame.moveDelay) {
+    snakeGame.lastMoveTime = timestamp;
+    moveSnake();
+  }
+
+  if (snakeGame.running) {
+    snakeGame.animationId = requestAnimationFrame(runSnakeFrame);
+  }
+}
+
+function drawSnakeStartScreen() {
+  resetSnakeGameState();
+  drawSnakeGame();
+
+  const overlay = document.getElementById("snake-overlay");
+  if (overlay) {
+    overlay.textContent = "Clique sur Démarrer, puis utilise les flèches ou ZQSD pour diriger le serpent.";
+    overlay.classList.remove("hidden");
+  }
+}
+
+function drawSnakeGame() {
+  const canvas = getSnakeCanvas();
+  const ctx = getSnakeContext();
+
+  if (!canvas || !ctx) return;
+
+  const metrics = getSnakeGridMetrics();
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "#171735");
+  gradient.addColorStop(1, "#101024");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "rgba(99, 102, 241, 0.12)";
+  ctx.fillRect(metrics.offsetX, metrics.offsetY, metrics.boardSize, metrics.boardSize);
+
+  ctx.strokeStyle = "rgba(240, 240, 255, 0.08)";
+  ctx.lineWidth = 1;
+  for (let index = 0; index <= snakeGame.gridSize; index += 1) {
+    const position = index * metrics.cellSize;
+    ctx.beginPath();
+    ctx.moveTo(metrics.offsetX + position, metrics.offsetY);
+    ctx.lineTo(metrics.offsetX + position, metrics.offsetY + metrics.boardSize);
+    ctx.moveTo(metrics.offsetX, metrics.offsetY + position);
+    ctx.lineTo(metrics.offsetX + metrics.boardSize, metrics.offsetY + position);
+    ctx.stroke();
+  }
+
+  const foodX = metrics.offsetX + snakeGame.food.x * metrics.cellSize + metrics.cellSize / 2;
+  const foodY = metrics.offsetY + snakeGame.food.y * metrics.cellSize + metrics.cellSize / 2;
+
+  ctx.save();
+  ctx.shadowColor = "rgba(168, 85, 247, 0.95)";
+  ctx.shadowBlur = 14;
+  ctx.fillStyle = "#c084fc";
+  ctx.beginPath();
+  ctx.arc(foodX, foodY, metrics.cellSize * 0.32, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  snakeGame.snake.forEach((segment, index) => {
+    const x = metrics.offsetX + segment.x * metrics.cellSize + 2;
+    const y = metrics.offsetY + segment.y * metrics.cellSize + 2;
+    const size = metrics.cellSize - 4;
+
+    ctx.fillStyle = index === 0 ? "#f0f0ff" : index % 2 === 0 ? "#22c55e" : "#84cc16";
+    ctx.shadowColor = index === 0 ? "rgba(240, 240, 255, 0.5)" : "rgba(34, 197, 94, 0.28)";
+    ctx.shadowBlur = index === 0 ? 10 : 5;
+    ctx.beginPath();
+    ctx.roundRect(x, y, size, size, 5);
+    ctx.fill();
+  });
+
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = "#6366f1";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(metrics.offsetX + 1, metrics.offsetY + 1, metrics.boardSize - 2, metrics.boardSize - 2);
+}
+
+function handleSnakePointer(event) {
+  const snakeScreen = document.getElementById("snake-screen");
+
+  if (!snakeScreen || snakeScreen.classList.contains("hidden")) return;
+
+  event.preventDefault();
+
+  if (!snakeGame.running) {
+    startSnakeGame();
+  }
+
+  const canvas = getSnakeCanvas();
+  if (!canvas) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const pointerX = event.clientX - rect.left;
+  const pointerY = event.clientY - rect.top;
+  const head = snakeGame.snake[0];
+  const metrics = getSnakeGridMetrics();
+  const headX = ((metrics.offsetX + head.x * metrics.cellSize + metrics.cellSize / 2) / canvas.width) * rect.width;
+  const headY = ((metrics.offsetY + head.y * metrics.cellSize + metrics.cellSize / 2) / canvas.height) * rect.height;
+  const deltaX = pointerX - headX;
+  const deltaY = pointerY - headY;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    setSnakeDirection(deltaX > 0 ? 1 : -1, 0);
+  } else {
+    setSnakeDirection(0, deltaY > 0 ? 1 : -1);
+  }
+}
+
 const runnerCanvasElement = document.getElementById("runner-game");
 if (runnerCanvasElement) {
   runnerCanvasElement.addEventListener("pointerdown", event => {
@@ -3850,9 +5040,38 @@ if (runnerCanvasElement) {
   });
 }
 
+const snakeCanvasElement = document.getElementById("snake-game");
+if (snakeCanvasElement) {
+  snakeCanvasElement.addEventListener("pointerdown", handleSnakePointer);
+}
+
 document.addEventListener("keydown", event => {
+  const snakeScreen = document.getElementById("snake-screen");
+  const snakeDirections = {
+    ArrowUp: [0, -1],
+    KeyW: [0, -1],
+    ArrowDown: [0, 1],
+    KeyS: [0, 1],
+    ArrowLeft: [-1, 0],
+    KeyA: [-1, 0],
+    ArrowRight: [1, 0],
+    KeyD: [1, 0]
+  };
+  const snakeDirection = snakeDirections[event.code];
+
+  if (snakeScreen && !snakeScreen.classList.contains("hidden") && snakeDirection) {
+    event.preventDefault();
+
+    if (!snakeGame.running) {
+      startSnakeGame();
+    }
+
+    setSnakeDirection(snakeDirection[0], snakeDirection[1]);
+    return;
+  }
+
   if (event.code === "Space" || event.code === "ArrowUp") {
-    const gameScreen = document.getElementById("game-screen");
+    const gameScreen = document.getElementById("runner-screen");
 
     if (gameScreen && !gameScreen.classList.contains("hidden")) {
       event.preventDefault();
