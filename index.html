@@ -227,6 +227,52 @@
     margin-bottom: 26px;
   }
 
+  .home-easter-egg {
+    position: fixed;
+    right: -104px;
+    top: 52%;
+    width: min(32vw, 245px);
+    min-width: 150px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    filter: saturate(0.72) brightness(0.92);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    visibility: hidden;
+    z-index: 1;
+    transform: translateY(-50%) rotate(-3deg);
+    transition: opacity 0.28s, filter 0.28s, transform 0.28s;
+  }
+
+  body.menu-screen-active .home-easter-egg {
+    opacity: 0.055;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  body.menu-screen-active .home-easter-egg:hover,
+  body.menu-screen-active .home-easter-egg:focus-visible {
+    opacity: 0.13;
+    filter: saturate(0.9) brightness(1);
+    outline: none;
+  }
+
+  .home-easter-egg.revealed {
+    opacity: 0.86 !important;
+    filter: saturate(1.08) brightness(1.06);
+    z-index: 2;
+    transform: translateY(-50%) translateX(-78px) rotate(0deg) scale(1.03);
+  }
+
+  .home-easter-egg img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   .course-buttons {
     display: flex;
     flex-direction: column;
@@ -876,6 +922,16 @@
       padding: 6px 9px;
     }
 
+    .home-easter-egg {
+      right: -86px;
+      top: 58%;
+      width: 185px;
+    }
+
+    .home-easter-egg.revealed {
+      transform: translateY(-50%) translateX(-56px) rotate(0deg) scale(1.02);
+    }
+
   }
 
   @media print {
@@ -898,6 +954,7 @@
     .scroll-top-btn,
     .star-field,
     .star-toggle,
+    .home-easter-egg,
     .header,
     .course-subtitle {
       display: none;
@@ -935,6 +992,18 @@
   onclick="toggleStars()">
   Étoiles : ON
 </button>
+<button
+  class="home-easter-egg"
+  id="home-easter-egg"
+  type="button"
+  onclick="activateHomeEasterEgg()"
+  aria-label="Activer l'easter egg Lucio">
+  <img src="lucio.webp" alt="">
+</button>
+<audio
+  id="lucio-easter-egg-audio"
+  preload="auto"
+  src="Lucio%20Ultimate%20Ability%20Voice%20Line.mp3"></audio>
 
 <div class="card" id="app">
 
@@ -1128,6 +1197,46 @@
 
 const STAR_VISIBILITY_STORAGE_KEY = "qcm-stars-disabled";
 let shootingStarTimer = null;
+let homeEasterEggRevealTimer = null;
+
+function setHomeEasterEggVisible(isVisible) {
+  const easterEgg = document.getElementById("home-easter-egg");
+
+  document.body.classList.toggle("menu-screen-active", isVisible);
+
+  if (!isVisible && easterEgg) {
+    easterEgg.classList.remove("revealed");
+  }
+}
+
+function activateHomeEasterEgg() {
+  const easterEgg = document.getElementById("home-easter-egg");
+  const audio = document.getElementById("lucio-easter-egg-audio");
+
+  if (!easterEgg || !document.body.classList.contains("menu-screen-active")) return;
+
+  easterEgg.classList.add("revealed");
+
+  if (homeEasterEggRevealTimer) {
+    clearTimeout(homeEasterEggRevealTimer);
+  }
+
+  homeEasterEggRevealTimer = setTimeout(() => {
+    easterEgg.classList.remove("revealed");
+    homeEasterEggRevealTimer = null;
+  }, 3200);
+
+  if (audio) {
+    audio.currentTime = 0;
+    audio.volume = 0.85;
+
+    const playPromise = audio.play();
+
+    if (playPromise) {
+      playPromise.catch(() => {});
+    }
+  }
+}
 
 function isStoredStarsDisabled() {
   try {
@@ -1289,6 +1398,7 @@ function scrollToTop() {
 window.addEventListener("scroll", updateScrollTopButton);
 document.addEventListener("DOMContentLoaded", () => {
   setStarsDisabled(isStoredStarsDisabled());
+  setHomeEasterEggVisible(!document.getElementById("menu-screen").classList.contains("hidden"));
   createStarField();
 
   document.querySelectorAll(".course-content").forEach(content => {
@@ -2212,6 +2322,7 @@ let miniGame = {
 
 function hideAllScreens() {
   stopMiniGame();
+  setHomeEasterEggVisible(false);
   document.getElementById("menu-screen").classList.add("hidden");
   document.getElementById("course-screen").classList.add("hidden");
   document.getElementById("preview-screen").classList.add("hidden");
@@ -2385,6 +2496,7 @@ function applyNavigationState(state) {
   currentCourseKey = null;
   hideAllScreens();
   document.getElementById("menu-screen").classList.remove("hidden");
+  setHomeEasterEggVisible(true);
   renderHistory();
   activeNavigationState = { screen: "menu" };
 }
@@ -3455,6 +3567,7 @@ function backToMenu(options = {}) {
 
   hideAllScreens();
   document.getElementById("menu-screen").classList.remove("hidden");
+  setHomeEasterEggVisible(true);
 
   renderHistory();
 
