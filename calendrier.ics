@@ -1,0 +1,1463 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//176.31.82.93//NONSGML kigkonsult.se iCalcreator 2.24.2//
+X-WR-TIMEZONE:Europe/Paris
+X-WR-CALNAME:My planning
+X-WR-CALDESC:Ical calendar
+BEGIN:VTIMEZONE
+TZID:Europe/Paris
+X-LIC-LOCATION:Europe/Paris
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20260506T142543CEST-67565e7368@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\nRéunion de rentrée - salle 41
+DTSTART;TZID=Europe/Paris:20250908T084500
+DTEND;TZID=Europe/Paris:20250908T104500
+SUMMARY:Accueil
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-675721cfbc@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 31
+DTSTART;TZID=Europe/Paris:20250908T104500
+DTEND;TZID=Europe/Paris:20250908T123000
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6757bb20ae@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 31
+DTSTART;TZID=Europe/Paris:20250908T133000
+DTEND;TZID=Europe/Paris:20250908T171500
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67580f2cd1@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 25
+DTSTART;TZID=Europe/Paris:20250909T084500
+DTEND;TZID=Europe/Paris:20250909T123000
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-675897bb9e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 25
+DTSTART;TZID=Europe/Paris:20250909T133000
+DTEND;TZID=Europe/Paris:20250909T171500
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6759708fea@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ meet.google.com/uvn-yypu-ydu\n\n\n\n<span class='badge badge-info mb-2'>En
+  distanciel</span>
+DTSTART;TZID=Europe/Paris:20250910T084500
+DTEND;TZID=Europe/Paris:20250910T123000
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6759b0afce@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ meet.google.com/uvn-yypu-ydu\n\n\n\n<span class='badge badge-info mb-2'>En
+  distanciel</span>
+DTSTART;TZID=Europe/Paris:20250910T133000
+DTEND;TZID=Europe/Paris:20250910T171500
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6759fb60a2@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 35
+DTSTART;TZID=Europe/Paris:20250911T084500
+DTEND;TZID=Europe/Paris:20250911T123000
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67603a1b1f@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 35
+DTSTART;TZID=Europe/Paris:20250911T133000
+DTEND;TZID=Europe/Paris:20250911T171500
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6760486e99@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 40
+DTSTART;TZID=Europe/Paris:20250912T084500
+DTEND;TZID=Europe/Paris:20250912T123000
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6761e8398b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 40
+DTSTART;TZID=Europe/Paris:20250912T133000
+DTEND;TZID=Europe/Paris:20250912T171500
+SUMMARY:Mise à niveau
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-676124c87c@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 21
+DTSTART;TZID=Europe/Paris:20250924T084500
+DTEND;TZID=Europe/Paris:20250924T123000
+SUMMARY:Strat. Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6761634e12@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 21
+DTSTART;TZID=Europe/Paris:20250924T133000
+DTEND;TZID=Europe/Paris:20250924T171500
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6762909495@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsa
+ lle 21
+DTSTART;TZID=Europe/Paris:20250925T084500
+DTEND;TZID=Europe/Paris:20250925T123000
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67621976c7@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:M. Bernard<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 21
+DTSTART;TZID=Europe/Paris:20250925T133000
+DTEND;TZID=Europe/Paris:20250925T171500
+SUMMARY:Conception rédaction
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6763ff2360@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 21
+DTSTART;TZID=Europe/Paris:20250926T084500
+DTEND;TZID=Europe/Paris:20250926T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6763c27ed1@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsal
+ le 21
+DTSTART;TZID=Europe/Paris:20250926T133000
+DTEND;TZID=Europe/Paris:20250926T171500
+SUMMARY:Veille et stratégie marketing
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67633da9ee@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 35
+DTSTART;TZID=Europe/Paris:20251008T084500
+DTEND;TZID=Europe/Paris:20251008T123000
+SUMMARY:Strat. Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67641697ff@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\nSALLE 35 - Travail donné par A. GERBER
+DTSTART;TZID=Europe/Paris:20251008T133000
+DTEND;TZID=Europe/Paris:20251008T171500
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6764da632d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsal
+ le 70
+DTSTART;TZID=Europe/Paris:20251009T084500
+DTEND;TZID=Europe/Paris:20251009T123000
+SUMMARY:Veille et stratégie marketing
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-676446814d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 70
+DTSTART;TZID=Europe/Paris:20251009T133000
+DTEND;TZID=Europe/Paris:20251009T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6765ff0203@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 41
+DTSTART;TZID=Europe/Paris:20251010T084500
+DTEND;TZID=Europe/Paris:20251010T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67655a6909@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsal
+ le 43
+DTSTART;TZID=Europe/Paris:20251010T133000
+DTEND;TZID=Europe/Paris:20251010T171500
+SUMMARY:Veille et stratégie marketing
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67661599b4@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 61
+DTSTART;TZID=Europe/Paris:20251022T084500
+DTEND;TZID=Europe/Paris:20251022T123000
+SUMMARY:Strat. Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-676602a49b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:M. Bernard<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 61
+DTSTART;TZID=Europe/Paris:20251022T133000
+DTEND;TZID=Europe/Paris:20251022T171500
+SUMMARY:Conception rédaction
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6766ccbb60@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 40
+DTSTART;TZID=Europe/Paris:20251023T084500
+DTEND;TZID=Europe/Paris:20251023T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-676719eb7d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsa
+ lle 40
+DTSTART;TZID=Europe/Paris:20251023T133000
+DTEND;TZID=Europe/Paris:20251023T171500
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6767fe03d8@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:B. Leyritz<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 31
+DTSTART;TZID=Europe/Paris:20251024T084500
+DTEND;TZID=Europe/Paris:20251024T123000
+SUMMARY:Safe & Smart Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6768d17a0a@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 31
+DTSTART;TZID=Europe/Paris:20251024T133000
+DTEND;TZID=Europe/Paris:20251024T171500
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67682d6475@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 41
+DTSTART;TZID=Europe/Paris:20251105T084500
+DTEND;TZID=Europe/Paris:20251105T123000
+SUMMARY:Rapport de mission + prépa Grand Oral
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6768bc164c@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\nsalle 40
+DTSTART;TZID=Europe/Paris:20251105T133000
+DTEND;TZID=Europe/Paris:20251105T171500
+SUMMARY:Safe & Smart Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67691c1c1b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:M. Bernard<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 43
+DTSTART;TZID=Europe/Paris:20251106T084500
+DTEND;TZID=Europe/Paris:20251106T123000
+SUMMARY:Conception rédaction
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6769cd7920@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 43
+DTSTART;TZID=Europe/Paris:20251106T133000
+DTEND;TZID=Europe/Paris:20251106T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6769ef540e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \nsalle 31
+DTSTART;TZID=Europe/Paris:20251107T084500
+DTEND;TZID=Europe/Paris:20251107T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6770610632@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsal
+ le 31
+DTSTART;TZID=Europe/Paris:20251107T133000
+DTEND;TZID=Europe/Paris:20251107T171500
+SUMMARY:Veille et stratégie marketing
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6770739ed1@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 35
+DTSTART;TZID=Europe/Paris:20251119T084500
+DTEND;TZID=Europe/Paris:20251119T123000
+SUMMARY:Strat. Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-677120c765@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:F. Lormand<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 35
+DTSTART;TZID=Europe/Paris:20251119T133000
+DTEND;TZID=Europe/Paris:20251119T171500
+SUMMARY:community mgt
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6771830f6e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:B. Leyritz<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 61
+DTSTART;TZID=Europe/Paris:20251120T084500
+DTEND;TZID=Europe/Paris:20251120T123000
+SUMMARY:Safe & Smart Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6771d36306@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 61
+DTSTART;TZID=Europe/Paris:20251120T133000
+DTEND;TZID=Europe/Paris:20251120T171500
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-677289be55@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsal
+ le 21
+DTSTART;TZID=Europe/Paris:20251121T084500
+DTEND;TZID=Europe/Paris:20251121T123000
+SUMMARY:Veille et stratégie marketing
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6772074407@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsa
+ lle 21
+DTSTART;TZID=Europe/Paris:20251121T133000
+DTEND;TZID=Europe/Paris:20251121T171500
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67730bc7ee@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 61
+DTSTART;TZID=Europe/Paris:20251203T084500
+DTEND;TZID=Europe/Paris:20251203T123000
+SUMMARY:Strat. Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6773a2398b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:F. Lormand<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 61
+DTSTART;TZID=Europe/Paris:20251203T133000
+DTEND;TZID=Europe/Paris:20251203T171500
+SUMMARY:community mgt
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67734ed4f9@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 31
+DTSTART;TZID=Europe/Paris:20251204T084500
+DTEND;TZID=Europe/Paris:20251204T123000
+SUMMARY:Culture de la création
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6774801bc1@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsal
+ le 31
+DTSTART;TZID=Europe/Paris:20251204T133000
+DTEND;TZID=Europe/Paris:20251204T171500
+SUMMARY:Veille et stratégie marketing
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6774964ce0@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 40
+DTSTART;TZID=Europe/Paris:20251205T084500
+DTEND;TZID=Europe/Paris:20251205T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6775f2fb1b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\nsal
+ le 40
+DTSTART;TZID=Europe/Paris:20251205T133000
+DTEND;TZID=Europe/Paris:20251205T171500
+SUMMARY:Veille et stratégie marketing
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-677576e13c@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ salle 61
+DTSTART;TZID=Europe/Paris:20251217T084500
+DTEND;TZID=Europe/Paris:20251217T123000
+SUMMARY:Rapport de mission + prépa Grand Oral
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67757e3268@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:M. Bernard<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 61
+DTSTART;TZID=Europe/Paris:20251217T133000
+DTEND;TZID=Europe/Paris:20251217T171500
+SUMMARY:Conception rédaction
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6776abaff8@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ Saint-Étienne
+DTSTART;TZID=Europe/Paris:20251218T084500
+DTEND;TZID=Europe/Paris:20251218T123000
+SUMMARY:Compet MSDI
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6776bc2506@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\nSaint-Étienne
+DTSTART;TZID=Europe/Paris:20251218T133000
+DTEND;TZID=Europe/Paris:20251218T171500
+SUMMARY:Compet MSDI
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6777e0a309@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 40
+DTSTART;TZID=Europe/Paris:20251219T084500
+DTEND;TZID=Europe/Paris:20251219T123000
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6777b56bb9@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:B. Leyritz<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\ns
+ alle 40
+DTSTART;TZID=Europe/Paris:20251219T133000
+DTEND;TZID=Europe/Paris:20251219T171500
+SUMMARY:Com. et création écoresponsable
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6777f8a12e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 35
+DTSTART;TZID=Europe/Paris:20260114T084500
+DTEND;TZID=Europe/Paris:20260114T123000
+SUMMARY:Strat. Com
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-677869549b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:M. Bernard<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 5
+DTSTART;TZID=Europe/Paris:20260114T133000
+DTEND;TZID=Europe/Paris:20260114T171500
+SUMMARY:Conception rédaction
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-677894d430@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260115T084500
+DTEND;TZID=Europe/Paris:20260115T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6778e36998@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n40
+DTSTART;TZID=Europe/Paris:20260115T133000
+DTEND;TZID=Europe/Paris:20260115T171500
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6779584d27@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n40
+DTSTART;TZID=Europe/Paris:20260116T084500
+DTEND;TZID=Europe/Paris:20260116T123000
+SUMMARY:Oral VST
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67797e1f97@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:H. Roche<span class='badge badge-success ml-2 tooltip-element' 
+ title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n40
+DTSTART;TZID=Europe/Paris:20260116T133000
+DTEND;TZID=Europe/Paris:20260116T171500
+SUMMARY:Oral VST
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6780c5aecb@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 41
+DTSTART;TZID=Europe/Paris:20260128T084500
+DTEND;TZID=Europe/Paris:20260128T123000
+SUMMARY:Rapport de mission + prépa Grand Oral
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6780ab775b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n41
+DTSTART;TZID=Europe/Paris:20260128T133000
+DTEND;TZID=Europe/Paris:20260128T171500
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6780b5f4b8@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1
+DTSTART;TZID=Europe/Paris:20260129T084500
+DTEND;TZID=Europe/Paris:20260129T123000
+SUMMARY:Culture de la création
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6781372a43@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:G. Estorgues<span class='badge badge-success ml-2 tooltip-eleme
+ nt' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n31
+DTSTART;TZID=Europe/Paris:20260129T133000
+DTEND;TZID=Europe/Paris:20260129T171500
+SUMMARY:Communication orale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67816d90cd@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260130T084500
+DTEND;TZID=Europe/Paris:20260130T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6781fffeac@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 40
+DTSTART;TZID=Europe/Paris:20260130T133000
+DTEND;TZID=Europe/Paris:20260130T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67826eb942@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260211T084500
+DTEND;TZID=Europe/Paris:20260211T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-678254441f@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260211T133000
+DTEND;TZID=Europe/Paris:20260211T171500
+SUMMARY:Culture de la création
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6783a3a9bd@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n31
+DTSTART;TZID=Europe/Paris:20260212T084500
+DTEND;TZID=Europe/Paris:20260212T123000
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67832124cd@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:F. Lormand<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1
+DTSTART;TZID=Europe/Paris:20260212T133000
+DTEND;TZID=Europe/Paris:20260212T171500
+SUMMARY:community mgt
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6783649485@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260213T084500
+DTEND;TZID=Europe/Paris:20260213T123000
+SUMMARY:Culture de la création
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6784cff4dc@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 40
+DTSTART;TZID=Europe/Paris:20260213T133000
+DTEND;TZID=Europe/Paris:20260213T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6784a5ad1e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1
+DTSTART;TZID=Europe/Paris:20260219T084500
+DTEND;TZID=Europe/Paris:20260219T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67855faeb6@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:B. Leyritz<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1
+DTSTART;TZID=Europe/Paris:20260219T133000
+DTEND;TZID=Europe/Paris:20260219T171500
+SUMMARY:Com. et création écoresponsable
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6785e63177@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n63
+DTSTART;TZID=Europe/Paris:20260220T084500
+DTEND;TZID=Europe/Paris:20260220T123000
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6785b446cb@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 63
+DTSTART;TZID=Europe/Paris:20260220T133000
+DTEND;TZID=Europe/Paris:20260220T171500
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6786b070b3@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n40
+DTSTART;TZID=Europe/Paris:20260223T084500
+DTEND;TZID=Europe/Paris:20260223T123000
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67866454ef@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n40
+DTSTART;TZID=Europe/Paris:20260223T133000
+DTEND;TZID=Europe/Paris:20260223T171500
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6786267c3c@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n40
+DTSTART;TZID=Europe/Paris:20260224T084500
+DTEND;TZID=Europe/Paris:20260224T123000
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-678775ec0b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 40
+DTSTART;TZID=Europe/Paris:20260224T133000
+DTEND;TZID=Europe/Paris:20260224T171500
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67872e912d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 40
+DTSTART;TZID=Europe/Paris:20260225T084500
+DTEND;TZID=Europe/Paris:20260225T123000
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6788ef0650@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n40
+DTSTART;TZID=Europe/Paris:20260225T133000
+DTEND;TZID=Europe/Paris:20260225T171500
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6788db5a17@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\nSaint-Étienne
+DTSTART;TZID=Europe/Paris:20260226T084500
+DTEND;TZID=Europe/Paris:20260226T123000
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67886f049d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\nSaint-Étienne
+DTSTART;TZID=Europe/Paris:20260226T133000
+DTEND;TZID=Europe/Paris:20260226T171500
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6789bbeb18@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\njury - 40
+DTSTART;TZID=Europe/Paris:20260227T084500
+DTEND;TZID=Europe/Paris:20260227T123000
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-678995ab66@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\njury - 40
+DTSTART;TZID=Europe/Paris:20260227T133000
+DTEND;TZID=Europe/Paris:20260227T171500
+SUMMARY:Compet KABRIEF
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67896fed2d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 35
+DTSTART;TZID=Europe/Paris:20260311T084500
+DTEND;TZID=Europe/Paris:20260311T123000
+SUMMARY:Rapport de mission + prépa Grand Oral
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-679021d424@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 5
+DTSTART;TZID=Europe/Paris:20260311T133000
+DTEND;TZID=Europe/Paris:20260311T171500
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6790237295@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260312T084500
+DTEND;TZID=Europe/Paris:20260312T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-679072ab3b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260312T133000
+DTEND;TZID=Europe/Paris:20260312T171500
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67914f4680@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n6
+ 1
+DTSTART;TZID=Europe/Paris:20260313T084500
+DTEND;TZID=Europe/Paris:20260313T123000
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6791d0384e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n61
+DTSTART;TZID=Europe/Paris:20260313T133000
+DTEND;TZID=Europe/Paris:20260313T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-679230f1fe@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n40
+DTSTART;TZID=Europe/Paris:20260325T084500
+DTEND;TZID=Europe/Paris:20260325T123000
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6792cb7545@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 40
+DTSTART;TZID=Europe/Paris:20260325T133000
+DTEND;TZID=Europe/Paris:20260325T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67926bb40d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:C. Gouvernelle<span class='badge badge-success ml-2 tooltip-ele
+ ment' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n61
+DTSTART;TZID=Europe/Paris:20260326T084500
+DTEND;TZID=Europe/Paris:20260326T123000
+SUMMARY:Communication orale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6793c8f003@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:C. Gouvernelle<span class='badge badge-success ml-2 tooltip-ele
+ ment' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n61
+DTSTART;TZID=Europe/Paris:20260326T133000
+DTEND;TZID=Europe/Paris:20260326T171500
+SUMMARY:Communication orale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67930c2d7b@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:B. Leyritz<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260327T084500
+DTEND;TZID=Europe/Paris:20260327T123000
+SUMMARY:Com. et création écoresponsable
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67949317b1@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260327T133000
+DTEND;TZID=Europe/Paris:20260327T171500
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6794096b87@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260408T084500
+DTEND;TZID=Europe/Paris:20260408T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6794e5e0f2@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 40
+DTSTART;TZID=Europe/Paris:20260408T133000
+DTEND;TZID=Europe/Paris:20260408T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6795278de4@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:R. Gasquet<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260409T084500
+DTEND;TZID=Europe/Paris:20260409T123000
+SUMMARY:PAO
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6795b40eec@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260409T133000
+DTEND;TZID=Europe/Paris:20260409T171500
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6795170ccf@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1
+DTSTART;TZID=Europe/Paris:20260410T084500
+DTEND;TZID=Europe/Paris:20260410T123000
+SUMMARY:7 j de la créa
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6796fa7038@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1
+DTSTART;TZID=Europe/Paris:20260410T133000
+DTEND;TZID=Europe/Paris:20260410T171500
+SUMMARY:7 j de la créa
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6796720d31@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260416T084500
+DTEND;TZID=Europe/Paris:20260416T123000
+SUMMARY:7 j de la créa
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6797e9d3bf@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\nSalle 40 à disposition\n\n\n\n<span class='badge badge-info
+  mb-2'>En distanciel</span>
+DTSTART;TZID=Europe/Paris:20260416T133000
+DTEND;TZID=Europe/Paris:20260416T171500
+SUMMARY:7 j de la créa
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-679730a1b4@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260417T084500
+DTEND;TZID=Europe/Paris:20260417T123000
+SUMMARY:7 j de la créa
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-679729d3dc@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260417T133000
+DTEND;TZID=Europe/Paris:20260417T171500
+SUMMARY:7 j de la créa
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-67982f4c35@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:F. Lormand<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n2
+ 1
+DTSTART;TZID=Europe/Paris:20260422T084500
+DTEND;TZID=Europe/Paris:20260422T123000
+SUMMARY:community mgt
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6798911525@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n2
+ 1
+DTSTART;TZID=Europe/Paris:20260422T133000
+DTEND;TZID=Europe/Paris:20260422T171500
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6798403ed7@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:B. Leyritz<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1 - INTERVENTION APEC à 11h00
+DTSTART;TZID=Europe/Paris:20260423T084500
+DTEND;TZID=Europe/Paris:20260423T123000
+SUMMARY:Com. et création écoresponsable
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-679917bd83@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n3
+ 1
+DTSTART;TZID=Europe/Paris:20260423T133000
+DTEND;TZID=Europe/Paris:20260423T171500
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-679986dbd8@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n2
+ 1
+DTSTART;TZID=Europe/Paris:20260424T084500
+DTEND;TZID=Europe/Paris:20260424T123000
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6800f0dc54@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:A. Gerber<span class='badge badge-success ml-2 tooltip-element'
+  title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n21
+DTSTART;TZID=Europe/Paris:20260424T133000
+DTEND;TZID=Europe/Paris:20260424T171500
+SUMMARY:Vidéo
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6800979d95@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-success ml-2 tooltip-elemen
+ t' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n
+ 40
+DTSTART;TZID=Europe/Paris:20260505T084500
+DTEND;TZID=Europe/Paris:20260505T123000
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68008b495f@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n4
+ 0
+DTSTART;TZID=Europe/Paris:20260505T133000
+DTEND;TZID=Europe/Paris:20260505T171500
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-680193afdd@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-success ml-2 tooltip-element
+ ' title='Appel fait'><span class='fas fa-bullhorn'></span></span>\n\n\n\n6
+ 3
+DTSTART;TZID=Europe/Paris:20260506T084500
+DTEND;TZID=Europe/Paris:20260506T123000
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68016d4751@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n63
+DTSTART;TZID=Europe/Paris:20260506T133000
+DTEND;TZID=Europe/Paris:20260506T171500
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6802f98008@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n41
+DTSTART;TZID=Europe/Paris:20260507T084500
+DTEND;TZID=Europe/Paris:20260507T123000
+SUMMARY:Brief créatif
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68021a5cac@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:F. Lormand<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n41
+DTSTART;TZID=Europe/Paris:20260507T133000
+DTEND;TZID=Europe/Paris:20260507T171500
+SUMMARY:community mgt
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68024f35a3@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n21
+DTSTART;TZID=Europe/Paris:20260520T084500
+DTEND;TZID=Europe/Paris:20260520T123000
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6803b8891f@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n21
+DTSTART;TZID=Europe/Paris:20260520T133000
+DTEND;TZID=Europe/Paris:20260520T171500
+SUMMARY:Dvt web\, initiation\, référencement
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-680358f33f@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n41
+DTSTART;TZID=Europe/Paris:20260521T084500
+DTEND;TZID=Europe/Paris:20260521T123000
+SUMMARY:Groka
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-680427ae62@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n41
+DTSTART;TZID=Europe/Paris:20260521T133000
+DTEND;TZID=Europe/Paris:20260521T171500
+SUMMARY:Groka
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-680450ab31@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n40
+DTSTART;TZID=Europe/Paris:20260522T084500
+DTEND;TZID=Europe/Paris:20260522T123000
+SUMMARY:Intelligence artificielle
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68049bbf9c@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n41
+DTSTART;TZID=Europe/Paris:20260522T133000
+DTEND;TZID=Europe/Paris:20260522T171500
+SUMMARY:Brief créatif
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68058093d7@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n70
+DTSTART;TZID=Europe/Paris:20260603T084500
+DTEND;TZID=Europe/Paris:20260603T123000
+SUMMARY:Rapport de mission + prépa Grand Oral
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68056a0189@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n70
+DTSTART;TZID=Europe/Paris:20260603T133000
+DTEND;TZID=Europe/Paris:20260603T171500
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-680558e071@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:G. Estorgues<span class='badge badge-danger ml-2 tooltip-elemen
+ t' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n70
+DTSTART;TZID=Europe/Paris:20260604T084500
+DTEND;TZID=Europe/Paris:20260604T123000
+SUMMARY:Communication orale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6806e949f9@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:G. Estorgues<span class='badge badge-danger ml-2 tooltip-elemen
+ t' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n70
+DTSTART;TZID=Europe/Paris:20260604T133000
+DTEND;TZID=Europe/Paris:20260604T171500
+SUMMARY:Communication orale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6806aab015@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:F. Lormand<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n71
+DTSTART;TZID=Europe/Paris:20260605T084500
+DTEND;TZID=Europe/Paris:20260605T123000
+SUMMARY:community mgt
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6806d727a9@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n71
+DTSTART;TZID=Europe/Paris:20260605T133000
+DTEND;TZID=Europe/Paris:20260605T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6807cd6296@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n40
+DTSTART;TZID=Europe/Paris:20260612T084500
+DTEND;TZID=Europe/Paris:20260612T123000
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6807a6ce71@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n40
+DTSTART;TZID=Europe/Paris:20260612T133000
+DTEND;TZID=Europe/Paris:20260612T171500
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68085cb8e3@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n40
+DTSTART;TZID=Europe/Paris:20260615T084500
+DTEND;TZID=Europe/Paris:20260615T123000
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-680833099e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n40
+DTSTART;TZID=Europe/Paris:20260615T133000
+DTEND;TZID=Europe/Paris:20260615T171500
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68086348dd@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n40
+DTSTART;TZID=Europe/Paris:20260616T084500
+DTEND;TZID=Europe/Paris:20260616T123000
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68097c0a6d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n40
+DTSTART;TZID=Europe/Paris:20260616T133000
+DTEND;TZID=Europe/Paris:20260616T171500
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-680923027f@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n41
+DTSTART;TZID=Europe/Paris:20260617T084500
+DTEND;TZID=Europe/Paris:20260617T123000
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-681088b7ad@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n41
+DTSTART;TZID=Europe/Paris:20260617T133000
+DTEND;TZID=Europe/Paris:20260617T171500
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6810c6ee53@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n41
+DTSTART;TZID=Europe/Paris:20260618T084500
+DTEND;TZID=Europe/Paris:20260618T123000
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68104b0ff3@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:J. Tiveyrat<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n41
+DTSTART;TZID=Europe/Paris:20260618T133000
+DTEND;TZID=Europe/Paris:20260618T171500
+SUMMARY:Compét nationale
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6811be94d1@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n40
+DTSTART;TZID=Europe/Paris:20260619T084500
+DTEND;TZID=Europe/Paris:20260619T123000
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6811d85838@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n40
+DTSTART;TZID=Europe/Paris:20260619T133000
+DTEND;TZID=Europe/Paris:20260619T171500
+SUMMARY:Intelligence artificielle
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68121ce47d@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n61
+DTSTART;TZID=Europe/Paris:20260701T084500
+DTEND;TZID=Europe/Paris:20260701T123000
+SUMMARY:Intelligence artificielle
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68128a1cfd@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:L. Blondeau<span class='badge badge-danger ml-2 tooltip-element
+ ' title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n
+ \n\n61
+DTSTART;TZID=Europe/Paris:20260701T133000
+DTEND;TZID=Europe/Paris:20260701T171500
+SUMMARY:événementiel
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-6812955820@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Zamboni<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n63
+DTSTART;TZID=Europe/Paris:20260702T084500
+DTEND;TZID=Europe/Paris:20260702T123000
+SUMMARY:Intelligence artificielle
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68139e6ac9@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:N. Chibret<span class='badge badge-danger ml-2 tooltip-element'
+  title='Appel non fait'><span class='fas fa-bullhorn'></span></span>\n\n\n
+ \n63
+DTSTART;TZID=Europe/Paris:20260702T133000
+DTEND;TZID=Europe/Paris:20260702T171500
+SUMMARY:Anglais
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-681322a991@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n61
+DTSTART;TZID=Europe/Paris:20260703T084500
+DTEND;TZID=Europe/Paris:20260703T123000
+SUMMARY:Grand Oral
+END:VEVENT
+BEGIN:VEVENT
+UID:20260506T142543CEST-68132fea9e@176.31.82.93
+DTSTAMP:20260506T122543Z
+DESCRIPTION:\n\n61
+DTSTART;TZID=Europe/Paris:20260703T133000
+DTEND;TZID=Europe/Paris:20260703T171500
+SUMMARY:Grand Oral
+END:VEVENT
+END:VCALENDAR
