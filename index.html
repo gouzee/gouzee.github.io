@@ -2619,12 +2619,12 @@
 <div class="chatbot-widget" id="chatbot-widget">
   <div class="chatbot-panel" id="chatbot-panel" aria-hidden="true">
     <div class="chatbot-header">
-      <div class="chatbot-title">Assistant du site</div>
+      <div class="chatbot-title">gouze</div>
       <button
         class="chatbot-close"
         type="button"
         onclick="toggleChatbot(false)"
-        aria-label="Fermer le chatbot"
+        aria-label="Fermer gouze"
         title="Fermer">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path
@@ -2643,9 +2643,9 @@
         class="chatbot-input"
         id="chatbot-input"
         type="text"
-        placeholder="Pose une question..."
+        placeholder="Écris à gouze..."
         autocomplete="off"
-        aria-label="Question au chatbot">
+        aria-label="Message à gouze">
       <button class="chatbot-send" type="submit">Envoyer</button>
     </form>
   </div>
@@ -2656,8 +2656,8 @@
     onclick="toggleChatbot()"
     aria-expanded="false"
     aria-controls="chatbot-panel"
-    aria-label="Ouvrir le chatbot"
-    title="Assistant du site">
+    aria-label="Ouvrir gouze"
+    title="gouze">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
         d="M21 12C21 16.42 17.19 20 12.5 20C10.97 20 9.54 19.62 8.31 18.96L4 20L5.11 16.25C4.4 15.02 4 13.57 4 12C4 7.58 7.81 4 12.5 4C17.19 4 21 7.58 21 12Z"
@@ -5345,15 +5345,32 @@ const chatbotSuggestions = [
   "À quoi sert le site ?",
   "Quels cours sont présents ?",
   "À quoi sert chaque partie ?",
-  "Est-ce que la Palestine subit un génocide ?",
+  "Qui es-tu gouze ?",
   "Comment fonctionne le QCM ?",
-  "C'est quoi le Grand Oral ?"
+  "C'est quoi le Grand Oral ?",
+  "Comment bien réviser ?"
 ];
 
 const chatbotResponses = [
   {
     keywords: ["a quoi sert le site", "but du site", "objectif du site", "c est quoi ce site"],
     answer: "Ce site sert à réviser plus facilement : tu peux faire des QCM, lire les cours complets, consulter le calendrier Wesford, retrouver les infos d'épreuves comme GROKA et le Grand Oral, et faire une pause avec les mini-jeux."
+  },
+  {
+    keywords: ["qui es tu", "qui est gouze", "tu t appelles comment", "ton nom"],
+    answer: "Je suis gouze, le petit assistant du site. Je peux t'aider à t'orienter, à comprendre les cours, les QCM, les épreuves, le calendrier, les mini-jeux et les réglages."
+  },
+  {
+    keywords: ["bonjour", "salut", "hello", "coucou", "yo", "wesh"],
+    answer: "Salut, c'est gouze. Dis-moi ce que tu cherches et je te guide dans le site."
+  },
+  {
+    keywords: ["merci", "thanks", "parfait", "super merci", "ok merci"],
+    answer: "Avec plaisir. Je reste dans le coin si tu veux une autre info."
+  },
+  {
+    keywords: ["aide", "help", "tu peux faire quoi", "que peux tu faire", "commandes"],
+    answer: "Tu peux me demander à quoi sert le site, où trouver les cours, comment fonctionnent les QCM, où est l'historique, à quoi servent GROKA et le Grand Oral, comment lire le calendrier ou comment couper les étoiles et les sons."
   },
   {
     keywords: ["quels cours", "cours presents", "matiere", "matieres", "cours disponibles"],
@@ -5370,6 +5387,18 @@ const chatbotResponses = [
   {
     keywords: ["comment fonctionne le qcm", "qcm", "questionnaire", "questions"],
     answer: "Les QCM servent à t'entraîner cours par cours. Les questions et les réponses sont mélangées à chaque tentative, puis le site affiche ton score, les corrections et l'historique."
+  },
+  {
+    keywords: ["apercu des questions", "liste des questions", "voir les questions", "questions sans reponses"],
+    answer: "Le bouton Aperçu des questions affiche toutes les questions possibles d'un QCM sans montrer les réponses. C'est pratique pour savoir ce qui peut tomber sans te spoiler."
+  },
+  {
+    keywords: ["historique", "historique des essais", "anciens scores", "mes scores", "voir mes essais"],
+    answer: "L'historique des essais est juste sous la partie QCM, derrière le bouton Voir l'historique des essais. Tu peux y retrouver tes scores et le détail des erreurs."
+  },
+  {
+    keywords: ["bonne reponse", "mauvaise reponse", "correction", "corriger", "erreurs qcm"],
+    answer: "À la fin d'un QCM, le site affiche ton score, les questions ratées, la bonne réponse et l'explication. C'est la partie la plus utile pour progresser vite."
   },
   {
     keywords: ["groka", "epreuve groka", "c est quoi groka"],
@@ -5392,12 +5421,40 @@ const chatbotResponses = [
     answer: "La partie Calendrier Wesford affiche le planning par semaine, avec les flèches pour passer d'une semaine de cours à l'autre."
   },
   {
+    keywords: ["pdf", "ouvrir pdf", "telecharger pdf", "guide methodologique", "documents"],
+    answer: "Dans la partie Épreuves, les boutons des documents ouvrent les PDF dans de nouveaux onglets. Tu peux donc garder le site ouvert et consulter le guide à côté."
+  },
+  {
+    keywords: ["github", "site en ligne", "ca ne s affiche pas", "cache", "couleurs differentes", "etoiles manquantes"],
+    answer: "Si la version GitHub n'affiche pas la même chose que ton fichier local, c'est souvent le cache du navigateur. Essaie un rechargement forcé avec Cmd+Shift+R ou vide le cache du site."
+  },
+  {
     keywords: ["mini jeux", "minijeux", "snake", "jeu"],
     answer: "La partie Mini-jeux regroupe les jeux disponibles, dont Snake. Elle est séparée des cours pour éviter un menu principal trop chargé."
   },
   {
+    keywords: ["controles snake", "jouer snake", "zqsd", "fleches snake", "comment jouer a snake"],
+    answer: "Pour Snake, tu peux jouer avec les flèches du clavier ou ZQSD. Le but est de manger la nourriture sans foncer dans les murs ou dans ton propre serpent."
+  },
+  {
+    keywords: ["score 67", "six seven", "67 points"],
+    answer: "Petit détail du site : si un mini-jeu finit sur 67 points, une animation spéciale six seven se déclenche."
+  },
+  {
+    keywords: ["easter egg", "secret", "lucio", "doigby", "screamer"],
+    answer: "Le site contient quelques easter eggs cachés. Certains sont sur la page d'accueil, d'autres peuvent apparaître de manière plus aléatoire. Je ne balance pas tout, sinon ce n'est plus un secret."
+  },
+  {
     keywords: ["comment reviser", "conseil revision", "revision", "reviser efficacement"],
     answer: "Le plus efficace : lis d'abord le cours complet avec le sommaire, fais ensuite le QCM sans regarder les réponses, puis reviens seulement sur les erreurs affichées à la fin."
+  },
+  {
+    keywords: ["stress", "je stresse", "j ai peur", "oral stress", "epreuve stress"],
+    answer: "Respire. Pour une épreuve, vise simple : structure claire, preuves concrètes, exemples précis. Un plan propre vaut mieux qu'une réponse qui part dans tous les sens."
+  },
+  {
+    keywords: ["free palestine", "palestine", "lien palestine"],
+    answer: "La mention Free Palestine est sur la page d'accueil. Elle ouvre une ressource dans un nouvel onglet quand tu cliques dessus."
   }
 ];
 
@@ -5413,13 +5470,44 @@ function normalizeChatbotText(text) {
 
 function getChatbotResponse(question) {
   const normalizedQuestion = normalizeChatbotText(question);
-  const match = chatbotResponses.find(response =>
-    response.keywords.some(keyword => normalizedQuestion.includes(normalizeChatbotText(keyword)))
-  );
+  let bestMatch = null;
+  let bestMatchLength = 0;
 
-  if (match) return match.answer;
+  chatbotResponses.forEach(response => {
+    response.keywords.forEach(keyword => {
+      const normalizedKeyword = normalizeChatbotText(keyword);
 
-  return "Je peux répondre sur le but du site, les cours présents, les parties du menu, les QCM, GROKA, le Grand Oral, le calendrier, les mini-jeux, les paramètres et la question sur la Palestine.";
+      if (normalizedKeyword && normalizedQuestion.includes(normalizedKeyword) && normalizedKeyword.length > bestMatchLength) {
+        bestMatch = response;
+        bestMatchLength = normalizedKeyword.length;
+      }
+    });
+  });
+
+  if (bestMatch) return bestMatch.answer;
+
+  return getChatbotFallbackResponse(question, normalizedQuestion);
+}
+
+function getChatbotFallbackResponse(question, normalizedQuestion) {
+  const originalQuestion = String(question || "").trim();
+  const hasQuestionShape =
+    originalQuestion.includes("?") ||
+    /^(comment|pourquoi|quoi|ou|quel|quelle|quels|quelles|est ce que|peux tu|tu peux)\b/.test(normalizedQuestion);
+
+  if (!normalizedQuestion) {
+    return "Je suis là. Écris-moi une question ou un mot-clé, et je te réponds.";
+  }
+
+  if (normalizedQuestion.length < 4) {
+    return "Je t'écoute, mais donne-moi un peu plus de détails pour que je puisse répondre correctement.";
+  }
+
+  if (hasQuestionShape) {
+    return "Je n'ai pas encore une réponse précise enregistrée pour cette question, mais je peux quand même t'orienter. Si ça concerne le site, essaie avec un mot-clé comme QCM, cours, calendrier, GROKA, Grand Oral, mini-jeux, historique, étoiles ou sons.";
+  }
+
+  return "J'ai bien reçu ton message. Je ne suis pas une IA connectée à Internet : je réponds surtout avec les infos intégrées au site. Pour une réponse plus précise, reformule avec un mot-clé du site comme QCM, cours, épreuves, calendrier, Snake, GROKA ou Grand Oral.";
 }
 
 function addChatbotMessage(text, sender = "bot") {
@@ -5482,7 +5570,7 @@ function initializeChatbot() {
 
   if (!messages || messages.children.length) return;
 
-  addChatbotMessage("Salut, je peux t'aider à comprendre le site, les cours, les QCM, le calendrier, GROKA, le Grand Oral et les paramètres.");
+  addChatbotMessage("Salut, c'est gouze. Je peux t'aider à comprendre le site, les cours, les QCM, le calendrier, GROKA, le Grand Oral et les paramètres.");
 }
 
 function toggleChatbot(forceOpen) {
@@ -5497,8 +5585,8 @@ function toggleChatbot(forceOpen) {
   widget.classList.toggle("open", isOpen);
   panel.setAttribute("aria-hidden", String(!isOpen));
   toggle.setAttribute("aria-expanded", String(isOpen));
-  toggle.setAttribute("aria-label", isOpen ? "Fermer le chatbot" : "Ouvrir le chatbot");
-  toggle.title = isOpen ? "Fermer l'assistant" : "Assistant du site";
+  toggle.setAttribute("aria-label", isOpen ? "Fermer gouze" : "Ouvrir gouze");
+  toggle.title = isOpen ? "Fermer gouze" : "gouze";
 
   if (isOpen) {
     initializeChatbot();
