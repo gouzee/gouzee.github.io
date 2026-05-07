@@ -835,6 +835,7 @@
   }
 
   .course-access,
+  .exam-access,
   .calendar-access {
     margin-top: 26px;
     background: #1a1a2e;
@@ -844,6 +845,7 @@
   }
 
   .course-access h2,
+  .exam-access h2,
   .calendar-access h2 {
     color: #f0f0ff;
     font-size: 18px;
@@ -851,11 +853,106 @@
   }
 
   .course-access p,
+  .exam-access p,
   .calendar-access p {
     color: #aab;
     font-size: 13px;
     line-height: 1.5;
     margin-bottom: 14px;
+  }
+
+  .exam-highlight {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+
+  .exam-highlight h2,
+  .exam-highlight h3 {
+    color: #a855f7;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .exam-highlight h3 {
+    color: #f0f0ff;
+    font-size: 15px;
+    margin-top: 14px;
+  }
+
+  .exam-highlight p,
+  .exam-highlight li {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .exam-highlight ul,
+  .exam-highlight ol {
+    margin-left: 18px;
+    margin-top: 8px;
+  }
+
+  .exam-highlight li {
+    margin-bottom: 5px;
+  }
+
+  .exam-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 14px 0;
+  }
+
+  .exam-meta-item {
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid #32325f;
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .exam-meta-item strong {
+    display: block;
+    color: #f0f0ff;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .exam-meta-item span {
+    color: #aab;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .exam-downloads {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 14px 0 18px;
+  }
+
+  .exam-download-link {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    padding: 14px;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .exam-download-link:hover,
+  .exam-download-link:focus-visible {
+    opacity: 0.92;
+    outline: none;
+    transform: translateY(-1px);
   }
 
   .calendar-week-nav {
@@ -1735,6 +1832,7 @@
   }
 
   body.lucio-mode .course-access,
+  body.lucio-mode .exam-access,
   body.lucio-mode .calendar-access,
   body.lucio-mode .history-box,
   body.lucio-mode .game-access,
@@ -1742,6 +1840,8 @@
   body.lucio-mode .calendar-week-label,
   body.lucio-mode .calendar-event,
   body.lucio-mode .calendar-empty,
+  body.lucio-mode .exam-highlight,
+  body.lucio-mode .exam-meta-item,
   body.lucio-mode .course-section,
   body.lucio-mode .course-summary,
   body.lucio-mode .preview-list li,
@@ -1759,7 +1859,10 @@
   body.lucio-mode .grade,
   body.lucio-mode .history-header h2,
   body.lucio-mode .course-access h2,
+  body.lucio-mode .exam-access h2,
   body.lucio-mode .calendar-access h2,
+  body.lucio-mode .exam-highlight h3,
+  body.lucio-mode .exam-meta-item strong,
   body.lucio-mode .calendar-week-label strong,
   body.lucio-mode .game-access h2,
   body.lucio-mode .calendar-event-title,
@@ -1770,7 +1873,11 @@
   body.lucio-mode .menu-text,
   body.lucio-mode .course-subtitle,
   body.lucio-mode .course-access p,
+  body.lucio-mode .exam-access p,
   body.lucio-mode .calendar-access p,
+  body.lucio-mode .exam-highlight p,
+  body.lucio-mode .exam-highlight li,
+  body.lucio-mode .exam-meta-item span,
   body.lucio-mode .calendar-week-label,
   body.lucio-mode .calendar-event-details,
   body.lucio-mode .calendar-empty,
@@ -1788,6 +1895,7 @@
   body.lucio-mode .history-toggle,
   body.lucio-mode .course-section h2,
   body.lucio-mode .course-summary h2,
+  body.lucio-mode .exam-highlight h2,
   body.lucio-mode .calendar-day-title,
   body.lucio-mode .highlight,
   body.lucio-mode .big-score,
@@ -1805,6 +1913,11 @@
     border-color: #22c55e;
     color: #04130a;
     box-shadow: 0 0 22px rgba(74, 222, 128, 0.24);
+  }
+
+  body.lucio-mode .exam-download-link {
+    background: linear-gradient(90deg, #16a34a, #84cc16, #22c55e);
+    color: #04130a;
   }
 
   body.lucio-mode .qcm-separator,
@@ -1865,6 +1978,11 @@
     .history-header {
       flex-direction: column;
       align-items: stretch;
+    }
+
+    .exam-meta-grid,
+    .exam-downloads {
+      grid-template-columns: 1fr;
     }
 
     .course-content {
@@ -2263,8 +2381,14 @@
     <div class="course-access">
       <h2>Cours complet</h2>
       <p>Accède directement au cours entier pour réviser avant de lancer le QCM.</p>
-      <button class="btn secondary-btn" onclick="showCourse('developpement')">Développement Web</button>
-      <button class="btn secondary-btn" onclick="showCourse('cultureCreation')">Culture de la Création</button>
+      <button class="btn" onclick="showCourse('developpement')">Développement Web</button>
+      <button class="btn" onclick="showCourse('cultureCreation')">Culture de la Création</button>
+    </div>
+
+    <div class="exam-access">
+      <h2>Épreuves</h2>
+      <p>Une zone indépendante pour réviser les épreuves, leurs consignes, leurs méthodes et les documents officiels.</p>
+      <button class="btn" onclick="showExam()">GROKA</button>
     </div>
 
     <div class="calendar-access">
@@ -2346,6 +2470,146 @@
     <div class="course-content" id="preview-content"></div>
 
     <button class="btn" id="start-preview-quiz-btn">Lancer ce QCM</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="exam-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Épreuves</span>
+    </div>
+
+    <h1 class="course-title">GROKA</h1>
+    <p class="course-subtitle">
+      Épreuve de recommandation stratégique en communication : analyser un brief, construire une stratégie, proposer des actions et rendre un diaporama PDF professionnel.
+    </p>
+
+    <div class="exam-downloads">
+      <a
+        class="exam-download-link"
+        href="Cours complet pour l'épreuve GROKA.pdf"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ouvrir le cours détaillé
+      </a>
+      <a
+        class="exam-download-link"
+        href="Guide méthodologique GROKA.pdf"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ouvrir le guide original
+      </a>
+    </div>
+
+    <div class="course-content">
+      <section class="exam-highlight">
+        <h2>Principe de l’épreuve</h2>
+        <p>
+          Pendant le GROKA, tu joues seul le rôle de conseil en stratégie de communication. Un annonceur sollicite ton aide pour construire son plan de communication. Tu dois comprendre sa demande, analyser sa situation, établir un diagnostic, définir une stratégie et remettre une recommandation stratégique.
+        </p>
+        <div class="exam-meta-grid">
+          <div class="exam-meta-item">
+            <strong>Durée</strong>
+            <span>7 heures en conditions d’épreuve.</span>
+          </div>
+          <div class="exam-meta-item">
+            <strong>Contexte</strong>
+            <span>PC non connecté, documents personnels autorisés.</span>
+          </div>
+          <div class="exam-meta-item">
+            <strong>Validation</strong>
+            <span>50 % du Bloc 2, avec 50 % pour la compet’ nationale.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>5 jours avant</h2>
+        <p>
+          Tu reçois par mail un indice sur l’univers du sujet : marché, segment, tendance, secteur ou contexte. Le but n’est pas de deviner le sujet exact, mais d’arriver avec une base solide pour réagir vite.
+        </p>
+        <ul>
+          <li>Faire une veille utile : chiffres clés, tendances, cibles, concurrents, insights, campagnes inspirantes.</li>
+          <li>Préparer tes documents hors ligne sur clé USB ou disque dur.</li>
+          <li>Ranger tes ressources par dossiers : veille marché, tendances, cibles, benchmarks, budgets, plannings, slides, cours.</li>
+          <li>Préparer un template de diaporama : garde, sommaire, diagnostic, SWOT, problématique, objectifs, cibles, concept, actions, planning, budget, KPI.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Le jour J</h2>
+        <p>
+          Tu découvres le brief complet, avec la demande de l’annonceur et des documents complémentaires. Tu dois croiser les informations du sujet avec ta veille préparée avant l’épreuve.
+        </p>
+        <ol>
+          <li>Lire très attentivement le sujet avant d’ouvrir ton diaporama.</li>
+          <li>Repérer l’annonceur, la demande, les objectifs, les contraintes, les cibles, le budget et les supports imposés.</li>
+          <li>Reformuler la demande en une phrase claire.</li>
+          <li>Identifier le vrai problème de communication.</li>
+          <li>Construire un diagnostic qui mène logiquement à ta stratégie.</li>
+        </ol>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Ce que ta recommandation doit contenir</h2>
+        <ul>
+          <li>Compréhension du brief et contexte.</li>
+          <li>Diagnostic de la situation et problématique de communication.</li>
+          <li>Objectifs, cibles, positionnement et axe stratégique.</li>
+          <li>Concept créatif ou ligne directrice.</li>
+          <li>Actions de communication justifiées, planifiées et budgétisées.</li>
+          <li>Indicateurs de performance pour mesurer l’efficacité.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Structure de diaporama conseillée</h2>
+        <ol>
+          <li>Page de garde.</li>
+          <li>Sommaire.</li>
+          <li>Compréhension du brief.</li>
+          <li>Contexte et marché.</li>
+          <li>Diagnostic ou SWOT.</li>
+          <li>Enjeu principal et problématique.</li>
+          <li>Objectifs et cibles.</li>
+          <li>Positionnement, axe stratégique et concept créatif.</li>
+          <li>Actions détaillées avec objectifs, supports, messages, justifications et KPI.</li>
+          <li>Planning, budget, indicateurs et conclusion.</li>
+        </ol>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Organisation possible des 7 heures</h2>
+        <ul>
+          <li>0h00 à 0h40 : lecture, compréhension du brief et repérage des consignes.</li>
+          <li>0h40 à 1h45 : analyse, diagnostic, enjeux et problématique.</li>
+          <li>1h45 à 2h45 : objectifs, cibles, positionnement, axe stratégique et concept.</li>
+          <li>2h45 à 4h45 : plan d’action, supports, messages, justifications et KPI.</li>
+          <li>4h45 à 5h45 : planning, budget et cohérence opérationnelle.</li>
+          <li>5h45 à 6h30 : mise en forme du diaporama.</li>
+          <li>6h30 à 7h00 : relecture, export PDF, vérification de la lisibilité et sauvegarde.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Erreurs à éviter</h2>
+        <ul>
+          <li>Commencer directement par des actions sans diagnostic.</li>
+          <li>Faire une problématique trop vague.</li>
+          <li>Proposer trop d’actions sans les justifier.</li>
+          <li>Oublier le budget, le planning ou les KPI.</li>
+          <li>Faire des slides trop chargées.</li>
+          <li>Ne pas respecter la demande de l’annonceur.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>À retenir</h2>
+        <p>
+          Le plus important n’est pas d’avoir l’idée la plus spectaculaire. Ce qu’on attend surtout, c’est une réflexion claire, une logique solide, une recommandation cohérente, réaliste, synthétique et professionnelle.
+        </p>
+      </section>
+    </div>
+
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
@@ -4688,6 +4952,7 @@ function hideAllScreens() {
   document.getElementById("menu-screen").classList.add("hidden");
   document.getElementById("course-screen").classList.add("hidden");
   document.getElementById("preview-screen").classList.add("hidden");
+  document.getElementById("exam-screen").classList.add("hidden");
   document.getElementById("calendar-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.add("hidden");
@@ -4920,6 +5185,15 @@ function applyNavigationState(state) {
   if (targetState.screen === "snake") {
     showSnakeGame({
       pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "exam") {
+    showExam({
+      pushState: false,
+      confirm: false
     });
     activeNavigationState = targetState;
     return;
@@ -5418,6 +5692,21 @@ function showCalendar(options = {}) {
 
   if (shouldPushState) {
     pushNavigationState({ screen: "calendar" });
+  }
+}
+
+function showExam(options = {}) {
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
+
+  currentCourseKey = null;
+  hideAllScreens();
+  revealScreen("exam-screen");
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "exam" });
   }
 }
 
