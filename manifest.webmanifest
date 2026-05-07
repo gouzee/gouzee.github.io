@@ -1,0 +1,19 @@
+{
+  "name": "QCM, Cours & Autres",
+  "short_name": "QCM Gouze",
+  "description": "Site de révision avec QCM, cours, calendrier, épreuves et mini-jeux.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d0d1a",
+  "theme_color": "#6366f1",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
