@@ -1168,6 +1168,12 @@
     cursor: default;
   }
 
+  .option.selected {
+    background: rgba(99, 102, 241, 0.18);
+    border-color: #6366f1;
+    color: #fff;
+  }
+
   .option.correct {
     background: #0f3d2e;
     border-color: #22c55e;
@@ -1462,6 +1468,68 @@
     font-size: 12px;
   }
 
+  .study-dashboard,
+  .study-tools {
+    margin-top: 18px;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .study-dashboard {
+    margin-bottom: 22px;
+  }
+
+  .dashboard-grid,
+  .tool-grid,
+  .stats-grid,
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .dashboard-card,
+  .stat-card {
+    background: #12122a;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .dashboard-card strong,
+  .stat-card strong {
+    display: block;
+    color: #f0f0ff;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .dashboard-card span,
+  .stat-card span {
+    color: #aab;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .study-tools h2 {
+    color: #f0f0ff;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .study-tools p {
+    color: #aab;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .tool-grid .btn {
+    margin-bottom: 0;
+  }
+
   .course-title {
     color: #f0f0ff;
     font-size: 26px;
@@ -1557,6 +1625,49 @@
     color: #a855f7;
     font-size: 18px;
     margin-bottom: 10px;
+  }
+
+  .course-section-tools {
+    display: grid;
+    gap: 8px;
+    margin: 8px 0 14px;
+  }
+
+  .favorite-section-btn {
+    justify-self: start;
+    border: 1px solid #3a3a6a;
+    border-radius: 999px;
+    background: rgba(42, 42, 74, 0.66);
+    color: #d7d7ff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 7px 10px;
+  }
+
+  .favorite-section-btn.is-active {
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.18);
+    color: #fff;
+  }
+
+  .course-note {
+    min-height: 72px;
+    resize: vertical;
+    border: 1px solid #3a3a6a;
+    border-radius: 10px;
+    background: #111127;
+    color: #f0f0ff;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 10px 11px;
+  }
+
+  .course-note:focus,
+  .search-input:focus {
+    border-color: #6366f1;
+    outline: none;
   }
 
   .course-section h3 {
@@ -1799,6 +1910,109 @@
     padding: 10px 12px;
   }
 
+  .search-input {
+    width: 100%;
+    border: 1px solid #3a3a6a;
+    border-radius: 10px;
+    background: #111127;
+    color: #f0f0ff;
+    font-size: 14px;
+    margin-bottom: 14px;
+    padding: 12px;
+  }
+
+  .search-result {
+    display: block;
+    width: 100%;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+    padding: 12px;
+    text-align: left;
+  }
+
+  .search-result strong {
+    display: block;
+    color: #f0f0ff;
+    margin-bottom: 4px;
+  }
+
+  .badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 18px;
+  }
+
+  .badge {
+    border: 1px solid #3a3a6a;
+    border-radius: 999px;
+    background: rgba(42, 42, 74, 0.66);
+    color: #d7d7ff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 7px 10px;
+  }
+
+  .badge.unlocked {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.14);
+    color: #bbf7d0;
+  }
+
+  .flashcard-box {
+    min-height: 230px;
+    display: grid;
+    place-items: center;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 14px;
+    margin-bottom: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .flashcard-box strong {
+    color: #f0f0ff;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .flashcard-box span {
+    color: #aab;
+    display: block;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+
+  .checklist {
+    display: grid;
+    gap: 8px;
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+  }
+
+  .checklist label {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .checklist input {
+    margin-top: 3px;
+    accent-color: #a855f7;
+  }
+
   .highlight {
     color: #22c55e;
     font-weight: 700;
@@ -1851,6 +2065,38 @@
     font-size: 13px;
     line-height: 1.5;
     margin-bottom: 12px;
+  }
+
+  .memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .memory-card {
+    min-height: 84px;
+    border: 1px solid #3a3a6a;
+    border-radius: 10px;
+    background: #1a1a2e;
+    color: #f0f0ff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.35;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .memory-card.is-open,
+  .memory-card.is-found {
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.18);
+  }
+
+  .memory-card.is-found {
+    border-color: #22c55e;
+    color: #bbf7d0;
   }
 
   .game-panel {
@@ -2059,9 +2305,16 @@
   body.lucio-mode .course-access,
   body.lucio-mode .exam-access,
   body.lucio-mode .calendar-access,
+  body.lucio-mode .study-dashboard,
+  body.lucio-mode .study-tools,
+  body.lucio-mode .dashboard-card,
+  body.lucio-mode .stat-card,
+  body.lucio-mode .search-result,
+  body.lucio-mode .flashcard-box,
   body.lucio-mode .history-box,
   body.lucio-mode .game-access,
   body.lucio-mode .mini-game-card,
+  body.lucio-mode .memory-card,
   body.lucio-mode .calendar-week-label,
   body.lucio-mode .calendar-event,
   body.lucio-mode .calendar-empty,
@@ -2198,6 +2451,20 @@
     filter: saturate(1.28) brightness(1.14) drop-shadow(0 0 26px rgba(74, 255, 142, 0.58));
   }
 
+  body.focus-mode .star-field,
+  body.focus-mode .home-easter-egg,
+  body.focus-mode .doigby-easter-egg {
+    display: none;
+  }
+
+  body.focus-mode .button-bounce,
+  body.focus-mode .screen-transition-in,
+  body.focus-mode .doigby-video-layer.active .doigby-video-stage,
+  body.focus-mode .screamer-layer.active .screamer-video,
+  body.focus-mode.six-seven-effect #app {
+    animation: none;
+  }
+
   .hidden {
     display: none;
   }
@@ -2229,7 +2496,11 @@
     }
 
     .exam-meta-grid,
-    .exam-downloads {
+    .exam-downloads,
+    .dashboard-grid,
+    .tool-grid,
+    .stats-grid,
+    .countdown-grid {
       grid-template-columns: 1fr;
     }
 
@@ -2279,6 +2550,10 @@
 
     .mini-game-grid {
       grid-template-columns: 1fr;
+    }
+
+    .memory-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     #runner-game {
@@ -2482,6 +2757,14 @@
       aria-pressed="false"
       onclick="toggleQuizFeedbackSounds()">
       Sons QCM : ON
+    </button>
+    <button
+      class="setting-action focus-mode-toggle"
+      id="focus-mode-toggle"
+      type="button"
+      aria-pressed="false"
+      onclick="toggleFocusMode()">
+      Mode focus : OFF
     </button>
   </div>
 </div>
@@ -2689,12 +2972,29 @@
       Les questions et les propositions de réponses sont mélangées à chaque tentative.
     </p>
 
+    <div class="study-dashboard">
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <strong>Objectif du jour</strong>
+          <span id="daily-objective">Faire un QCM et relire une partie clé.</span>
+        </div>
+        <div class="dashboard-card">
+          <strong>Prochaine épreuve</strong>
+          <span id="next-exam-countdown">Calcul en cours...</span>
+        </div>
+      </div>
+    </div>
+
     <div class="course-buttons">
       <button class="btn" onclick="start('developpement')">Développement Web</button>
       <button class="btn secondary-btn" onclick="showQuestionPreview('developpement')">Aperçu des questions</button>
       <div class="qcm-separator" aria-hidden="true"></div>
       <button class="btn" onclick="start('cultureCreation')">Culture de la Création</button>
       <button class="btn secondary-btn" onclick="showQuestionPreview('cultureCreation')">Aperçu des questions</button>
+      <div class="qcm-separator" aria-hidden="true"></div>
+      <button class="btn" onclick="startQuickRevision()">Révision rapide</button>
+      <button class="btn secondary-btn" onclick="startMistakeReview()">Erreurs uniquement</button>
+      <button class="btn secondary-btn" onclick="startExamMode()">Mode examen</button>
     </div>
 
     <div class="qcm-separator qcm-history-separator" aria-hidden="true"></div>
@@ -2729,6 +3029,17 @@
           <button class="small-btn" onclick="clearCourseHistory('cultureCreation')">Effacer ce cours</button>
         </div>
         <div id="history-culture-creation" class="history-list"></div>
+      </div>
+    </div>
+
+    <div class="study-tools">
+      <h2>Outils de révision</h2>
+      <p>Des raccourcis pour retrouver une info, réviser en cartes, suivre ta progression ou préparer tes épreuves.</p>
+      <div class="tool-grid">
+        <button class="btn" onclick="showSearch()">Recherche globale</button>
+        <button class="btn" onclick="showFlashcards()">Flashcards</button>
+        <button class="btn" onclick="showStats()">Mes stats</button>
+        <button class="btn secondary-btn" onclick="showGrandOralExam()">Checklist Grand Oral</button>
       </div>
     </div>
 
@@ -3076,6 +3387,18 @@
       </section>
 
       <section class="exam-highlight">
+        <h2>Checklist Grand Oral</h2>
+        <ul class="checklist" id="grand-oral-checklist">
+          <li><label><input type="checkbox" data-checklist-key="mission-role"> Je sais expliquer mon rôle réel et mon autonomie en entreprise.</label></li>
+          <li><label><input type="checkbox" data-checklist-key="mission-kpi"> J’ai au moins deux KPI ou résultats mesurables à présenter.</label></li>
+          <li><label><input type="checkbox" data-checklist-key="bloc-examples"> J’ai un exemple concret pour chaque bloc de compétences.</label></li>
+          <li><label><input type="checkbox" data-checklist-key="proofs"> Mes preuves sont contextualisées, factuelles et précises.</label></li>
+          <li><label><input type="checkbox" data-checklist-key="method-choices"> Je sais justifier mes choix méthodologiques.</label></li>
+          <li><label><input type="checkbox" data-checklist-key="critical-view"> J’ai préparé une prise de recul sur ce qui aurait pu être amélioré.</label></li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
         <h2>À retenir</h2>
         <p>
           Le Grand Oral est le moment où tu passes de l’étudiant.e qui réalise à celui ou celle qui démontre. Tu ne défends pas seulement ce que tu as fait : tu expliques pourquoi tu l’as fait, ce que ça a produit et ce que ça t’a appris.
@@ -3130,6 +3453,66 @@
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
+  <div id="search-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Recherche</span>
+    </div>
+
+    <h1 class="course-title">Recherche globale</h1>
+    <p class="course-subtitle">
+      Cherche dans les cours, les QCM, les épreuves et les outils du site.
+    </p>
+
+    <input
+      class="search-input"
+      id="global-search-input"
+      type="search"
+      placeholder="Exemple : SEO, GROKA, Grand Oral, Bauhaus..."
+      oninput="renderGlobalSearch(this.value)"
+      aria-label="Recherche globale">
+    <div class="course-content" id="global-search-results"></div>
+
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="flashcards-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Flashcards</span>
+      <span class="counter" id="flashcard-counter">1 / 1</span>
+    </div>
+
+    <h1 class="course-title">Flashcards</h1>
+    <p class="course-subtitle">
+      Révise rapidement les questions importantes sans lancer un QCM complet.
+    </p>
+
+    <div class="flashcard-box" id="flashcard-box">
+      <strong>Question</strong>
+      <span>Réponse masquée</span>
+    </div>
+
+    <button class="btn" onclick="revealFlashcard()">Voir la réponse</button>
+    <button class="btn secondary-btn" onclick="nextFlashcard()">Carte suivante</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="stats-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Stats</span>
+    </div>
+
+    <h1 class="course-title">Mes stats</h1>
+    <p class="course-subtitle">
+      Résumé local de tes essais, meilleurs scores, badges et progression sur cet appareil.
+    </p>
+
+    <div class="stats-grid" id="stats-grid"></div>
+    <h2 class="course-title">Badges</h2>
+    <div class="badge-list" id="badge-list"></div>
+
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
   <div id="quiz-screen" class="hidden">
     <div class="header">
       <span class="tag" id="course-tag">QCM</span>
@@ -3145,7 +3528,7 @@
     <div class="explication hidden" id="explication"></div>
 
     <button class="btn hidden" id="next-btn" onclick="next()">Question suivante →</button>
-    <button class="btn secondary-btn" onclick="showCourse(currentCourseKey)">Voir le cours</button>
+    <button class="btn secondary-btn" id="quiz-course-btn" onclick="showCourse(currentCourseKey)">Voir le cours</button>
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
 
     <div class="score-label" id="score-label">Score : 0 / 0</div>
@@ -3174,6 +3557,13 @@
         <p>Guide le serpent, mange les points lumineux et évite les murs comme ta propre queue.</p>
         <div class="game-stat">Meilleur score<strong id="snake-menu-best-score">0</strong></div>
         <button class="btn" onclick="showSnakeGame()">Jouer</button>
+      </div>
+
+      <div class="mini-game-card">
+        <h2>Memory révision</h2>
+        <p>Associe des notions de cours à leurs définitions le plus proprement possible.</p>
+        <div class="game-stat">Meilleur score<strong id="memory-menu-best-score">0</strong></div>
+        <button class="btn" onclick="showMemoryGame()">Jouer</button>
       </div>
     </div>
 
@@ -3244,6 +3634,28 @@
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
+  <div id="memory-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Mini-jeu</span>
+      <span class="counter" id="memory-live-score">Coups : 0</span>
+    </div>
+
+    <h1 class="course-title">Memory révision</h1>
+    <p class="course-subtitle">
+      Retourne les cartes et retrouve les paires notion / définition.
+    </p>
+
+    <div class="memory-grid" id="memory-grid"></div>
+    <div class="game-stats">
+      <div class="game-stat">Coups actuels<strong id="memory-current-score">0</strong></div>
+      <div class="game-stat">Meilleur score<strong id="memory-best-score">0</strong></div>
+    </div>
+
+    <button class="btn" onclick="startMemoryGame()">Démarrer / recommencer</button>
+    <button class="btn secondary-btn" onclick="showGame()">Changer de mini-jeu</button>
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
 
   <div id="result-screen" class="hidden">
     <div class="big-score" id="final-score"></div>
@@ -3258,7 +3670,7 @@
     <div id="wrongs-section"></div>
 
     <button class="btn" onclick="restart()">Recommencer cette partie</button>
-    <button class="btn secondary-btn" onclick="showCourse(currentCourseKey)">Revoir le cours</button>
+    <button class="btn secondary-btn" id="result-course-btn" onclick="showCourse(currentCourseKey)">Revoir le cours</button>
     <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
   </div>
 
@@ -3286,6 +3698,10 @@
 
 const STAR_VISIBILITY_STORAGE_KEY = "qcm-stars-disabled";
 const QUIZ_FEEDBACK_SOUND_STORAGE_KEY = "qcm-feedback-sounds-disabled";
+const FOCUS_MODE_STORAGE_KEY = "site-focus-mode-enabled";
+const COURSE_FAVORITES_STORAGE_KEY = "course-section-favorites";
+const COURSE_NOTES_STORAGE_KEY = "course-section-notes";
+const GRAND_ORAL_CHECKLIST_STORAGE_KEY = "grand-oral-checklist";
 const DOIGBY_VIDEO_END_SECONDS = 10;
 const DOIGBY_PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 18;
 const SCREAMER_MIN_DELAY = 45000;
@@ -3426,7 +3842,7 @@ function playScreamerClip(video) {
 }
 
 function scheduleRandomScreamer() {
-  if (screamerTimer || document.hidden || screamerActive || prefersReducedMotion()) return;
+  if (screamerTimer || document.hidden || screamerActive || prefersReducedMotion() || document.body.classList.contains("focus-mode")) return;
 
   const nextDelay = SCREAMER_MIN_DELAY + Math.random() * (SCREAMER_MAX_DELAY - SCREAMER_MIN_DELAY);
 
@@ -3487,7 +3903,7 @@ function triggerScreamer(isManual = false) {
   const layer = document.getElementById("screamer-layer");
   const video = document.getElementById("screamer-video");
 
-  if (!layer || !video || screamerActive) return;
+  if (!layer || !video || screamerActive || document.body.classList.contains("focus-mode")) return;
 
   clearScreamerTimer();
   clearScreamerResetTimer();
@@ -4063,6 +4479,45 @@ function toggleQuizFeedbackSounds() {
   setQuizFeedbackSoundsDisabled(!document.body.classList.contains("quiz-sounds-disabled"));
 }
 
+function isStoredFocusModeEnabled() {
+  try {
+    return localStorage.getItem(FOCUS_MODE_STORAGE_KEY) === "true";
+  } catch (error) {
+    return false;
+  }
+}
+
+function setFocusMode(enabled) {
+  const toggle = document.getElementById("focus-mode-toggle");
+
+  document.body.classList.toggle("focus-mode", enabled);
+
+  if (enabled) {
+    clearShootingStars();
+    deactivateScreamer({ reschedule: false });
+  } else {
+    scheduleRandomScreamer();
+    if (!document.body.classList.contains("stars-disabled")) {
+      scheduleShootingStar();
+    }
+  }
+
+  if (toggle) {
+    toggle.textContent = enabled ? "Mode focus : ON" : "Mode focus : OFF";
+    toggle.setAttribute("aria-pressed", String(enabled));
+    toggle.title = enabled ? "Désactiver le mode focus" : "Activer le mode focus";
+  }
+
+  try {
+    localStorage.setItem(FOCUS_MODE_STORAGE_KEY, enabled ? "true" : "false");
+  } catch (error) {
+  }
+}
+
+function toggleFocusMode() {
+  setFocusMode(!document.body.classList.contains("focus-mode"));
+}
+
 function setSettingsMenuOpen(isOpen) {
   const menu = document.getElementById("settings-menu");
   const toggle = document.getElementById("settings-toggle");
@@ -4132,7 +4587,7 @@ function prefersReducedMotion() {
 function createShootingStar() {
   const starField = document.getElementById("star-field");
 
-  if (!starField || document.hidden || document.body.classList.contains("stars-disabled") || prefersReducedMotion()) return;
+  if (!starField || document.hidden || document.body.classList.contains("stars-disabled") || document.body.classList.contains("focus-mode") || prefersReducedMotion()) return;
 
   const shootingStar = document.createElement("span");
   const length = Math.random() * 90 + 72;
@@ -4160,14 +4615,14 @@ function createShootingStar() {
 }
 
 function scheduleShootingStar() {
-  if (shootingStarTimer || document.hidden || document.body.classList.contains("stars-disabled") || prefersReducedMotion()) return;
+  if (shootingStarTimer || document.hidden || document.body.classList.contains("stars-disabled") || document.body.classList.contains("focus-mode") || prefersReducedMotion()) return;
 
   const nextDelay = Math.random() * 7200 + 1800;
 
   shootingStarTimer = setTimeout(() => {
     shootingStarTimer = null;
 
-    if (document.hidden || document.body.classList.contains("stars-disabled") || prefersReducedMotion()) {
+    if (document.hidden || document.body.classList.contains("stars-disabled") || document.body.classList.contains("focus-mode") || prefersReducedMotion()) {
       clearShootingStars();
       return;
     }
@@ -4188,7 +4643,7 @@ function scheduleShootingStar() {
 function handleStarVisibilityChange() {
   clearShootingStars();
 
-  if (!document.hidden && !document.body.classList.contains("stars-disabled") && !prefersReducedMotion()) {
+  if (!document.hidden && !document.body.classList.contains("stars-disabled") && !document.body.classList.contains("focus-mode") && !prefersReducedMotion()) {
     scheduleShootingStar();
   }
 }
@@ -4269,6 +4724,7 @@ window.addEventListener("scroll", updateScrollTopButton);
 document.addEventListener("DOMContentLoaded", () => {
   setStarsDisabled(isStoredStarsDisabled());
   setQuizFeedbackSoundsDisabled(isStoredQuizFeedbackSoundsDisabled());
+  setFocusMode(isStoredFocusModeEnabled());
   setHomeEasterEggVisible(!document.getElementById("menu-screen").classList.contains("hidden"));
   preloadLucioAudio();
   preloadSixSevenAudio();
@@ -4278,6 +4734,9 @@ document.addEventListener("DOMContentLoaded", () => {
   applyDoigbyVolumeState();
   renderChatbotSuggestions();
   scheduleRandomScreamer();
+  initializeGrandOralChecklist();
+  updateHomeDashboard();
+  updateGameHubScores();
 
   document.querySelectorAll(".course-content").forEach(content => {
     content.addEventListener("scroll", updateScrollTopButton);
@@ -5331,6 +5790,10 @@ let wrongs = [];
 let answered = false;
 let resultAlreadySaved = false;
 let quizStartTime = null;
+let activeQuizMode = "standard";
+let flashcardDeck = [];
+let currentFlashcardIndex = 0;
+let flashcardRevealed = false;
 const SIX_SEVEN_SCORE = 67;
 let quizFeedbackAudioContext = null;
 
@@ -5341,6 +5804,24 @@ let activeNavigationState = { screen: "menu" };
 let navigationInitialized = false;
 let sixSevenEffectTimer = null;
 
+const memoryPairs = [
+  { term: "DNS", definition: "Traduit un nom de domaine en adresse IP." },
+  { term: "SEO", definition: "Optimisation pour les résultats naturels." },
+  { term: "GROKA", definition: "Recommandation stratégique en communication." },
+  { term: "Grand Oral", definition: "Démonstration finale du parcours et des compétences." },
+  { term: "Bauhaus", definition: "Fonctionnalisme, grille et design moderne." },
+  { term: "E-E-A-T", definition: "Expérience, expertise, autorité et confiance." }
+];
+
+let memoryGame = {
+  cards: [],
+  opened: [],
+  found: 0,
+  moves: 0,
+  locked: false,
+  bestScore: Number(localStorage.getItem("memoryBestScore") || 0)
+};
+
 const chatbotSuggestions = [
   "À quoi sert le site ?",
   "Quels cours sont présents ?",
@@ -5348,7 +5829,8 @@ const chatbotSuggestions = [
   "Qui es-tu gouze ?",
   "Comment fonctionne le QCM ?",
   "C'est quoi le Grand Oral ?",
-  "Comment bien réviser ?"
+  "Comment bien réviser ?",
+  "Fais-moi réviser"
 ];
 
 const chatbotResponses = [
@@ -5370,7 +5852,7 @@ const chatbotResponses = [
   },
   {
     keywords: ["aide", "help", "tu peux faire quoi", "que peux tu faire", "commandes"],
-    answer: "Tu peux me demander à quoi sert le site, où trouver les cours, comment fonctionnent les QCM, où est l'historique, à quoi servent GROKA et le Grand Oral, comment lire le calendrier ou comment couper les étoiles et les sons."
+    answer: "Tu peux me demander à quoi sert le site, où trouver les cours, comment fonctionnent les QCM, où est l'historique, à quoi servent GROKA et le Grand Oral, comment lire le calendrier, utiliser les flashcards, chercher une notion ou activer le mode focus."
   },
   {
     keywords: ["quels cours", "cours presents", "matiere", "matieres", "cours disponibles"],
@@ -5446,7 +5928,19 @@ const chatbotResponses = [
   },
   {
     keywords: ["comment reviser", "conseil revision", "revision", "reviser efficacement"],
-    answer: "Le plus efficace : lis d'abord le cours complet avec le sommaire, fais ensuite le QCM sans regarder les réponses, puis reviens seulement sur les erreurs affichées à la fin."
+    answer: "Le plus efficace : lis d'abord le cours complet avec le sommaire, fais ensuite le QCM sans regarder les réponses, puis reviens sur les erreurs. Tu peux aussi utiliser Révision rapide, Erreurs uniquement, Flashcards et Mode examen."
+  },
+  {
+    keywords: ["recherche", "chercher", "search", "trouver une notion"],
+    answer: "La Recherche globale permet de retrouver rapidement une notion dans les cours, les QCM et les épreuves."
+  },
+  {
+    keywords: ["flashcards", "cartes", "cartes de revision"],
+    answer: "Les flashcards te montrent une question puis la réponse quand tu cliques sur Voir la réponse. C'est parfait pour réviser vite sans lancer un QCM complet."
+  },
+  {
+    keywords: ["mode focus", "focus", "concentration"],
+    answer: "Le mode focus se trouve dans les paramètres en haut à gauche. Il coupe les distractions visuelles comme les étoiles et les easter eggs pour réviser plus calmement."
   },
   {
     keywords: ["stress", "je stresse", "j ai peur", "oral stress", "epreuve stress"],
@@ -5468,10 +5962,55 @@ function normalizeChatbotText(text) {
     .trim();
 }
 
+function getStoredJson(key, fallback) {
+  try {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : fallback;
+  } catch (error) {
+    return fallback;
+  }
+}
+
+function setStoredJson(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+  }
+}
+
+function initializeGrandOralChecklist() {
+  const checklist = document.getElementById("grand-oral-checklist");
+  const saved = getStoredJson(GRAND_ORAL_CHECKLIST_STORAGE_KEY, {});
+
+  if (!checklist) return;
+
+  checklist.querySelectorAll("input[type='checkbox']").forEach(input => {
+    const key = input.dataset.checklistKey;
+    input.checked = Boolean(saved[key]);
+    input.onchange = () => {
+      const nextState = getStoredJson(GRAND_ORAL_CHECKLIST_STORAGE_KEY, {});
+      nextState[key] = input.checked;
+      setStoredJson(GRAND_ORAL_CHECKLIST_STORAGE_KEY, nextState);
+    };
+  });
+}
+
 function getChatbotResponse(question) {
   const normalizedQuestion = normalizeChatbotText(question);
   let bestMatch = null;
   let bestMatchLength = 0;
+
+  if (
+    normalizedQuestion.includes("fais moi reviser") ||
+    normalizedQuestion.includes("donne moi une question") ||
+    normalizedQuestion.includes("pose moi une question")
+  ) {
+    return getRandomChatbotStudyQuestion();
+  }
+
+  if (normalizedQuestion.startsWith("explique ")) {
+    return "Je peux t'expliquer un point du site si le mot-clé est dans mes réponses. Essaie par exemple : explique QCM, explique GROKA, explique Grand Oral, explique calendrier ou explique SEO.";
+  }
 
   chatbotResponses.forEach(response => {
     response.keywords.forEach(keyword => {
@@ -5487,6 +6026,16 @@ function getChatbotResponse(question) {
   if (bestMatch) return bestMatch.answer;
 
   return getChatbotFallbackResponse(question, normalizedQuestion);
+}
+
+function getRandomChatbotStudyQuestion() {
+  const question = shuffleArray(getAllQuestionEntries())[0];
+
+  if (!question) {
+    return "Je n'ai pas encore de question disponible.";
+  }
+
+  return "Question de révision : " + question.q + "\n\nRéponds mentalement, puis vérifie dans le QCM ou les flashcards.";
 }
 
 function getChatbotFallbackResponse(question, normalizedQuestion) {
@@ -5685,10 +6234,14 @@ function hideAllScreens() {
   document.getElementById("exam-screen").classList.add("hidden");
   document.getElementById("grand-oral-screen").classList.add("hidden");
   document.getElementById("calendar-screen").classList.add("hidden");
+  document.getElementById("search-screen").classList.add("hidden");
+  document.getElementById("flashcards-screen").classList.add("hidden");
+  document.getElementById("stats-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.add("hidden");
   document.getElementById("runner-screen").classList.add("hidden");
   document.getElementById("snake-screen").classList.add("hidden");
+  document.getElementById("memory-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.add("hidden");
 
   setTimeout(updateScrollTopButton, 0);
@@ -5921,6 +6474,14 @@ function applyNavigationState(state) {
     return;
   }
 
+  if (targetState.screen === "memory") {
+    showMemoryGame({
+      pushState: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
   if (targetState.screen === "exam") {
     showExam({
       pushState: false,
@@ -5941,6 +6502,33 @@ function applyNavigationState(state) {
 
   if (targetState.screen === "calendar") {
     showCalendar({
+      pushState: false,
+      confirm: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "search") {
+    showSearch({
+      pushState: false,
+      confirm: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "flashcards") {
+    showFlashcards({
+      pushState: false,
+      confirm: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "stats") {
+    showStats({
       pushState: false,
       confirm: false
     });
@@ -6003,6 +6591,7 @@ function applyNavigationState(state) {
   revealScreen("menu-screen");
   setHomeEasterEggVisible(true);
   renderHistory();
+  updateHomeDashboard();
   activeNavigationState = { screen: "menu" };
 }
 
@@ -6459,9 +7048,290 @@ function showGrandOralExam(options = {}) {
   currentCourseKey = null;
   hideAllScreens();
   revealScreen("grand-oral-screen");
+  initializeGrandOralChecklist();
 
   if (shouldPushState) {
     pushNavigationState({ screen: "grandOralExam" });
+  }
+}
+
+function getSearchCorpus() {
+  const courseItems = Object.entries(courseContents).flatMap(([courseKey, course]) =>
+    course.sections.flatMap(section =>
+      section.blocks.flatMap(block =>
+        block.items.map(item => ({
+          type: "Cours",
+          title: course.title + " • " + section.title,
+          text: block.subtitle + " — " + item,
+          action: () => showCourse(courseKey)
+        }))
+      )
+    )
+  );
+
+  const questionItems = getAllQuestionEntries().map(question => ({
+    type: "QCM",
+    title: question.sourceTitle,
+    text: question.q + " — " + question.options[question.answer],
+    action: () => showQuestionPreview(question.sourceCourseKey)
+  }));
+
+  const examItems = [
+    {
+      type: "Épreuve",
+      title: "GROKA",
+      text: "Recommandation stratégique, brief annonceur, diagnostic, objectifs, cibles, actions, budget, planning et KPI.",
+      action: () => showExam()
+    },
+    {
+      type: "Épreuve",
+      title: "Grand Oral",
+      text: "Rapport de Mission, cinq blocs de compétences, preuves, prise de recul, jury et démonstration finale.",
+      action: () => showGrandOralExam()
+    }
+  ];
+
+  return [...courseItems, ...questionItems, ...examItems];
+}
+
+function renderGlobalSearch(query = "") {
+  const results = document.getElementById("global-search-results");
+  const normalizedQuery = normalizeChatbotText(query);
+
+  if (!results) return;
+
+  results.innerHTML = "";
+
+  if (!normalizedQuery) {
+    const empty = document.createElement("div");
+    empty.className = "search-result";
+    empty.textContent = "Tape un mot-clé pour chercher dans le site.";
+    results.appendChild(empty);
+    return;
+  }
+
+  const matches = getSearchCorpus()
+    .filter(item => normalizeChatbotText(item.title + " " + item.text).includes(normalizedQuery))
+    .slice(0, 30);
+
+  if (!matches.length) {
+    const empty = document.createElement("div");
+    empty.className = "search-result";
+    empty.textContent = "Aucun résultat trouvé.";
+    results.appendChild(empty);
+    return;
+  }
+
+  matches.forEach(match => {
+    const item = document.createElement("button");
+    item.className = "search-result";
+    item.type = "button";
+    item.onclick = match.action;
+
+    const title = document.createElement("strong");
+    title.textContent = match.type + " • " + match.title;
+
+    const text = document.createElement("span");
+    text.textContent = match.text;
+
+    item.appendChild(title);
+    item.appendChild(text);
+    results.appendChild(item);
+  });
+}
+
+function showSearch(options = {}) {
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
+
+  hideAllScreens();
+  revealScreen("search-screen");
+  renderGlobalSearch("");
+  document.getElementById("global-search-input").value = "";
+  setTimeout(() => document.getElementById("global-search-input")?.focus(), 0);
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "search" });
+  }
+}
+
+function buildFlashcardDeck() {
+  return shuffleArray(getAllQuestionEntries()).map(question => ({
+    question: question.q,
+    answer: question.options[question.answer],
+    source: question.sourceTitle
+  }));
+}
+
+function renderFlashcard() {
+  const box = document.getElementById("flashcard-box");
+  const counter = document.getElementById("flashcard-counter");
+
+  if (!box || !counter || !flashcardDeck.length) return;
+
+  const card = flashcardDeck[currentFlashcardIndex];
+  counter.textContent = (currentFlashcardIndex + 1) + " / " + flashcardDeck.length;
+  box.innerHTML = "";
+
+  const question = document.createElement("strong");
+  question.textContent = card.question;
+  box.appendChild(question);
+
+  const answer = document.createElement("span");
+  answer.textContent = flashcardRevealed ? card.answer + " • " + card.source : "Réponse masquée";
+  box.appendChild(answer);
+}
+
+function showFlashcards(options = {}) {
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
+
+  flashcardDeck = buildFlashcardDeck();
+  currentFlashcardIndex = 0;
+  flashcardRevealed = false;
+
+  hideAllScreens();
+  revealScreen("flashcards-screen");
+  renderFlashcard();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "flashcards" });
+  }
+}
+
+function revealFlashcard() {
+  flashcardRevealed = true;
+  renderFlashcard();
+}
+
+function nextFlashcard() {
+  if (!flashcardDeck.length) return;
+
+  currentFlashcardIndex = (currentFlashcardIndex + 1) % flashcardDeck.length;
+  flashcardRevealed = false;
+  renderFlashcard();
+}
+
+function getAllHistoryAttempts() {
+  const history = getHistory();
+
+  return ["developpement", "cultureCreation"].flatMap(courseKey =>
+    history[courseKey].map(attempt => ({
+      ...attempt,
+      courseKey: courseKey,
+      courseTitle: questionBanks[courseKey].title
+    }))
+  );
+}
+
+function getUnlockedBadges(attempts) {
+  const bestPercentage = attempts.reduce((best, attempt) => Math.max(best, attempt.percentage || 0), 0);
+  const totalAttempts = attempts.length;
+  const perfectAttempts = attempts.filter(attempt => Number(attempt.percentage) === 100).length;
+  const favorites = getStoredJson(COURSE_FAVORITES_STORAGE_KEY, []);
+  const checklist = getStoredJson(GRAND_ORAL_CHECKLIST_STORAGE_KEY, {});
+
+  return [
+    { label: "Premier QCM", unlocked: totalAttempts >= 1 },
+    { label: "3 essais", unlocked: totalAttempts >= 3 },
+    { label: "Score parfait", unlocked: perfectAttempts >= 1 },
+    { label: "90% ou plus", unlocked: bestPercentage >= 90 },
+    { label: "Explorateur Snake", unlocked: snakeGame.bestScore > 0 },
+    { label: "Mémoire active", unlocked: memoryGame.bestScore > 0 },
+    { label: "Sections favorites", unlocked: favorites.length > 0 },
+    { label: "Grand Oral prêt", unlocked: Object.values(checklist).filter(Boolean).length >= 6 }
+  ];
+}
+
+function renderStats() {
+  const grid = document.getElementById("stats-grid");
+  const badgeList = document.getElementById("badge-list");
+  const attempts = getAllHistoryAttempts();
+  const totalAttempts = attempts.length;
+  const average = totalAttempts
+    ? Math.round(attempts.reduce((sum, attempt) => sum + Number(attempt.percentage || 0), 0) / totalAttempts)
+    : 0;
+  const best = attempts.reduce((bestScore, attempt) => Math.max(bestScore, Number(attempt.percentage || 0)), 0);
+  const totalTime = attempts.reduce((sum, attempt) => sum + Number(attempt.durationSeconds || 0), 0);
+
+  if (grid) {
+    grid.innerHTML = "";
+    [
+      ["Essais QCM", totalAttempts],
+      ["Moyenne", average + " %"],
+      ["Meilleur score", best + " %"],
+      ["Temps total", formatDuration(totalTime)],
+      ["Meilleur Dino", miniGame.bestScore],
+      ["Meilleur Snake", snakeGame.bestScore],
+      ["Memory", memoryGame.bestScore ? memoryGame.bestScore + " coups" : "Non joué"],
+      ["Questions disponibles", getAllQuestionEntries().length]
+    ].forEach(([label, value]) => {
+      const card = document.createElement("div");
+      card.className = "stat-card";
+      card.innerHTML = `<strong>${label}</strong><span>${value}</span>`;
+      grid.appendChild(card);
+    });
+  }
+
+  if (badgeList) {
+    badgeList.innerHTML = "";
+    getUnlockedBadges(attempts).forEach(badge => {
+      const item = document.createElement("span");
+      item.className = "badge" + (badge.unlocked ? " unlocked" : "");
+      item.textContent = badge.label;
+      badgeList.appendChild(item);
+    });
+  }
+}
+
+function showStats(options = {}) {
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
+
+  hideAllScreens();
+  revealScreen("stats-screen");
+  renderStats();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "stats" });
+  }
+}
+
+function updateHomeDashboard() {
+  const objective = document.getElementById("daily-objective");
+  const countdown = document.getElementById("next-exam-countdown");
+  const objectives = [
+    "Faire 1 QCM puis relire tes erreurs.",
+    "Relire une partie de cours et ajouter une note personnelle.",
+    "Faire une révision rapide de 10 questions.",
+    "Ouvrir les flashcards pendant 5 minutes.",
+    "Cocher une preuve dans la checklist Grand Oral."
+  ];
+
+  if (objective) {
+    const dayIndex = Math.floor(Date.now() / 86400000) % objectives.length;
+    objective.textContent = objectives[dayIndex];
+  }
+
+  if (countdown) {
+    const now = new Date();
+    const nextExam = getCalendarEventsWithDates()
+      .filter(event => /groka|grand oral/i.test(event.title) && event.start >= now)
+      .sort((a, b) => a.start - b.start)[0];
+
+    if (!nextExam) {
+      countdown.textContent = "Aucune épreuve à venir dans le calendrier.";
+      return;
+    }
+
+    const days = Math.max(0, Math.ceil((nextExam.start - now) / 86400000));
+    countdown.textContent = nextExam.title + " dans " + days + " jour" + (days > 1 ? "s" : "") + ".";
   }
 }
 
@@ -6504,12 +7374,128 @@ function showSnakeGame(options = {}) {
   }
 }
 
+function showMemoryGame(options = {}) {
+  const shouldPushState = options.pushState !== false;
+
+  hideAllScreens();
+  revealScreen("memory-screen");
+  startMemoryGame();
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "memory" });
+  }
+}
+
 function updateGameHubScores() {
   const runnerBestScore = document.getElementById("runner-menu-best-score");
   const snakeBestScore = document.getElementById("snake-menu-best-score");
+  const memoryBestScore = document.getElementById("memory-menu-best-score");
 
   if (runnerBestScore) runnerBestScore.textContent = miniGame.bestScore;
   if (snakeBestScore) snakeBestScore.textContent = snakeGame.bestScore;
+  if (memoryBestScore) memoryBestScore.textContent = memoryGame.bestScore || "—";
+}
+
+function updateMemoryScores() {
+  const liveScore = document.getElementById("memory-live-score");
+  const currentScore = document.getElementById("memory-current-score");
+  const bestScore = document.getElementById("memory-best-score");
+
+  if (liveScore) liveScore.textContent = "Coups : " + memoryGame.moves;
+  if (currentScore) currentScore.textContent = memoryGame.moves;
+  if (bestScore) bestScore.textContent = memoryGame.bestScore || "—";
+
+  updateGameHubScores();
+}
+
+function startMemoryGame() {
+  const pairs = shuffleArray(memoryPairs).slice(0, 6);
+
+  memoryGame.cards = shuffleArray(pairs.flatMap((pair, pairIndex) => [
+    { id: pairIndex, text: pair.term, type: "term", open: false, found: false },
+    { id: pairIndex, text: pair.definition, type: "definition", open: false, found: false }
+  ]));
+  memoryGame.opened = [];
+  memoryGame.found = 0;
+  memoryGame.moves = 0;
+  memoryGame.locked = false;
+  renderMemoryGame();
+  updateMemoryScores();
+}
+
+function renderMemoryGame() {
+  const grid = document.getElementById("memory-grid");
+
+  if (!grid) return;
+
+  grid.innerHTML = "";
+
+  memoryGame.cards.forEach((card, index) => {
+    const button = document.createElement("button");
+    button.className =
+      "memory-card" +
+      (card.open ? " is-open" : "") +
+      (card.found ? " is-found" : "");
+    button.type = "button";
+    button.textContent = card.open || card.found ? card.text : "?";
+    button.disabled = card.found || memoryGame.locked;
+    button.onclick = () => flipMemoryCard(index);
+    grid.appendChild(button);
+  });
+}
+
+function flipMemoryCard(index) {
+  const card = memoryGame.cards[index];
+
+  if (!card || card.open || card.found || memoryGame.locked) return;
+
+  card.open = true;
+  memoryGame.opened.push(index);
+  renderMemoryGame();
+
+  if (memoryGame.opened.length < 2) return;
+
+  memoryGame.moves++;
+  updateMemoryScores();
+
+  const [firstIndex, secondIndex] = memoryGame.opened;
+  const first = memoryGame.cards[firstIndex];
+  const second = memoryGame.cards[secondIndex];
+
+  if (first.id === second.id && first.type !== second.type) {
+    first.found = true;
+    second.found = true;
+    first.open = false;
+    second.open = false;
+    memoryGame.opened = [];
+    memoryGame.found++;
+
+    if (memoryGame.found >= 6) {
+      finishMemoryGame();
+    }
+
+    renderMemoryGame();
+    return;
+  }
+
+  memoryGame.locked = true;
+  setTimeout(() => {
+    first.open = false;
+    second.open = false;
+    memoryGame.opened = [];
+    memoryGame.locked = false;
+    renderMemoryGame();
+  }, 760);
+}
+
+function finishMemoryGame() {
+  if (!memoryGame.bestScore || memoryGame.moves < memoryGame.bestScore) {
+    memoryGame.bestScore = memoryGame.moves;
+    localStorage.setItem("memoryBestScore", String(memoryGame.bestScore));
+  }
+
+  triggerSixSevenEffect(memoryGame.moves);
+  updateMemoryScores();
 }
 
 function getMiniGameCanvas() {
@@ -7222,10 +8208,12 @@ document.addEventListener("keydown", event => {
   const snakeDirections = {
     ArrowUp: [0, -1],
     KeyW: [0, -1],
+    KeyZ: [0, -1],
     ArrowDown: [0, 1],
     KeyS: [0, 1],
     ArrowLeft: [-1, 0],
     KeyA: [-1, 0],
+    KeyQ: [-1, 0],
     ArrowRight: [1, 0],
     KeyD: [1, 0]
   };
@@ -7318,6 +8306,46 @@ function confirmStartQuizFromCourse(courseKey) {
   start(courseKey);
 }
 
+function getCourseSectionKey(courseKey, sectionIndex) {
+  return courseKey + ":" + sectionIndex;
+}
+
+function getCourseFavorites() {
+  return getStoredJson(COURSE_FAVORITES_STORAGE_KEY, []);
+}
+
+function setCourseFavorite(courseKey, sectionIndex, isFavorite) {
+  const key = getCourseSectionKey(courseKey, sectionIndex);
+  const favorites = getCourseFavorites().filter(item => item !== key);
+
+  if (isFavorite) {
+    favorites.push(key);
+  }
+
+  setStoredJson(COURSE_FAVORITES_STORAGE_KEY, favorites);
+}
+
+function isCourseFavorite(courseKey, sectionIndex) {
+  return getCourseFavorites().includes(getCourseSectionKey(courseKey, sectionIndex));
+}
+
+function getCourseNotes() {
+  return getStoredJson(COURSE_NOTES_STORAGE_KEY, {});
+}
+
+function saveCourseNote(courseKey, sectionIndex, value) {
+  const notes = getCourseNotes();
+  const key = getCourseSectionKey(courseKey, sectionIndex);
+
+  if (value.trim()) {
+    notes[key] = value;
+  } else {
+    delete notes[key];
+  }
+
+  setStoredJson(COURSE_NOTES_STORAGE_KEY, notes);
+}
+
 function showCourse(courseKey, options = {}) {
   if (!courseKey || !courseContents[courseKey]) return;
 
@@ -7379,6 +8407,36 @@ function showCourse(courseKey, options = {}) {
     const sectionTitle = document.createElement("h2");
     sectionTitle.textContent = section.title;
     sectionDiv.appendChild(sectionTitle);
+
+    const sectionTools = document.createElement("div");
+    sectionTools.className = "course-section-tools";
+
+    const favoriteButton = document.createElement("button");
+    favoriteButton.className = "favorite-section-btn";
+    favoriteButton.type = "button";
+
+    function updateFavoriteButton() {
+      const isFavorite = isCourseFavorite(courseKey, sectionIndex);
+      favoriteButton.classList.toggle("is-active", isFavorite);
+      favoriteButton.textContent = isFavorite ? "Favori ajouté" : "Ajouter aux favoris";
+    }
+
+    favoriteButton.onclick = () => {
+      setCourseFavorite(courseKey, sectionIndex, !isCourseFavorite(courseKey, sectionIndex));
+      updateFavoriteButton();
+    };
+
+    updateFavoriteButton();
+    sectionTools.appendChild(favoriteButton);
+
+    const note = document.createElement("textarea");
+    note.className = "course-note";
+    note.placeholder = "Note personnelle pour cette partie...";
+    note.value = getCourseNotes()[getCourseSectionKey(courseKey, sectionIndex)] || "";
+    note.addEventListener("input", () => saveCourseNote(courseKey, sectionIndex, note.value));
+    sectionTools.appendChild(note);
+
+    sectionDiv.appendChild(sectionTools);
 
     section.blocks.forEach(block => {
       const blockTitle = document.createElement("h3");
@@ -7518,12 +8576,107 @@ function prepareQuestion(originalQuestion, courseKey) {
   };
 }
 
+function getAllQuestionEntries() {
+  return Object.keys(questionBanks)
+    .filter(courseKey => courseContents[courseKey])
+    .flatMap(courseKey =>
+      questionBanks[courseKey].questions.map(question => ({
+        ...question,
+        sourceCourseKey: courseKey,
+        sourceTitle: questionBanks[courseKey].title
+      }))
+    );
+}
+
+function createTemporaryQuestionBank(courseKey, title, tag, questions, quizMode = "standard") {
+  questionBanks[courseKey] = {
+    title: title,
+    tag: tag,
+    questions: questions.map(question => ({
+      q: question.q,
+      options: [...question.options],
+      answer: question.answer,
+      exp: question.exp
+    })),
+    saveHistory: false,
+    quizMode: quizMode
+  };
+}
+
+function findOriginalQuestionByText(questionText) {
+  const normalizedText = normalizeChatbotText(questionText);
+
+  return getAllQuestionEntries().find(question => normalizeChatbotText(question.q) === normalizedText);
+}
+
+function startTemporaryQuiz(courseKey, title, tag, questions, quizMode = "standard") {
+  if (!questions.length) {
+    alert("Il n'y a pas encore assez de questions pour lancer ce mode.");
+    return;
+  }
+
+  createTemporaryQuestionBank(courseKey, title, tag, questions, quizMode);
+  start(courseKey, { quizMode: quizMode });
+}
+
+function startQuickRevision() {
+  const questions = shuffleArray(getAllQuestionEntries()).slice(0, 10);
+
+  startTemporaryQuiz(
+    "quickRevision",
+    "Révision rapide",
+    "Révision rapide",
+    questions,
+    "standard"
+  );
+}
+
+function startMistakeReview() {
+  const history = getHistory();
+  const seen = new Set();
+  const mistakeQuestions = [];
+
+  ["developpement", "cultureCreation"].forEach(courseKey => {
+    history[courseKey].forEach(attempt => {
+      (attempt.wrongs || []).forEach(wrong => {
+        const original = findOriginalQuestionByText(wrong.q);
+
+        if (original && !seen.has(original.q)) {
+          seen.add(original.q);
+          mistakeQuestions.push(original);
+        }
+      });
+    });
+  });
+
+  startTemporaryQuiz(
+    "mistakeReview",
+    "Erreurs uniquement",
+    "Erreurs",
+    shuffleArray(mistakeQuestions).slice(0, 15),
+    "standard"
+  );
+}
+
+function startExamMode() {
+  const questions = shuffleArray(getAllQuestionEntries()).slice(0, 20);
+
+  startTemporaryQuiz(
+    "examMode",
+    "Mode examen",
+    "Mode examen",
+    questions,
+    "exam"
+  );
+}
+
 function start(courseKey, options = {}) {
   currentCourseKey = courseKey;
   resultAlreadySaved = false;
 
   const shouldPushState = options.pushState !== false;
   const bank = questionBanks[courseKey];
+  activeQuizMode = options.quizMode || bank.quizMode || "standard";
 
   const questionsWithIds = bank.questions.map((question, index) => ({
     ...question,
@@ -7553,6 +8706,7 @@ function start(courseKey, options = {}) {
   hideAllScreens();
   revealScreen("quiz-screen");
   document.getElementById("course-tag").textContent = bank.tag;
+  document.getElementById("quiz-course-btn").classList.toggle("hidden", !courseContents[courseKey]);
 
   if (shouldPushState) {
     pushNavigationState({
@@ -7571,7 +8725,9 @@ function render() {
   document.getElementById("counter").textContent = (current + 1) + " / " + total;
   document.getElementById("progress").style.width = ((current / total) * 100) + "%";
   document.getElementById("question-text").textContent = q.q;
-  document.getElementById("score-label").textContent = "Score : " + score + " / " + current;
+  document.getElementById("score-label").textContent = activeQuizMode === "exam"
+    ? "Mode examen : correction à la fin"
+    : "Score : " + score + " / " + current;
 
   document.getElementById("explication").classList.add("hidden");
   document.getElementById("next-btn").classList.add("hidden");
@@ -7609,6 +8765,29 @@ function select(i) {
   const isCorrect = i === q.answer;
 
   btns.forEach(btn => btn.disabled = true);
+
+  if (activeQuizMode === "exam") {
+    btns[i].classList.add("selected");
+
+    if (!isCorrect) {
+      wrongs.push({
+        q: q.q,
+        userAnswer: q.options[i],
+        correctAnswer: q.options[q.answer],
+        exp: q.exp
+      });
+    } else {
+      score++;
+    }
+
+    const nextBtn = document.getElementById("next-btn");
+    nextBtn.textContent = current + 1 >= shuffled.length ? "Voir les résultats →" : "Question suivante →";
+    nextBtn.classList.remove("hidden");
+    document.getElementById("score-label").textContent = "Réponse enregistrée • " + (current + 1) + " / " + shuffled.length;
+    document.getElementById("progress").style.width = (((current + 1) / shuffled.length) * 100) + "%";
+    return;
+  }
+
   btns[q.answer].classList.add("correct");
   playQuizFeedbackSound(isCorrect);
 
@@ -7658,11 +8837,13 @@ function showResults(options = {}) {
   const percentage = Math.round((score / total) * 100);
   const bank = questionBanks[currentCourseKey];
   const durationSeconds = getQuizDurationSeconds();
+  const canReviewCourse = Boolean(courseContents[currentCourseKey]);
 
   document.getElementById("final-score").textContent = score + "/" + total;
   document.getElementById("result-course").textContent = bank.title + " • " + percentage + "%";
   document.getElementById("result-time").textContent = "Temps passé : " + formatDuration(durationSeconds);
   document.getElementById("score-bar-fill").style.width = percentage + "%";
+  document.getElementById("result-course-btn").classList.toggle("hidden", !canReviewCourse);
 
   let grade = "";
 
@@ -7678,7 +8859,7 @@ function showResults(options = {}) {
 
   document.getElementById("final-grade").textContent = grade;
 
-  if (shouldSaveResult && !resultAlreadySaved) {
+  if (shouldSaveResult && !resultAlreadySaved && bank.saveHistory !== false) {
     saveHistoryAttempt(currentCourseKey, score, total, percentage, grade, wrongs, durationSeconds);
     resultAlreadySaved = true;
   }
@@ -7922,6 +9103,7 @@ function backToMenu(options = {}) {
   setHomeEasterEggVisible(true);
 
   renderHistory();
+  updateHomeDashboard();
 
   if (shouldPushState) {
     pushNavigationState({ screen: "menu" });
