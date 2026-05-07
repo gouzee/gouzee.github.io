@@ -86,11 +86,15 @@
     background: #12122a;
   }
 
-  .star-toggle {
+  .settings-menu {
     position: fixed;
     top: 14px;
     left: 14px;
     z-index: 3;
+  }
+
+  .settings-toggle,
+  .setting-action {
     background: rgba(42, 42, 74, 0.84);
     color: #ccc;
     border: 1px solid #3a3a6a;
@@ -103,15 +107,62 @@
     transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
 
-  .star-toggle:hover,
-  .star-toggle:focus-visible {
+  .settings-toggle {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+  }
+
+  .settings-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .settings-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 150px;
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(18, 18, 42, 0.88);
+    border: 1px solid rgba(58, 58, 106, 0.88);
+    border-radius: 10px;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    visibility: hidden;
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+  }
+
+  .settings-menu.open .settings-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .setting-action {
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .settings-toggle:hover,
+  .settings-toggle:focus-visible,
+  .setting-action:hover,
+  .setting-action:focus-visible {
     background: rgba(50, 50, 82, 0.94);
     border-color: #6366f1;
     color: #fff;
     outline: none;
   }
 
-  .star-toggle[aria-pressed="true"] {
+  .setting-action[aria-pressed="true"] {
     background: rgba(26, 26, 46, 0.92);
     border-color: #2a2a4a;
     color: #aab;
@@ -1562,7 +1613,9 @@
   }
 
   body.lucio-mode .secondary-btn,
-  body.lucio-mode .star-toggle,
+  body.lucio-mode .settings-toggle,
+  body.lucio-mode .settings-panel,
+  body.lucio-mode .setting-action,
   body.lucio-mode .small-btn {
     background: rgba(8, 47, 31, 0.88);
     border-color: #22c55e;
@@ -1571,8 +1624,10 @@
 
   body.lucio-mode .secondary-btn:hover,
   body.lucio-mode .small-btn:hover,
-  body.lucio-mode .star-toggle:hover,
-  body.lucio-mode .star-toggle:focus-visible {
+  body.lucio-mode .settings-toggle:hover,
+  body.lucio-mode .settings-toggle:focus-visible,
+  body.lucio-mode .setting-action:hover,
+  body.lucio-mode .setting-action:focus-visible {
     border-color: #a3e635;
     color: #f4ffe8;
   }
@@ -1760,9 +1815,17 @@
       font-size: 20px;
     }
 
-    .star-toggle {
+    .settings-menu {
       top: 10px;
       left: 10px;
+    }
+
+    .settings-toggle {
+      width: 36px;
+      height: 36px;
+    }
+
+    .setting-action {
       padding: 6px 9px;
     }
 
@@ -1839,7 +1902,7 @@
     .btn,
     .scroll-top-btn,
     .star-field,
-    .star-toggle,
+    .settings-menu,
     .home-easter-egg,
     .doigby-easter-egg,
     .doigby-video-layer,
@@ -1873,14 +1936,52 @@
 
 <body>
 <div class="star-field" id="star-field" aria-hidden="true"></div>
-<button
-  class="star-toggle"
-  id="star-toggle"
-  type="button"
-  aria-pressed="false"
-  onclick="toggleStars()">
-  Étoiles : ON
-</button>
+<div class="settings-menu" id="settings-menu">
+  <button
+    class="settings-toggle"
+    id="settings-toggle"
+    type="button"
+    aria-label="Ouvrir les paramètres"
+    aria-expanded="false"
+    aria-controls="settings-panel"
+    title="Paramètres"
+    onclick="toggleSettingsMenu()">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.51a2 2 0 0 1 1-1.72l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+      <circle
+        cx="12"
+        cy="12"
+        r="3"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2" />
+    </svg>
+  </button>
+  <div class="settings-panel" id="settings-panel">
+    <button
+      class="setting-action star-toggle"
+      id="star-toggle"
+      type="button"
+      aria-pressed="false"
+      onclick="toggleStars()">
+      Étoiles : ON
+    </button>
+    <button
+      class="setting-action quiz-sound-toggle"
+      id="quiz-sound-toggle"
+      type="button"
+      aria-pressed="false"
+      onclick="toggleQuizFeedbackSounds()">
+      Sons QCM : ON
+    </button>
+  </div>
+</div>
 <button
   class="home-easter-egg"
   id="home-easter-egg"
@@ -2318,6 +2419,7 @@
 <script>
 
 const STAR_VISIBILITY_STORAGE_KEY = "qcm-stars-disabled";
+const QUIZ_FEEDBACK_SOUND_STORAGE_KEY = "qcm-feedback-sounds-disabled";
 const DOIGBY_VIDEO_END_SECONDS = 10;
 const DOIGBY_PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 18;
 const SCREAMER_MIN_DELAY = 45000;
@@ -3062,6 +3164,60 @@ function toggleStars() {
   setStarsDisabled(!document.body.classList.contains("stars-disabled"));
 }
 
+function isStoredQuizFeedbackSoundsDisabled() {
+  try {
+    return localStorage.getItem(QUIZ_FEEDBACK_SOUND_STORAGE_KEY) === "true";
+  } catch (error) {
+    return false;
+  }
+}
+
+function setQuizFeedbackSoundsDisabled(disabled) {
+  const toggle = document.getElementById("quiz-sound-toggle");
+
+  document.body.classList.toggle("quiz-sounds-disabled", disabled);
+
+  if (toggle) {
+    toggle.textContent = disabled ? "Sons QCM : OFF" : "Sons QCM : ON";
+    toggle.setAttribute("aria-pressed", String(disabled));
+    toggle.setAttribute(
+      "aria-label",
+      disabled ? "Activer les sons des réponses QCM" : "Désactiver les sons des réponses QCM"
+    );
+    toggle.title = disabled ? "Activer les sons QCM" : "Désactiver les sons QCM";
+  }
+
+  try {
+    localStorage.setItem(QUIZ_FEEDBACK_SOUND_STORAGE_KEY, disabled ? "true" : "false");
+  } catch (error) {
+  }
+}
+
+function toggleQuizFeedbackSounds() {
+  setQuizFeedbackSoundsDisabled(!document.body.classList.contains("quiz-sounds-disabled"));
+}
+
+function setSettingsMenuOpen(isOpen) {
+  const menu = document.getElementById("settings-menu");
+  const toggle = document.getElementById("settings-toggle");
+
+  if (menu) {
+    menu.classList.toggle("open", isOpen);
+  }
+
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Fermer les paramètres" : "Ouvrir les paramètres");
+    toggle.title = isOpen ? "Fermer les paramètres" : "Paramètres";
+  }
+}
+
+function toggleSettingsMenu() {
+  const menu = document.getElementById("settings-menu");
+
+  setSettingsMenuOpen(!menu?.classList.contains("open"));
+}
+
 function clearShootingStars() {
   document.querySelectorAll(".shooting-star").forEach((star) => star.remove());
 
@@ -3226,11 +3382,26 @@ document.addEventListener("animationend", event => {
   }
 });
 
+document.addEventListener("click", event => {
+  const menu = document.getElementById("settings-menu");
+
+  if (!menu || !menu.classList.contains("open") || menu.contains(event.target)) return;
+
+  setSettingsMenuOpen(false);
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    setSettingsMenuOpen(false);
+  }
+});
+
 document.addEventListener("visibilitychange", handleStarVisibilityChange);
 document.addEventListener("visibilitychange", handleScreamerVisibilityChange);
 window.addEventListener("scroll", updateScrollTopButton);
 document.addEventListener("DOMContentLoaded", () => {
   setStarsDisabled(isStoredStarsDisabled());
+  setQuizFeedbackSoundsDisabled(isStoredQuizFeedbackSoundsDisabled());
   setHomeEasterEggVisible(!document.getElementById("menu-screen").classList.contains("hidden"));
   preloadLucioAudio();
   preloadSixSevenAudio();
@@ -4472,6 +4643,8 @@ function playFeedbackTone(audioContext, settings) {
 }
 
 function playQuizFeedbackSound(isCorrect) {
+  if (document.body.classList.contains("quiz-sounds-disabled")) return;
+
   const audioContext = getQuizFeedbackAudioContext();
 
   if (!audioContext) return;
