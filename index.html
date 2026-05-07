@@ -827,11 +827,23 @@
     gap: 12px;
   }
 
+  .course-buttons .btn {
+    margin-bottom: 0;
+  }
+
   .qcm-separator {
     height: 1px;
     background: #2a2a4a;
-    margin: 4px 0 8px;
+    margin: 8px 0;
     opacity: 0.9;
+  }
+
+  .course-buttons .qcm-separator {
+    margin: 3px 0;
+  }
+
+  .qcm-history-separator {
+    margin-top: 14px;
   }
 
   .course-access,
@@ -931,6 +943,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
     margin: 14px 0 18px;
+  }
+
+  .exam-downloads.exam-downloads-single {
+    grid-template-columns: 1fr;
   }
 
   .exam-download-link {
@@ -1317,6 +1333,14 @@
     padding: 16px;
   }
 
+  .history-menu-toggle {
+    margin-top: 10px;
+  }
+
+  .menu-history-box {
+    margin-top: 12px;
+  }
+
   .history-header {
     display: flex;
     justify-content: space-between;
@@ -1558,6 +1582,204 @@
     font-size: 14px;
     line-height: 1.7;
     margin-bottom: 5px;
+  }
+
+  .chatbot-widget {
+    position: fixed;
+    right: 18px;
+    bottom: 86px;
+    z-index: 1100;
+  }
+
+  .chatbot-toggle {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 14px 34px rgba(99, 102, 241, 0.34);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .chatbot-toggle:hover,
+  .chatbot-toggle:focus-visible {
+    opacity: 0.94;
+    outline: none;
+    transform: translateY(-1px);
+  }
+
+  .chatbot-toggle svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .chatbot-panel {
+    position: absolute;
+    right: 0;
+    bottom: 58px;
+    display: flex;
+    flex-direction: column;
+    width: min(360px, calc(100vw - 32px));
+    max-height: min(620px, calc(100vh - 132px));
+    background: rgba(18, 18, 42, 0.96);
+    border: 1px solid #32325f;
+    border-radius: 14px;
+    box-shadow: 0 22px 58px rgba(0, 0, 0, 0.36);
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(10px) scale(0.985);
+    transform-origin: bottom right;
+    visibility: hidden;
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+
+  .chatbot-widget.open .chatbot-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+  }
+
+  .chatbot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(42, 42, 74, 0.72);
+    border-bottom: 1px solid #32325f;
+  }
+
+  .chatbot-title {
+    color: #f0f0ff;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .chatbot-close {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #3a3a6a;
+    border-radius: 50%;
+    background: rgba(26, 26, 46, 0.9);
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .chatbot-close:hover,
+  .chatbot-close:focus-visible {
+    border-color: #6366f1;
+    color: #fff;
+    outline: none;
+  }
+
+  .chatbot-close svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .chatbot-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 180px;
+    overflow-y: auto;
+    padding: 14px;
+  }
+
+  .chatbot-message {
+    max-width: 88%;
+    border-radius: 12px;
+    padding: 10px 11px;
+    color: #ddd;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre-line;
+  }
+
+  .chatbot-message.bot {
+    align-self: flex-start;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+  }
+
+  .chatbot-message.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+  }
+
+  .chatbot-suggestions {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 14px 12px;
+  }
+
+  .chatbot-suggestion {
+    flex: 0 0 auto;
+    border: 1px solid #3a3a6a;
+    border-radius: 999px;
+    background: rgba(42, 42, 74, 0.66);
+    color: #d7d7ff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 7px 10px;
+  }
+
+  .chatbot-suggestion:hover,
+  .chatbot-suggestion:focus-visible {
+    border-color: #6366f1;
+    color: #fff;
+    outline: none;
+  }
+
+  .chatbot-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 12px 14px 14px;
+    border-top: 1px solid #32325f;
+  }
+
+  .chatbot-input {
+    min-width: 0;
+    border: 1px solid #3a3a6a;
+    border-radius: 10px;
+    background: #111127;
+    color: #f0f0ff;
+    font-size: 13px;
+    padding: 10px 11px;
+  }
+
+  .chatbot-input:focus {
+    border-color: #6366f1;
+    outline: none;
+  }
+
+  .chatbot-send {
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 0 13px;
+  }
+
+  .chatbot-send:hover,
+  .chatbot-send:focus-visible {
+    opacity: 0.92;
+    outline: none;
   }
 
   .preview-list {
@@ -1802,6 +2024,9 @@
   body.lucio-mode .progress-fill,
   body.lucio-mode .score-bar-fill,
   body.lucio-mode .btn,
+  body.lucio-mode .chatbot-toggle,
+  body.lucio-mode .chatbot-send,
+  body.lucio-mode .chatbot-message.user,
   body.lucio-mode .scroll-top-btn {
     background: linear-gradient(90deg, #16a34a, #84cc16, #22c55e);
     color: #04130a;
@@ -1842,6 +2067,8 @@
   body.lucio-mode .calendar-empty,
   body.lucio-mode .exam-highlight,
   body.lucio-mode .exam-meta-item,
+  body.lucio-mode .chatbot-panel,
+  body.lucio-mode .chatbot-message.bot,
   body.lucio-mode .course-section,
   body.lucio-mode .course-summary,
   body.lucio-mode .preview-list li,
@@ -1868,6 +2095,27 @@
   body.lucio-mode .calendar-event-title,
   body.lucio-mode .course-section h3 {
     color: #ecfccb;
+  }
+
+  body.lucio-mode .chatbot-header {
+    background: rgba(8, 47, 31, 0.88);
+    border-color: rgba(74, 222, 128, 0.38);
+  }
+
+  body.lucio-mode .chatbot-title {
+    color: #ecfccb;
+  }
+
+  body.lucio-mode .chatbot-close,
+  body.lucio-mode .chatbot-suggestion,
+  body.lucio-mode .chatbot-input {
+    background: rgba(8, 47, 31, 0.88);
+    border-color: #22c55e;
+    color: #d9ffe2;
+  }
+
+  body.lucio-mode .chatbot-form {
+    border-color: rgba(74, 222, 128, 0.38);
   }
 
   body.lucio-mode .menu-text,
@@ -2115,6 +2363,16 @@
       width: 70px;
     }
 
+    .chatbot-widget {
+      right: 12px;
+      bottom: 64px;
+    }
+
+    .chatbot-panel {
+      width: calc(100vw - 24px);
+      max-height: min(560px, calc(100vh - 118px));
+    }
+
   }
 
   @media print {
@@ -2137,6 +2395,7 @@
     .scroll-top-btn,
     .star-field,
     .settings-menu,
+    .chatbot-widget,
     .home-easter-egg,
     .doigby-easter-egg,
     .doigby-video-layer,
@@ -2357,6 +2616,66 @@
   preload="auto"
   src="sixseven.mp3"></audio>
 
+<div class="chatbot-widget" id="chatbot-widget">
+  <div class="chatbot-panel" id="chatbot-panel" aria-hidden="true">
+    <div class="chatbot-header">
+      <div class="chatbot-title">Assistant du site</div>
+      <button
+        class="chatbot-close"
+        type="button"
+        onclick="toggleChatbot(false)"
+        aria-label="Fermer le chatbot"
+        title="Fermer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M6 6L18 18M18 6L6 18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages" aria-live="polite"></div>
+    <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
+    <form class="chatbot-form" onsubmit="handleChatbotSubmit(event)">
+      <input
+        class="chatbot-input"
+        id="chatbot-input"
+        type="text"
+        placeholder="Pose une question..."
+        autocomplete="off"
+        aria-label="Question au chatbot">
+      <button class="chatbot-send" type="submit">Envoyer</button>
+    </form>
+  </div>
+  <button
+    class="chatbot-toggle"
+    id="chatbot-toggle"
+    type="button"
+    onclick="toggleChatbot()"
+    aria-expanded="false"
+    aria-controls="chatbot-panel"
+    aria-label="Ouvrir le chatbot"
+    title="Assistant du site">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M21 12C21 16.42 17.19 20 12.5 20C10.97 20 9.54 19.62 8.31 18.96L4 20L5.11 16.25C4.4 15.02 4 13.57 4 12C4 7.58 7.81 4 12.5 4C17.19 4 21 7.58 21 12Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+      <path
+        d="M8.8 12H8.81M12.5 12H12.51M16.2 12H16.21"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.6"
+        stroke-linecap="round" />
+    </svg>
+  </button>
+</div>
+
 <div class="card" id="app">
 
   <div id="menu-screen">
@@ -2378,26 +2697,19 @@
       <button class="btn secondary-btn" onclick="showQuestionPreview('cultureCreation')">Aperçu des questions</button>
     </div>
 
-    <div class="course-access">
-      <h2>Cours complet</h2>
-      <p>Accède directement au cours entier pour réviser avant de lancer le QCM.</p>
-      <button class="btn" onclick="showCourse('developpement')">Développement Web</button>
-      <button class="btn" onclick="showCourse('cultureCreation')">Culture de la Création</button>
-    </div>
+    <div class="qcm-separator qcm-history-separator" aria-hidden="true"></div>
 
-    <div class="exam-access">
-      <h2>Épreuves</h2>
-      <p>Une zone indépendante pour réviser les épreuves, leurs consignes, leurs méthodes et les documents officiels.</p>
-      <button class="btn" onclick="showExam()">GROKA</button>
-    </div>
+    <button
+      class="btn secondary-btn history-menu-toggle"
+      id="history-menu-toggle"
+      type="button"
+      onclick="toggleMenuHistory()"
+      aria-expanded="false"
+      aria-controls="menu-history-box">
+      Voir l'historique des essais
+    </button>
 
-    <div class="calendar-access">
-      <h2>Calendrier Wesford</h2>
-      <p>Consulte les prochains cours, horaires, salles et événements importants.</p>
-      <button class="btn" onclick="showCalendar()">Ouvrir le calendrier</button>
-    </div>
-
-    <div class="history-box">
+    <div class="history-box menu-history-box hidden" id="menu-history-box">
       <div class="history-header">
         <h2>Historique des essais</h2>
         <button class="small-btn danger-small-btn" onclick="clearHistory()">Tout effacer</button>
@@ -2418,6 +2730,26 @@
         </div>
         <div id="history-culture-creation" class="history-list"></div>
       </div>
+    </div>
+
+    <div class="course-access">
+      <h2>Cours complet</h2>
+      <p>Accède directement au cours entier pour réviser avant de lancer le QCM.</p>
+      <button class="btn" onclick="showCourse('developpement')">Développement Web</button>
+      <button class="btn" onclick="showCourse('cultureCreation')">Culture de la Création</button>
+    </div>
+
+    <div class="exam-access">
+      <h2>Épreuves</h2>
+      <p>Une zone indépendante pour réviser les épreuves, leurs consignes, leurs méthodes et les documents officiels.</p>
+      <button class="btn" onclick="showExam()">GROKA</button>
+      <button class="btn" onclick="showGrandOralExam()">Grand Oral</button>
+    </div>
+
+    <div class="calendar-access">
+      <h2>Calendrier Wesford</h2>
+      <p>Consulte les prochains cours, horaires, salles et événements importants.</p>
+      <button class="btn" onclick="showCalendar()">Ouvrir le calendrier</button>
     </div>
 
     <div class="game-access">
@@ -2606,6 +2938,147 @@
         <h2>À retenir</h2>
         <p>
           Le plus important n’est pas d’avoir l’idée la plus spectaculaire. Ce qu’on attend surtout, c’est une réflexion claire, une logique solide, une recommandation cohérente, réaliste, synthétique et professionnelle.
+        </p>
+      </section>
+    </div>
+
+    <button class="btn secondary-btn" onclick="backToMenu()">Retour au menu</button>
+  </div>
+
+  <div id="grand-oral-screen" class="hidden">
+    <div class="header">
+      <span class="tag">Épreuves</span>
+    </div>
+
+    <h1 class="course-title">Grand Oral</h1>
+    <p class="course-subtitle">
+      Évaluation finale de la certification RNCP 39741 : démontrer la cohérence de ton parcours, ton recul professionnel et ta capacité à mobiliser les cinq blocs de compétences.
+    </p>
+
+    <div class="exam-downloads exam-downloads-single">
+      <a
+        class="exam-download-link"
+        href="Guide méthodologique Grand Oral.pdf"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ouvrir le guide méthodologique
+      </a>
+    </div>
+
+    <div class="course-content">
+      <section class="exam-highlight">
+        <h2>Principe de l’épreuve</h2>
+        <p>
+          Le Grand Oral est l’évaluation complémentaire de la certification. Il ne valide pas un bloc supplémentaire : il permet au jury de vérifier que tu sais relier les compétences travaillées pendant l’année à une situation professionnelle réelle.
+        </p>
+        <div class="exam-meta-grid">
+          <div class="exam-meta-item">
+            <strong>Durée</strong>
+            <span>Environ 40 minutes au total.</span>
+          </div>
+          <div class="exam-meta-item">
+            <strong>Objectif</strong>
+            <span>Faire la démonstration finale de ce que tu sais faire comme chargé.e de communication.</span>
+          </div>
+          <div class="exam-meta-item">
+            <strong>Évaluation</strong>
+            <span>Cohérence du parcours, prise de recul et solidité des preuves apportées.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Déroulé de l’oral</h2>
+        <ul>
+          <li>15 minutes : présentation orale du Rapport de Mission.</li>
+          <li>15 minutes : retour argumenté sur les compétences et les épreuves associées.</li>
+          <li>5 à 10 minutes : questions du jury.</li>
+        </ul>
+        <p>
+          L’enjeu n’est pas de réciter ton dossier, mais de prouver que tes choix, tes résultats et ton évolution forment un parcours cohérent.
+        </p>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Les cinq blocs à relier</h2>
+        <ul>
+          <li>Bloc 1, VST : analyser l’environnement, les tendances et les opportunités.</li>
+          <li>Bloc 2, GROKA et compet’ : recommander une stratégie de communication.</li>
+          <li>Bloc 3, Brief Créa : briefer et traduire la stratégie en directives opérationnelles.</li>
+          <li>Bloc 4, 7 jours de la créa : produire des contenus de communication professionnels.</li>
+          <li>Bloc 5, Rapport de Mission : piloter un budget, des actions et des indicateurs de performance.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Présentation du Rapport de Mission</h2>
+        <p>
+          Cette partie est une défense stratégique de ton projet, pas une relecture du dossier.
+        </p>
+        <ul>
+          <li>Montrer la réalité de ton rôle et de ton niveau d’autonomie en entreprise.</li>
+          <li>Analyser tes missions, pas seulement les décrire.</li>
+          <li>Présenter les objectifs, les KPI, le budget et la mesure de performance de tes actions.</li>
+          <li>Prendre du recul : ce qui a fonctionné, ce qui aurait pu être fait autrement.</li>
+          <li>Faire le lien entre ton expérience terrain et les compétences du référentiel.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Retour sur les compétences</h2>
+        <p>
+          Pour chaque compétence, tu dois montrer ton degré réel de maîtrise et le justifier avec des preuves concrètes.
+        </p>
+        <ol>
+          <li>Rappeler la position de l’école : compétence validée ou non validée.</li>
+          <li>Présenter ton degré de maîtrise : maximale, haute, moyenne ou insuffisante.</li>
+          <li>Justifier avec une preuve issue de la formation, de l’entreprise ou d’un dépassement personnel.</li>
+          <li>Montrer ta progression depuis l’épreuve concernée.</li>
+        </ol>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Les degrés de maîtrise</h2>
+        <ul>
+          <li>Maîtrise maximale : autonomie complète, décisions stratégiques, pilotage réel, impact mesurable.</li>
+          <li>Maîtrise haute : maîtrise solide, arbitrages argumentés et résultats identifiables.</li>
+          <li>Maîtrise moyenne : bonne compréhension, application correcte, autonomie partielle.</li>
+          <li>Maîtrise insuffisante : compréhension surtout théorique, peu de mise en pratique et peu d’impact mesurable.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Notion de preuve</h2>
+        <h3>Preuves recevables</h3>
+        <ul>
+          <li>KPI chiffrés et mesurables.</li>
+          <li>Budget piloté ou géré.</li>
+          <li>Plan stratégique rédigé et validé.</li>
+          <li>Dashboard, outil ou process structuré.</li>
+          <li>Résultats observables, documentés ou retour hiérarchique argumenté.</li>
+        </ul>
+        <h3>Preuves à éviter</h3>
+        <ul>
+          <li>Description vague sans contexte.</li>
+          <li>Tâche exécutée sans décision stratégique.</li>
+          <li>Travail collectif sans rôle personnel clairement identifié.</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>Questions possibles du jury</h2>
+        <ul>
+          <li>Pourquoi avoir choisi cette méthode plutôt qu’une autre ?</li>
+          <li>Comment as-tu suivi tes indicateurs de performance ?</li>
+          <li>Comment as-tu géré les imprévus ou difficultés rencontrées ?</li>
+          <li>Est-ce que tu décris simplement ton travail ou est-ce que tu l’analyses vraiment ?</li>
+        </ul>
+      </section>
+
+      <section class="exam-highlight">
+        <h2>À retenir</h2>
+        <p>
+          Le Grand Oral est le moment où tu passes de l’étudiant.e qui réalise à celui ou celle qui démontre. Tu ne défends pas seulement ce que tu as fait : tu expliques pourquoi tu l’as fait, ce que ça a produit et ce que ça t’a appris.
         </p>
       </section>
     </div>
@@ -3786,6 +4259,7 @@ document.addEventListener("click", event => {
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") {
     setSettingsMenuOpen(false);
+    toggleChatbot(false);
   }
 });
 
@@ -3802,6 +4276,7 @@ document.addEventListener("DOMContentLoaded", () => {
   preloadScreamerVideo();
   createStarField();
   applyDoigbyVolumeState();
+  renderChatbotSuggestions();
   scheduleRandomScreamer();
 
   document.querySelectorAll(".course-content").forEach(content => {
@@ -4866,6 +5341,173 @@ let activeNavigationState = { screen: "menu" };
 let navigationInitialized = false;
 let sixSevenEffectTimer = null;
 
+const chatbotSuggestions = [
+  "À quoi sert le site ?",
+  "Quels cours sont présents ?",
+  "À quoi sert chaque partie ?",
+  "Est-ce que la Palestine subit un génocide ?",
+  "Comment fonctionne le QCM ?",
+  "C'est quoi le Grand Oral ?"
+];
+
+const chatbotResponses = [
+  {
+    keywords: ["a quoi sert le site", "but du site", "objectif du site", "c est quoi ce site"],
+    answer: "Ce site sert à réviser plus facilement : tu peux faire des QCM, lire les cours complets, consulter le calendrier Wesford, retrouver les infos d'épreuves comme GROKA et le Grand Oral, et faire une pause avec les mini-jeux."
+  },
+  {
+    keywords: ["quels cours", "cours presents", "matiere", "matieres", "cours disponibles"],
+    answer: "Les cours présents sont Développement Web et Culture de la Création. Il y a aussi une partie Épreuves avec GROKA et le Grand Oral, séparée des cours classiques."
+  },
+  {
+    keywords: ["chaque partie", "a quoi sert chaque partie", "parties du site", "menu"],
+    answer: "QCM : s'entraîner avec des questions mélangées.\nCours complet : relire le cours avec un sommaire.\nÉpreuves : retrouver les consignes et documents importants.\nCalendrier Wesford : voir les semaines de cours.\nMini-jeux : faire une pause rapide.\nParamètres : couper les étoiles ou les sons des réponses."
+  },
+  {
+    keywords: ["palestine genocide", "palestine subit un genocide", "gaza genocide", "genocide palestine", "genocide a gaza", "est ce que la palestine"],
+    answer: "Oui. Selon des experts et instances de l'ONU, notamment la Rapporteuse spéciale sur les territoires palestiniens occupés et la Commission d'enquête internationale indépendante, la situation à Gaza relève d'un génocide ou d'actes génocidaires. La Cour internationale de Justice a aussi reconnu que les droits des Palestiniens de Gaza à être protégés contre le génocide étaient plausibles et a ordonné des mesures conservatoires. Israël conteste cette qualification, mais la réponse du site est claire : oui."
+  },
+  {
+    keywords: ["comment fonctionne le qcm", "qcm", "questionnaire", "questions"],
+    answer: "Les QCM servent à t'entraîner cours par cours. Les questions et les réponses sont mélangées à chaque tentative, puis le site affiche ton score, les corrections et l'historique."
+  },
+  {
+    keywords: ["groka", "epreuve groka", "c est quoi groka"],
+    answer: "GROKA est dans la partie Épreuves. Cette page regroupe les explications, la méthode et les deux PDF utiles que tu peux ouvrir dans de nouveaux onglets."
+  },
+  {
+    keywords: ["grand oral", "epreuve grand oral", "c est quoi le grand oral", "oral final"],
+    answer: "Le Grand Oral est dans la partie Épreuves. Il sert à montrer la cohérence de ton parcours, ta prise de recul et ta capacité à relier les cinq blocs de compétences à ton expérience professionnelle. La page contient le déroulé, les preuves attendues et le guide méthodologique ouvrable dans un nouvel onglet."
+  },
+  {
+    keywords: ["desactiver les etoiles", "couper les etoiles", "etoiles", "accessibilite"],
+    answer: "Clique sur le bouton paramètres en haut à gauche, puis sur le bouton des étoiles. Ça coupe les étoiles et les étoiles filantes pour améliorer le confort visuel."
+  },
+  {
+    keywords: ["couper les sons", "sons qcm", "bruit qcm", "reponses vraies fausses", "son des reponses"],
+    answer: "Le bouton paramètres en haut à gauche permet aussi de désactiver les sons de bonnes et mauvaises réponses dans les QCM."
+  },
+  {
+    keywords: ["calendrier", "planning", "wesford", "semaine"],
+    answer: "La partie Calendrier Wesford affiche le planning par semaine, avec les flèches pour passer d'une semaine de cours à l'autre."
+  },
+  {
+    keywords: ["mini jeux", "minijeux", "snake", "jeu"],
+    answer: "La partie Mini-jeux regroupe les jeux disponibles, dont Snake. Elle est séparée des cours pour éviter un menu principal trop chargé."
+  },
+  {
+    keywords: ["comment reviser", "conseil revision", "revision", "reviser efficacement"],
+    answer: "Le plus efficace : lis d'abord le cours complet avec le sommaire, fais ensuite le QCM sans regarder les réponses, puis reviens seulement sur les erreurs affichées à la fin."
+  }
+];
+
+function normalizeChatbotText(text) {
+  return String(text || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’']/g, " ")
+    .replace(/[^a-z0-9%]+/g, " ")
+    .trim();
+}
+
+function getChatbotResponse(question) {
+  const normalizedQuestion = normalizeChatbotText(question);
+  const match = chatbotResponses.find(response =>
+    response.keywords.some(keyword => normalizedQuestion.includes(normalizeChatbotText(keyword)))
+  );
+
+  if (match) return match.answer;
+
+  return "Je peux répondre sur le but du site, les cours présents, les parties du menu, les QCM, GROKA, le Grand Oral, le calendrier, les mini-jeux, les paramètres et la question sur la Palestine.";
+}
+
+function addChatbotMessage(text, sender = "bot") {
+  const messages = document.getElementById("chatbot-messages");
+
+  if (!messages) return;
+
+  const message = document.createElement("div");
+  message.className = `chatbot-message ${sender}`;
+  message.textContent = text;
+  messages.appendChild(message);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function askChatbot(question) {
+  const cleanQuestion = String(question || "").trim();
+
+  if (!cleanQuestion) return;
+
+  addChatbotMessage(cleanQuestion, "user");
+
+  window.setTimeout(() => {
+    addChatbotMessage(getChatbotResponse(cleanQuestion), "bot");
+  }, 140);
+}
+
+function handleChatbotSubmit(event) {
+  event.preventDefault();
+
+  const input = document.getElementById("chatbot-input");
+
+  if (!input) return;
+
+  const question = input.value;
+  input.value = "";
+  askChatbot(question);
+}
+
+function renderChatbotSuggestions() {
+  const suggestions = document.getElementById("chatbot-suggestions");
+
+  if (!suggestions) return;
+
+  suggestions.innerHTML = "";
+
+  chatbotSuggestions.forEach(question => {
+    const button = document.createElement("button");
+    button.className = "chatbot-suggestion";
+    button.type = "button";
+    button.textContent = question;
+    button.addEventListener("click", () => askChatbot(question));
+    suggestions.appendChild(button);
+  });
+}
+
+function initializeChatbot() {
+  const messages = document.getElementById("chatbot-messages");
+
+  renderChatbotSuggestions();
+
+  if (!messages || messages.children.length) return;
+
+  addChatbotMessage("Salut, je peux t'aider à comprendre le site, les cours, les QCM, le calendrier, GROKA, le Grand Oral et les paramètres.");
+}
+
+function toggleChatbot(forceOpen) {
+  const widget = document.getElementById("chatbot-widget");
+  const panel = document.getElementById("chatbot-panel");
+  const toggle = document.getElementById("chatbot-toggle");
+
+  if (!widget || !panel || !toggle) return;
+
+  const isOpen = typeof forceOpen === "boolean" ? forceOpen : !widget.classList.contains("open");
+
+  widget.classList.toggle("open", isOpen);
+  panel.setAttribute("aria-hidden", String(!isOpen));
+  toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle.setAttribute("aria-label", isOpen ? "Fermer le chatbot" : "Ouvrir le chatbot");
+  toggle.title = isOpen ? "Fermer l'assistant" : "Assistant du site";
+
+  if (isOpen) {
+    initializeChatbot();
+    window.setTimeout(() => {
+      document.getElementById("chatbot-input")?.focus();
+    }, 0);
+  }
+}
+
 
 let miniGame = {
   running: false,
@@ -4953,6 +5595,7 @@ function hideAllScreens() {
   document.getElementById("course-screen").classList.add("hidden");
   document.getElementById("preview-screen").classList.add("hidden");
   document.getElementById("exam-screen").classList.add("hidden");
+  document.getElementById("grand-oral-screen").classList.add("hidden");
   document.getElementById("calendar-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.add("hidden");
@@ -5192,6 +5835,15 @@ function applyNavigationState(state) {
 
   if (targetState.screen === "exam") {
     showExam({
+      pushState: false,
+      confirm: false
+    });
+    activeNavigationState = targetState;
+    return;
+  }
+
+  if (targetState.screen === "grandOralExam") {
+    showGrandOralExam({
       pushState: false,
       confirm: false
     });
@@ -5707,6 +6359,21 @@ function showExam(options = {}) {
 
   if (shouldPushState) {
     pushNavigationState({ screen: "exam" });
+  }
+}
+
+function showGrandOralExam(options = {}) {
+  const shouldConfirm = options.confirm !== false;
+  const shouldPushState = options.pushState !== false;
+
+  if (shouldConfirm && !confirmLeaveQuiz()) return;
+
+  currentCourseKey = null;
+  hideAllScreens();
+  revealScreen("grand-oral-screen");
+
+  if (shouldPushState) {
+    pushNavigationState({ screen: "grandOralExam" });
   }
 }
 
@@ -7000,6 +7667,26 @@ function renderHistory() {
 
   renderHistoryCourse("developpement", "history-developpement", history);
   renderHistoryCourse("cultureCreation", "history-culture-creation", history);
+}
+
+function setMenuHistoryOpen(isOpen) {
+  const box = document.getElementById("menu-history-box");
+  const button = document.getElementById("history-menu-toggle");
+
+  if (box) {
+    box.classList.toggle("hidden", !isOpen);
+  }
+
+  if (button) {
+    button.textContent = isOpen ? "Masquer l'historique des essais" : "Voir l'historique des essais";
+    button.setAttribute("aria-expanded", String(isOpen));
+  }
+}
+
+function toggleMenuHistory() {
+  const box = document.getElementById("menu-history-box");
+
+  setMenuHistoryOpen(box?.classList.contains("hidden"));
 }
 
 function renderHistoryCourse(courseKey, elementId, history) {
