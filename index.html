@@ -20,6 +20,8 @@
   }
 
   body {
+    --scrollbar-thumb: rgba(168, 85, 247, 0.82);
+    --scrollbar-thumb-strong: rgba(99, 102, 241, 0.95);
     min-height: 100vh;
     background: #0d0d1a;
     display: flex;
@@ -29,6 +31,36 @@
     padding: 16px;
     position: relative;
     overflow-x: hidden;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--scrollbar-thumb-strong), var(--scrollbar-thumb));
+    background-clip: content-box;
+    border: 2px solid transparent;
+    border-radius: 999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #c084fc, #818cf8);
+    background-clip: content-box;
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: transparent;
   }
 
   .star-field {
@@ -226,6 +258,10 @@
     box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
     position: relative;
     z-index: 1;
+  }
+
+  .card.course-card {
+    max-width: 1080px;
   }
 
   .screen-transition-in {
@@ -1327,12 +1363,73 @@
     margin-bottom: 20px;
   }
 
+  .course-layout {
+    display: grid;
+    grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    margin-bottom: 20px;
+  }
+
+  .course-layout .course-content {
+    margin-bottom: 0;
+  }
+
   .course-section {
     background: #1a1a2e;
     border: 1px solid #2a2a4a;
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 14px;
+  }
+
+  .course-summary {
+    position: sticky;
+    top: 72px;
+    max-height: 65vh;
+    overflow-y: auto;
+    background: #14142c;
+    border: 1px solid #32325f;
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .course-summary h2 {
+    color: #f0f0ff;
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .course-summary-list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .course-summary-btn {
+    width: 100%;
+    border: 1px solid #3a3a6a;
+    border-radius: 8px;
+    background: rgba(42, 42, 74, 0.64);
+    color: #d7d7ff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+    padding: 9px 10px;
+    text-align: left;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+
+  .course-summary-btn:hover,
+  .course-summary-btn:focus-visible {
+    background: rgba(99, 102, 241, 0.18);
+    border-color: #6366f1;
+    color: #fff;
+    outline: none;
+    transform: translateY(-1px);
   }
 
   .course-section h2 {
@@ -1575,6 +1672,8 @@
   }
 
   body.lucio-mode {
+    --scrollbar-thumb: rgba(34, 197, 94, 0.82);
+    --scrollbar-thumb-strong: rgba(132, 204, 22, 0.95);
     background:
       radial-gradient(circle at 82% 20%, rgba(87, 255, 154, 0.24), transparent 32%),
       radial-gradient(circle at 20% 84%, rgba(16, 185, 129, 0.22), transparent 30%),
@@ -1616,6 +1715,7 @@
   body.lucio-mode .settings-toggle,
   body.lucio-mode .settings-panel,
   body.lucio-mode .setting-action,
+  body.lucio-mode .course-summary-btn,
   body.lucio-mode .small-btn {
     background: rgba(8, 47, 31, 0.88);
     border-color: #22c55e;
@@ -1627,7 +1727,9 @@
   body.lucio-mode .settings-toggle:hover,
   body.lucio-mode .settings-toggle:focus-visible,
   body.lucio-mode .setting-action:hover,
-  body.lucio-mode .setting-action:focus-visible {
+  body.lucio-mode .setting-action:focus-visible,
+  body.lucio-mode .course-summary-btn:hover,
+  body.lucio-mode .course-summary-btn:focus-visible {
     border-color: #a3e635;
     color: #f4ffe8;
   }
@@ -1641,6 +1743,7 @@
   body.lucio-mode .calendar-event,
   body.lucio-mode .calendar-empty,
   body.lucio-mode .course-section,
+  body.lucio-mode .course-summary,
   body.lucio-mode .preview-list li,
   body.lucio-mode .history-item,
   body.lucio-mode .game-stat,
@@ -1684,6 +1787,7 @@
   body.lucio-mode .history-section h3,
   body.lucio-mode .history-toggle,
   body.lucio-mode .course-section h2,
+  body.lucio-mode .course-summary h2,
   body.lucio-mode .calendar-day-title,
   body.lucio-mode .highlight,
   body.lucio-mode .big-score,
@@ -1765,6 +1869,18 @@
 
     .course-content {
       max-height: 60vh;
+    }
+
+    .course-layout {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .course-summary {
+      position: sticky;
+      top: 58px;
+      z-index: 2;
+      max-height: 34vh;
     }
 
     .game-stats {
@@ -1913,6 +2029,16 @@
     }
 
     .course-content {
+      max-height: none;
+      overflow: visible;
+    }
+
+    .course-layout {
+      display: block;
+    }
+
+    .course-summary {
+      position: static;
       max-height: none;
       overflow: visible;
     }
@@ -2196,7 +2322,10 @@
       Relis le cours, puis lance le QCM correspondant quand tu es prêt.
     </p>
 
-    <div class="course-content" id="course-content"></div>
+    <div class="course-layout">
+      <aside class="course-summary" id="course-summary" aria-label="Sommaire du cours"></aside>
+      <div class="course-content" id="course-content"></div>
+    </div>
 
     <button class="btn" id="start-course-quiz-btn">Lancer le QCM de ce cours</button>
     <button class="btn secondary-btn" onclick="window.print()">Imprimer / sauvegarder en PDF</button>
@@ -3587,7 +3716,7 @@ const courseContents = {
         ]
       },
       {
-        title: "UX — User Experience",
+        title: "UX (User Experience)",
         blocks: [
           {
             subtitle: "Définition",
@@ -3681,7 +3810,7 @@ const courseContents = {
         ]
       },
       {
-        title: "SEO — Référencement naturel",
+        title: "SEO (Référencement naturel)",
         blocks: [
           {
             subtitle: "Définition",
@@ -4555,6 +4684,7 @@ function hideAllScreens() {
   stopMiniGame();
   stopSnakeGame();
   setHomeEasterEggVisible(false);
+  document.getElementById("app").classList.remove("course-card");
   document.getElementById("menu-screen").classList.add("hidden");
   document.getElementById("course-screen").classList.add("hidden");
   document.getElementById("preview-screen").classList.add("hidden");
@@ -6156,17 +6286,51 @@ function showCourse(courseKey, options = {}) {
   const course = courseContents[courseKey];
 
   hideAllScreens();
+  document.getElementById("app").classList.add("course-card");
   revealScreen("course-screen");
 
   document.getElementById("course-view-tag").textContent = course.title;
   document.getElementById("course-view-title").textContent = course.title;
 
+  const summary = document.getElementById("course-summary");
   const content = document.getElementById("course-content");
+  summary.innerHTML = "";
   content.innerHTML = "";
+  summary.scrollTop = 0;
+  content.scrollTop = 0;
 
-  course.sections.forEach(section => {
+  const summaryTitle = document.createElement("h2");
+  summaryTitle.textContent = "Sommaire";
+  summary.appendChild(summaryTitle);
+
+  const summaryList = document.createElement("ol");
+  summaryList.className = "course-summary-list";
+
+  course.sections.forEach((section, sectionIndex) => {
+    const summaryItem = document.createElement("li");
+    const summaryButton = document.createElement("button");
+    const sectionId = `${courseKey}-course-section-${sectionIndex + 1}`;
+
+    summaryButton.className = "course-summary-btn";
+    summaryButton.type = "button";
+    summaryButton.textContent = `${sectionIndex + 1}. ${section.title}`;
+    summaryButton.onclick = () => {
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    };
+
+    summaryItem.appendChild(summaryButton);
+    summaryList.appendChild(summaryItem);
+  });
+
+  summary.appendChild(summaryList);
+
+  course.sections.forEach((section, sectionIndex) => {
     const sectionDiv = document.createElement("div");
     sectionDiv.className = "course-section";
+    sectionDiv.id = `${courseKey}-course-section-${sectionIndex + 1}`;
 
     const sectionTitle = document.createElement("h2");
     sectionTitle.textContent = section.title;
