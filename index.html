@@ -1326,6 +1326,25 @@
     box-shadow: 0 12px 28px var(--primary-shadow);
   }
 
+  #menu-screen .btn.secondary-btn.preview-menu-btn,
+  #menu-screen .btn.secondary-btn.history-menu-toggle {
+    background: var(--secondary-bg);
+    border-color: var(--secondary-border);
+    color: var(--secondary-text);
+    box-shadow: none;
+  }
+
+  #menu-screen .btn.secondary-btn.preview-menu-btn:hover,
+  #menu-screen .btn.secondary-btn.preview-menu-btn:focus-visible,
+  #menu-screen .btn.secondary-btn.history-menu-toggle:hover,
+  #menu-screen .btn.secondary-btn.history-menu-toggle:focus-visible {
+    background: var(--secondary-bg-hover);
+    border-color: var(--secondary-border-strong);
+    color: var(--secondary-text-hover);
+    opacity: 1;
+    box-shadow: none;
+  }
+
   .score-label {
     text-align: center;
     color: #555;
@@ -3481,9 +3500,9 @@
         <h2>QCM par cours</h2>
         <div class="menu-action-grid">
           <button class="btn" onclick="start('developpement')">Développement Web</button>
-          <button class="btn secondary-btn" onclick="showQuestionPreview('developpement')">Aperçu Dev Web</button>
+          <button class="btn secondary-btn preview-menu-btn" onclick="showQuestionPreview('developpement')">Aperçu Dev Web</button>
           <button class="btn" onclick="start('cultureCreation')">Culture de la Création</button>
-          <button class="btn secondary-btn" onclick="showQuestionPreview('cultureCreation')">Aperçu Culture</button>
+          <button class="btn secondary-btn preview-menu-btn" onclick="showQuestionPreview('cultureCreation')">Aperçu Culture</button>
         </div>
       </section>
 
